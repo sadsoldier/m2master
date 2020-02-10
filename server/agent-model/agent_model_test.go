@@ -126,4 +126,7 @@ func TestDelete(t *testing.T) {
         t.Error(err)
     }
 
+    os.Remove("test.db")
+
+
 }
