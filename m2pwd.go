@@ -23,7 +23,7 @@ func main() {
     config := config.New()
     config.Read()
 
-    optFileName := flag.String("file", config.PasswordPath, "password file")
+    optFileName := flag.String("file", config.DatabasePath, "database path")
 
     updateCommands := flag.NewFlagSet("update", flag.ExitOnError)
 
