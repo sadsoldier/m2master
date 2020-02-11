@@ -46,7 +46,7 @@ type Page struct {
     Total           int         `json:"total"`
     Offset          int         `json:"offset"`
     Limit           int         `json:"limit"`
-    AgentPattern    string      `json:"agent_pattern"`
+    HostnamePattern    string      `json:"agent_pattern"`
     Agents          *[]Agent    `json:"agents,omitempty"`
 }
 
@@ -64,7 +64,7 @@ func (this *Model) List(page *Page) (error) {
     var err error
     var total int
 
-    agentPattern := "%" + page.AgentPattern + "%"
+    agentPattern := "%" + page.HostnamePattern + "%"
     request = `SELECT COUNT(id) as total FROM agents WHERE hostname LIKE $1`
     err = this.db.QueryRow(request, agentPattern).Scan(&total)
     if err != nil {
