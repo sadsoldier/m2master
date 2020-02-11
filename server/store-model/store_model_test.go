@@ -6,7 +6,6 @@ package storeModel
 
 import (
     "testing"
-
     //"github.com/stretchr/testify/assert"
 
     "github.com/jmoiron/sqlx"
@@ -39,7 +38,7 @@ func TestCreate(t *testing.T) {
     }
 
     model := New(dbx)
-    store := Agent{
+    store := Store{
         Schema:     "https",
         Hostname:   "localhost",
         Port:       7002,
@@ -57,16 +56,16 @@ func TestCreate(t *testing.T) {
         t.Error(err)
     }
 
-    var stores []Agent
+    var stores []Store
     page := Page{
         Limit: 500,
-        Agents: &stores,
+        Stores: &stores,
     }
     err = model.List(&page)
     if err != nil {
         t.Error(err)
     }
-    fmt.Println(*page.Agents)
+    fmt.Println(*page.Stores)
 
 }
 
@@ -78,7 +77,7 @@ func TestUpdate(t *testing.T) {
     }
 
     model := New(dbx)
-    store := Agent{
+    store := Store{
         Schema:     "http",
         Hostname:   "some.bare",
         Port:       7007,
@@ -96,16 +95,16 @@ func TestUpdate(t *testing.T) {
         t.Error(err)
     }
 
-    var stores []Agent
+    var stores []Store
     page := Page{
         Limit: 500,
-        Agents: &stores,
+        Stores: &stores,
     }
     err = model.List(&page)
     if err != nil {
         t.Error(err)
     }
-    fmt.Println(*page.Agents)
+    fmt.Println(*page.Stores)
 }
 
 
@@ -117,7 +116,7 @@ func TestDelete(t *testing.T) {
     }
 
     model := New(dbx)
-    store := Agent{
+    store := Store{
         Id: 1,
     }
 

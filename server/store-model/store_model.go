@@ -6,16 +6,9 @@
 package storeModel
 
 import (
-    //"math/rand"
     "log"
-    //"strings"
-    //"errors"
 
     "github.com/jmoiron/sqlx"
-    //_ "github.com/jackc/pgx/v4/stdlib"
-    //_ "github.com/mattn/go-sqlite3"
-
-
 )
 
 const schema = `
@@ -34,7 +27,7 @@ type Model struct {
     db *sqlx.DB
 }
 
-type Agent struct {
+type Store struct {
     Id          int     `db:"id"        json:"id"`
 
     Type        string  `db:"type"      json:"type"`
@@ -50,8 +43,8 @@ type Page struct {
     Total           int         `json:"total"`
     Offset          int         `json:"offset"`
     Limit           int         `json:"limit"`
-    AgentPattern    string      `json:"store_pattern"`
-    Agents          *[]Agent    `json:"stores,omitempty"`
+    HostnamePattern    string      `json:"store_pattern"`
+    Stores          *[]Store    `json:"stores,omitempty"`
 }
 
 func (this *Model) Migrate() error {
@@ -68,7 +61,7 @@ func (this *Model) List(page *Page) (error) {
     var err error
     var total int
 
-    storePattern := "%" + page.AgentPattern + "%"
+    storePattern := "%" + page.HostnamePattern + "%"
     request = `SELECT COUNT(id) as total FROM stores WHERE hostname LIKE $1`
     err = this.db.QueryRow(request, storePattern).Scan(&total)
     if err != nil {
@@ -77,7 +70,7 @@ func (this *Model) List(page *Page) (error) {
     }
     page.Total = total
 
-    var stores []Agent
+    var stores []Store
     request = `SELECT id, type, schema, hostname, port, username, '' as password
                 FROM stores
                 WHERE hostname LIKE $1
@@ -89,11 +82,11 @@ func (this *Model) List(page *Page) (error) {
         log.Println(err)
         return err
     }
-    page.Agents = &stores
+    page.Stores = &stores
     return nil
 }
 
-func (this *Model) Create(store Agent) error {
+func (this *Model) Create(store Store) error {
     request := `INSERT INTO stores(type, schema, hostname, port, username, password)
                 VALUES ($1, $2, $3, $4, $5, $6)`
     _, err := this.db.Exec(request, store.Type, store.Schema, store.Hostname, store.Port, store.Username, store.Password)
@@ -104,7 +97,7 @@ func (this *Model) Create(store Agent) error {
     return nil
 }
 
-func (this *Model) Delete(store Agent) error {
+func (this *Model) Delete(store Store) error {
     request := `DELETE FROM stores WHERE id = $1`
     _, err := this.db.Exec(request, store.Id)
     if err != nil {
@@ -115,7 +108,7 @@ func (this *Model) Delete(store Agent) error {
     return nil
 }
 
-func (this *Model) Update(store Agent) error {
+func (this *Model) Update(store Store) error {
     var err error
     if len(store.Password) > 0 {
         request := `UPDATE stores
