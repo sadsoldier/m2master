@@ -1,16 +1,16 @@
 <ng-container>
 
-    <a (click)="showForm()"><i class="fas fa-plus fa-lg"></i></a>
+    <a (click)="showForm()"><i class="far fa-edit"></i> Update </a>
 
     <div class="modal fade" id="{{ modalId() }}" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
 
             <div class="modal-content">
 
-                <form accept-charset="UTF-8" [formGroup]="form" (ngSubmit)="createAgent(form)">
+                <form accept-charset="UTF-8" [formGroup]="form" (ngSubmit)="updateStore(form)">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Create agent</h5>
+                        <h5 class="modal-title">Update store [{{ formHostname.value }}]</h5>
                         <button type="button" class="close" (click)="dismissForm()">
                             <span>&times;</span>
                         </button>
@@ -29,6 +29,7 @@
 
                         </div>
 
+
                         <div class="form-group">
                             <label for="{{ formId('username') }}">Username:</label>
                             <input type="text" class="form-control" id="{{ formId('username') }}" formControlName="username">
@@ -40,15 +41,17 @@
 
                         </div>
 
+
+
                         <div class="form-group">
                             <label for="{{ formId('password') }}">Password:</label>
                             <input type="text" class="form-control" id="{{ formId('password') }}" formControlName="password">
 
                             <small *ngIf="formPassword.invalid && (formPassword.dirty || formPassword.touched)" class="form-text text-muted">
-                                <span *ngIf="formPassword.errors.required">Value is required</span>
-                                <span *ngIf="formPassword.errors.minlength">Value is too short</span>
+                                <span *ngIf="formPassword.errors.invalidPassword">Value is too short</span>
                             </small>
                         </div>
+
 
                     </div>
 
@@ -56,9 +59,11 @@
                         <div class="text-center">{{ this.alertMessage }}</div>
                     </div>
 
+
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-secondary" (click)="dismissForm()">Cancel</button>
-                        <button type="submit" class="btn btn-sm btn-primary" [disabled]="!form.valid">Create</button>
+                        <button type="submit" class="btn btn-sm btn-primary" [disabled]="!form.valid">Update</button>
                     </div>
 
                 </form>

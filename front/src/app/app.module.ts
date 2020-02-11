@@ -28,8 +28,13 @@ import { AgentsComponent } from './agents/agents.component';
 import { AgentOptionComponent } from './agent-option/agent-option.component';
 import { AgentCreateComponent } from './agent-create/agent-create.component';
 import { AgentUpdateComponent } from './agent-update/agent-update.component';
-import { AgentDeleteComponent } from './agent-delete/agent-delete.component'
+import { AgentDeleteComponent } from './agent-delete/agent-delete.component';
 
+import { StoresComponent } from './stores/stores.component';
+import { StoreOptionComponent } from './store-option/store-option.component';
+import { StoreCreateComponent } from './store-create/store-create.component';
+import { StoreUpdateComponent } from './store-update/store-update.component';
+import { StoreDeleteComponent } from './store-delete/store-delete.component'
 
 @NgModule({
     declarations: [
@@ -49,7 +54,12 @@ import { AgentDeleteComponent } from './agent-delete/agent-delete.component'
         AgentOptionComponent,
         AgentCreateComponent,
         AgentUpdateComponent,
-        AgentDeleteComponent
+        AgentDeleteComponent,
+        StoresComponent,
+        StoreOptionComponent,
+        StoreCreateComponent,
+        StoreUpdateComponent,
+        StoreDeleteComponent
     ],
     imports: [
         BrowserModule,

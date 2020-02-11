@@ -1,0 +1,40 @@
+<ng-container>
+
+    <a (click)="showForm()">
+        <ng-content></ng-content>
+    </a>
+
+    <div class="modal fade" id="{{ modalId() }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Store [{{ store.hostname }}] option</h5>
+                    <button type="button" class="close" (click)="dismissForm()">
+                        <span>&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="dropdown-item">
+                        <store-update [store]="store" (update)="onUpdate()"></store-update>
+                    </div>
+
+                    <div class="dropdown-item">
+                        <store-delete [store]="store" (update)="onUpdate()"></store-delete>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" (click)="dismissForm()">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</ng-container>
