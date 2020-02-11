@@ -36,6 +36,12 @@ import (
     "master/server/user-model"
     "master/server/user-controller"
 
+    "master/server/agent-model"
+    "master/server/agent-controller"
+
+    "master/server/store-model"
+    "master/server/store-controller"
+
     "master/daemon"
     "master/config"
     "master/bundle"
@@ -269,9 +275,20 @@ func (this *Server) Run() error {
     humanGroup.POST("/user/delete", userController.Delete)
     humanGroup.POST("/user/update", userController.Update)
 
-    //botGroup := router.Group("/api/v1")
-    //botGroup.Use(this.uniAuthMiddleware)
+    botGroup := router.Group("/api/v1")
+    botGroup.Use(this.uniAuthMiddleware)
 
+    agentController := agentController.New(this.Config, dbx)
+    botGroup.POST("/agent/list", agentController.List)
+    botGroup.POST("/agent/create", agentController.Create)
+    botGroup.POST("/agent/update", agentController.Update)
+    botGroup.POST("/agent/delete", agentController.Delete)
+
+    storeController := storeController.New(this.Config, dbx)
+    botGroup.POST("/store/list", storeController.List)
+    botGroup.POST("/store/create", storeController.Create)
+    botGroup.POST("/store/update", storeController.Update)
+    botGroup.POST("/store/delete", storeController.Delete)
 
     router.NoRoute(this.NoRoute)
 
