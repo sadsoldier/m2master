@@ -29,7 +29,7 @@ export class UsersComponent implements OnInit {
         total: 0,
         limit: 5,
         offset: 0,
-        user_pattern: "",
+        userPattern: "",
         users: []
     }
 
@@ -97,7 +97,7 @@ export class UsersComponent implements OnInit {
                 distinctUntilChanged()
             )
             .subscribe(value => {
-                this.page.user_pattern = value
+                this.page.userPattern = value
                 this.list()
             })
 

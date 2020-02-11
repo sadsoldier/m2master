@@ -12,7 +12,7 @@ export interface Page {
     total?: number
     offset: number
     limit: number
-    user_pattern: string
+    userPattern: string
     users: User[]
 }
 
@@ -40,7 +40,7 @@ export class UserService {
         return this.httpClient.post<ResponsePage>(`/api/v1/user/list`, {
             "limit": page.limit,
             "offset": page.offset,
-            "user_pattern": page.user_pattern
+            "userPattern": page.userPattern
         })
     }
 

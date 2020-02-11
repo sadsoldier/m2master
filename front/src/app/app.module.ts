@@ -16,12 +16,19 @@ import { MenuComponent } from './menu/menu.component'
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 
+import { PagerComponent } from './pager/pager.component';
+
 import { UsersComponent } from './users/users.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserOptionComponent } from './user-option/user-option.component';
-import { PagerComponent } from './pager/pager.component'
+
+import { AgentsComponent } from './agents/agents.component';
+import { AgentOptionComponent } from './agent-option/agent-option.component';
+import { AgentCreateComponent } from './agent-create/agent-create.component';
+import { AgentUpdateComponent } from './agent-update/agent-update.component';
+import { AgentDeleteComponent } from './agent-delete/agent-delete.component'
 
 
 @NgModule({
@@ -37,7 +44,12 @@ import { PagerComponent } from './pager/pager.component'
         UserUpdateComponent,
         UserDeleteComponent,
         UserOptionComponent,
-        PagerComponent
+        PagerComponent,
+        AgentsComponent,
+        AgentOptionComponent,
+        AgentCreateComponent,
+        AgentUpdateComponent,
+        AgentDeleteComponent
     ],
     imports: [
         BrowserModule,
