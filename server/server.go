@@ -59,6 +59,37 @@ func New() *Server {
     return &Server{}
 }
 
+func (this *Server) Migrate() {
+    var err error
+    fmt.Printf("populate database %s\n", this.Config.DatabasePath)
+
+    dbUrl := fmt.Sprintf("%s", this.Config.DatabasePath)
+    db, err := sqlx.Open("sqlite3", dbUrl)
+    if err != nil {
+        fmt.Println(err)
+        os.Exit(1)
+    }
+
+    /* Check DB connection */
+    err = db.Ping()
+    if err != nil {
+        fmt.Println(err)
+        os.Exit(1)
+    }
+    user := userModel.New(db)
+    user.Migrate()
+
+    agent := agentModel.New(db)
+    agent.Migrate()
+
+    store := storeModel.New(db)
+    store.Migrate()
+
+    os.Exit(0)
+}
+
+
+
 func (this *Server) Start() {
     var err error
 
@@ -96,36 +127,10 @@ func (this *Server) Start() {
     this.Config.Debug = *optDebug
     this.Config.Devel = *optDevel
 
-
+    /* Populate database tables end exit */
     if *optMigrate == true {
-        var err error
-        fmt.Printf("populate database %s\n", this.Config.DatabasePath)
-
-        dbUrl := fmt.Sprintf("%s", this.Config.DatabasePath)
-        db, err := sqlx.Open("sqlite3", dbUrl)
-        if err != nil {
-            fmt.Println(err)
-            os.Exit(1)
-        }
-
-        /* Check DB connection */
-        err = db.Ping()
-        if err != nil {
-            fmt.Println(err)
-            os.Exit(1)
-        }
-        user := userModel.New(db)
-        user.Migrate()
-
-        agent := agentModel.New(db)
-        agent.Migrate()
-
-        store := storeModel.New(db)
-        store.Migrate()
-
-        os.Exit(0)
+        this.Migrate()
     }
-
 
     /* Daemonize process */
     if !*optForeground {
@@ -323,6 +328,12 @@ func (this *Server) Run() error {
     botGroup.POST("/store/create", storeController.Create)
     botGroup.POST("/store/update", storeController.Update)
     botGroup.POST("/store/delete", storeController.Delete)
+
+    scheduleController := scheduleController.New(this.Config, this.db)
+    botGroup.POST("/schedule/list", scheduleController.List)
+    botGroup.POST("/schedule/create", scheduleController.Create)
+    botGroup.POST("/schedule/update", scheduleController.Update)
+    botGroup.POST("/schedule/delete", scheduleController.Delete)
 
     router.NoRoute(this.NoRoute)
 
