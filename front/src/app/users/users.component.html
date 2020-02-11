@@ -19,7 +19,6 @@
             <button type="button" class="close" (click)="dismissAlert()">
                 <span>&times;</span>
             </button>
-            <h5>Alert</h5>
             {{ alertMessage }}
         </div>
     </ng-container>
@@ -34,25 +33,26 @@
         </div>
     </ng-container>
 
-
     <form accept-charset="UTF-8" [formGroup]="searchForm">
         <div class="form-row">
 
-            <div class="col-sm-5 my-1">
+            <div class="col-6 my-1">
                 <div class="input-group input-group-sm flex-nowrap">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">Users: {{ page.total }}</div>
+                        <div class="input-group-text">{{ page.total }}</div>
                     </div>
                     <input type="text" class="form-control" id="user-pattern" formControlName="userPattern" />
                 </div>
             </div>
 
-            <div class="col-sm-2 my-1 ml-auto float-right d-inline-block">
+            <div class="col-2 ml-auto">
 
                 <div class="input-group input-group-sm flex-nowrap">
+                    <!--
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="page-limit">Per page</label>
+                        <label class="input-group-text" for="page-limit">#p</label>
                     </div>
+                    -->
                     <select class="custom-select" formControlName="pageLimit" id="page-limit">
                         <option [ngValue]="3">3</option>
                         <option [ngValue]="5">5</option>
@@ -93,7 +93,6 @@
         </table>
 
         <pager [limit]="page.limit" [total]="page.total" [offset]="page.offset" (newOffset)="setNewOffset($event)" ></pager>
-
 
     </ng-container>
 
