@@ -14,7 +14,7 @@ import (
 type Config struct {
     ConfigPath          string  `yaml:"-"`
     LibDir              string  `yaml:"-"`
-    PasswordPath        string  `yaml:"passwords"`
+    DatabasePath        string  `yaml:"passwords"`
     PidPath             string  `yaml:"pidfile"`
     MessageLogPath      string  `yaml:"messagelog"`
     AccessLogPath       string  `yaml:"accesslog"`
@@ -64,7 +64,7 @@ func New() *Config {
     return &Config{
         ConfigPath:     "@app_confdir@/m2srv.yml",
         LibDir:         "@app_libdir@",
-        PasswordPath:   "@app_confdir@/m2pwd.db",
+        DatabasePath:   "@app_confdir@/m2srv.db",
         PidPath:        "@app_rundir@/m2srv.pid",
         MessageLogPath: "@app_logdir@/message.log",
         AccessLogPath:  "@app_logdir@/access.log",
