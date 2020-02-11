@@ -46,8 +46,8 @@ type Page struct {
     Total           int         `json:"total"`
     Offset          int         `json:"offset"`
     Limit           int         `json:"limit"`
-    HostnamePattern    string      `json:"agent_pattern"`
-    Agents          *[]Agent    `json:"agents,omitempty"`
+    HostnamePattern string      `json:"hostnamePattern"`
+    Agents          *[]Agent    `json:"agents"`
 }
 
 func (this *Model) Migrate() error {

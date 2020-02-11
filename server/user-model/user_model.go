@@ -45,7 +45,7 @@ type Page struct {
     Total       int     `json:"total"`
     Offset      int     `json:"offset"`
     Limit       int     `json:"limit"`
-    UserPattern string  `json:"user_pattern"`
+    UserPattern string  `json:"userPattern"`
     Users       *[]User `json:"users,omitempty"`
 }
 
@@ -106,6 +106,10 @@ func (this *Model) List(page *Page) (error) {
         return err
     }
     page.Total = total
+
+    if page.Total < page.Offset {
+        page.Offset = 0
+    }
 
     var users []User
     request = `SELECT id, username, '' as password, isadmin FROM users

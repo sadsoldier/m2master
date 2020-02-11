@@ -310,7 +310,7 @@ func (this *Server) Run() error {
     humanGroup.POST("/user/update", userController.Update)
 
     botGroup := router.Group("/api/v1")
-    botGroup.Use(this.uniAuthMiddleware)
+    //botGroup.Use(this.uniAuthMiddleware)
 
     agentController := agentController.New(this.Config, this.db)
     botGroup.POST("/agent/list", agentController.List)
