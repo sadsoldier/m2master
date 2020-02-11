@@ -73,10 +73,13 @@ func (this *Server) Start() {
     flag.IntVar(optPort, "p", this.Config.Port, "listen port")
 
     optDebug := flag.Bool("debug", this.Config.Debug, "debug mode")
-    flag.BoolVar(optDebug, "d", false, "debug mode")
+    flag.BoolVar(optDebug, "d", this.Config.Debug, "debug mode")
 
     optDevel := flag.Bool("devel", this.Config.Devel, "devel mode")
-    flag.BoolVar(optDebug, "e", false, "devel mode")
+    flag.BoolVar(optDebug, "e", this.Config.Devel, "devel mode")
+
+    optMigrate := flag.Bool("migrate", false, "migrate")
+    flag.BoolVar(optMigrate, "m", false, "migrate mode")
 
     exeName := filepath.Base(os.Args[0])
 
@@ -92,6 +95,37 @@ func (this *Server) Start() {
     this.Config.Port = *optPort
     this.Config.Debug = *optDebug
     this.Config.Devel = *optDevel
+
+
+    if *optMigrate == true {
+        var err error
+        fmt.Printf("populate database %s\n", this.Config.DatabasePath)
+
+        dbUrl := fmt.Sprintf("%s", this.Config.DatabasePath)
+        db, err := sqlx.Open("sqlite3", dbUrl)
+        if err != nil {
+            fmt.Println(err)
+            os.Exit(1)
+        }
+
+        /* Check DB connection */
+        err = db.Ping()
+        if err != nil {
+            fmt.Println(err)
+            os.Exit(1)
+        }
+        user := userModel.New(db)
+        user.Migrate()
+
+        agent := agentModel.New(db)
+        agent.Migrate()
+
+        store := storeModel.New(db)
+        store.Migrate()
+
+        os.Exit(0)
+    }
+
 
     /* Daemonize process */
     if !*optForeground {
@@ -195,7 +229,7 @@ func (this *Server) Run() error {
 
     var err error
 
-    dbUrl := fmt.Sprintf("%s", this.Config.PasswordPath)
+    dbUrl := fmt.Sprintf("%s", this.Config.DatabasePath)
 
     this.db, err = sqlx.Open("sqlite3", dbUrl)
     if err != nil {
@@ -278,13 +312,13 @@ func (this *Server) Run() error {
     botGroup := router.Group("/api/v1")
     botGroup.Use(this.uniAuthMiddleware)
 
-    agentController := agentController.New(this.Config, dbx)
+    agentController := agentController.New(this.Config, this.db)
     botGroup.POST("/agent/list", agentController.List)
     botGroup.POST("/agent/create", agentController.Create)
     botGroup.POST("/agent/update", agentController.Update)
     botGroup.POST("/agent/delete", agentController.Delete)
 
-    storeController := storeController.New(this.Config, dbx)
+    storeController := storeController.New(this.Config, this.db)
     botGroup.POST("/store/list", storeController.List)
     botGroup.POST("/store/create", storeController.Create)
     botGroup.POST("/store/update", storeController.Update)
