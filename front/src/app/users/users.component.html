@@ -74,10 +74,6 @@
                     <th>#</th>
                     <th>name</th>
                     <th>mode</th>
-<!--
-                    <th><i class="far fa-edit"></i></th>
-                    <th><i class="far fa-trash-alt"></i></th>
--->
                 </tr>
             </thead>
 
@@ -90,10 +86,6 @@
                             <span *ngIf="item.isadmin"><i class="fas fa-user-plus"></i></span>
                             <span *ngIf="!item.isadmin"><i class="fas fa-microchip"></i></span>
                         </td>
-<!--
-                        <td><user-update [user]="item" (update)="list()"></user-update></td>
-                        <td><user-delete [user]="item" (update)="list()"></user-delete></td>
--->
                     </tr>
                 </ng-container>
             </tbody>
