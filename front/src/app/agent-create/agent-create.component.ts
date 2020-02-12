@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators, ValidationE
 
 declare var $: any
 
-import { AgentService, ResponseAgent, ResponsePage, Agent, Page } from '../agent.service'
+import { AgentService, Agent, AgentResponse, AgentPage } from '../agent.service'
 
 @Component({
   selector: 'agent-create',
@@ -42,7 +42,7 @@ export class AgentCreateComponent implements OnInit {
                 password: event.value.password,
         }
         this.agentService.create(payload).subscribe(
-            (response: ResponseAgent) => {
+            (response: AgentResponse) => {
                 if (response.error == false) {
                     this.dismissForm()
                     this.onCreateAgent()

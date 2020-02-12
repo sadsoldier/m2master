@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 
-import { AgentService, ResponseAgent, ResponsePage, Agent, Page } from '../agent.service'
+import { AgentService, Agent, AgentResponse, AgentPage } from '../agent.service'
 
 declare var $: any;
 
@@ -25,7 +25,7 @@ export class AgentsComponent implements OnInit {
     noticeMessage: string = null
     alertMessage: string = null
 
-    page: Page = {
+    page: AgentPage = {
         total: 0,
         limit: 5,
         offset: 0,
@@ -45,7 +45,7 @@ export class AgentsComponent implements OnInit {
 
     list() {
         this.agentService.list(this.page).subscribe(
-            (response: ResponsePage) => {
+            (response: AgentResponse) => {
                 if (response.error == false) {
                     this.page = response.result
                 } else {

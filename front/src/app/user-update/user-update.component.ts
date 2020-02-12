@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators, ValidationE
 
 declare var $: any
 
-import { UserService, ResponseUser, ResponsePage, User, Page } from '../user.service'
+import { UserService, User, UserResponse, UserPage } from '../user.service'
 
 @Component({
   selector: 'user-update',
@@ -40,7 +40,7 @@ export class UserUpdateComponent implements OnInit {
                 isadmin: event.value.isadmin
         }
         this.userService.update(payload).subscribe(
-            (response: ResponseUser) => {
+            (response: UserResponse) => {
                 if (response.error == false) {
                     this.dismissForm()
                     this.onUpdateUser()

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators, ValidationE
 
 declare var $: any
 
-import { StoreService, ResponseStore, ResponsePage, Store, Page } from '../store.service'
+import { StoreService, Store, StorePage, StoreResponse } from '../store.service'
 
 @Component({
   selector: 'store-delete',
@@ -34,7 +34,7 @@ export class StoreDeleteComponent implements OnInit {
                 id: event.value.id,
         }
         this.storeService.deletex(payload).subscribe(
-            (response: ResponseStore) => {
+            (response: StoreResponse) => {
                 if (response.error == false) {
                     this.dismissForm()
                     this.onDeleteStore()

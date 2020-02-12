@@ -8,7 +8,7 @@ export interface User {
     isadmin?: boolean
 }
 
-export interface Page {
+export interface UserPage {
     total?: number
     offset: number
     limit: number
@@ -16,16 +16,11 @@ export interface Page {
     users: User[]
 }
 
-export interface ResponseUser {
-    error: boolean
-    message: string
-    result: User[]
-}
 
-export interface ResponsePage {
+export interface UserResponse {
     error: boolean
-    message: string
-    result: Page
+    message?: string
+    result?: UserPage
 }
 
 @Injectable({
@@ -36,8 +31,8 @@ export class UserService {
 
     constructor(private httpClient: HttpClient) { }
 
-    list(page: Page) {
-        return this.httpClient.post<ResponsePage>(`/api/v1/user/list`, {
+    list(page: UserPage) {
+        return this.httpClient.post<UserResponse>(`/api/v1/user/list`, {
             "limit": page.limit,
             "offset": page.offset,
             "userPattern": page.userPattern
@@ -46,14 +41,14 @@ export class UserService {
 
 
     check(username: string, password: string) {
-        return this.httpClient.post<ResponseUser>(`/api/v1/user/login`, {
+        return this.httpClient.post<UserResponse>(`/api/v1/user/login`, {
             "username": username,
             "password": password
         })
     }
 
     create(user: User) {
-        return this.httpClient.post<ResponseUser>(`/api/v1/user/create`, {
+        return this.httpClient.post<UserResponse>(`/api/v1/user/create`, {
             "username": user.username,
             "password": user.password,
             "isadmin": user.isadmin
@@ -61,7 +56,7 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.httpClient.post<ResponseUser>(`/api/v1/user/update`, {
+        return this.httpClient.post<UserResponse>(`/api/v1/user/update`, {
             "id": user.id,
             "username": user.username,
             "password": user.password,
@@ -71,7 +66,7 @@ export class UserService {
 
 
     deletex(user: User) {
-        return this.httpClient.post<ResponseUser>(`/api/v1/user/delete`, {
+        return this.httpClient.post<UserResponse>(`/api/v1/user/delete`, {
             "id": user.id
         })
     }

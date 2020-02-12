@@ -11,7 +11,7 @@ export interface Store {
     password?: string
 }
 
-export interface Page {
+export interface StorePage {
     total?: number
     offset: number
     limit: number
@@ -19,16 +19,10 @@ export interface Page {
     stores: Store[]
 }
 
-export interface ResponseStore {
+export interface StoreResponse {
     error: boolean
     message: string
-    result: Store[]
-}
-
-export interface ResponsePage {
-    error: boolean
-    message: string
-    result: Page
+    result: StorePage
 }
 
 @Injectable({
@@ -39,8 +33,8 @@ export class StoreService {
 
     constructor(private httpClient: HttpClient) { }
 
-    list(page: Page) {
-        return this.httpClient.post<ResponsePage>(`/api/v1/store/list`, {
+    list(page: StorePage) {
+        return this.httpClient.post<StoreResponse>(`/api/v1/store/list`, {
             "limit": page.limit,
             "offset": page.offset,
             "hostnamePattern": page.hostnamePattern
@@ -48,7 +42,7 @@ export class StoreService {
     }
 
     create(store: Store) {
-        return this.httpClient.post<ResponseStore>(`/api/v1/store/create`, {
+        return this.httpClient.post<StoreResponse>(`/api/v1/store/create`, {
             "type": store.type,
             "schema": store.schema,
             "hostname": store.hostname,
@@ -59,7 +53,7 @@ export class StoreService {
     }
 
     update(store: Store) {
-        return this.httpClient.post<ResponseStore>(`/api/v1/store/update`, {
+        return this.httpClient.post<StoreResponse>(`/api/v1/store/update`, {
             "id": store.id,
             "type": store.type,
             "schema": store.schema,
@@ -72,7 +66,7 @@ export class StoreService {
 
 
     deletex(store: Store) {
-        return this.httpClient.post<ResponseStore>(`/api/v1/store/delete`, {
+        return this.httpClient.post<StoreResponse>(`/api/v1/store/delete`, {
             "id": store.id
         })
     }

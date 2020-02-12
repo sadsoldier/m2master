@@ -3,7 +3,8 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators, ValidationE
 
 declare var $: any
 
-import { StoreService, ResponseStore, ResponsePage, Store, Page } from '../store.service'
+import { StoreService, Store, StorePage, StoreResponse } from '../store.service'
+
 
 @Component({
   selector: 'store-create',
@@ -42,7 +43,7 @@ export class StoreCreateComponent implements OnInit {
                 password: event.value.password,
         }
         this.storeService.create(payload).subscribe(
-            (response: ResponseStore) => {
+            (response: StoreResponse) => {
                 if (response.error == false) {
                     this.dismissForm()
                     this.onCreateStore()

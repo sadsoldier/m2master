@@ -10,7 +10,7 @@ export interface Agent {
     password?: string
 }
 
-export interface Page {
+export interface AgentPage {
     total?: number
     offset: number
     limit: number
@@ -18,16 +18,10 @@ export interface Page {
     agents: Agent[]
 }
 
-export interface ResponseAgent {
+export interface AgentResponse {
     error: boolean
-    message: string
-    result: Agent[]
-}
-
-export interface ResponsePage {
-    error: boolean
-    message: string
-    result: Page
+    message?: string
+    result?: AgentPage
 }
 
 @Injectable({
@@ -38,8 +32,8 @@ export class AgentService {
 
     constructor(private httpClient: HttpClient) { }
 
-    list(page: Page) {
-        return this.httpClient.post<ResponsePage>(`/api/v1/agent/list`, {
+    list(page: AgentPage) {
+        return this.httpClient.post<AgentResponse>(`/api/v1/agent/list`, {
             "limit": page.limit,
             "offset": page.offset,
             "hostnamePattern": page.hostnamePattern
@@ -47,7 +41,7 @@ export class AgentService {
     }
 
     create(agent: Agent) {
-        return this.httpClient.post<ResponseAgent>(`/api/v1/agent/create`, {
+        return this.httpClient.post<AgentResponse>(`/api/v1/agent/create`, {
             "schema": agent.schema,
             "hostname": agent.hostname,
             "port": agent.port,
@@ -57,7 +51,7 @@ export class AgentService {
     }
 
     update(agent: Agent) {
-        return this.httpClient.post<ResponseAgent>(`/api/v1/agent/update`, {
+        return this.httpClient.post<AgentResponse>(`/api/v1/agent/update`, {
             "id": agent.id,
             "schema": agent.schema,
             "hostname": agent.hostname,
@@ -69,7 +63,7 @@ export class AgentService {
 
 
     deletex(agent: Agent) {
-        return this.httpClient.post<ResponseAgent>(`/api/v1/agent/delete`, {
+        return this.httpClient.post<AgentResponse>(`/api/v1/agent/delete`, {
             "id": agent.id
         })
     }

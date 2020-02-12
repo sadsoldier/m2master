@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators, ValidationE
 
 declare var $: any
 
-import { AgentService, ResponseAgent, ResponsePage, Agent, Page } from '../agent.service'
+import { AgentService, Agent, AgentResponse, AgentPage } from '../agent.service'
 
 @Component({
   selector: 'agent-delete',
@@ -34,7 +34,7 @@ export class AgentDeleteComponent implements OnInit {
                 id: event.value.id,
         }
         this.agentService.deletex(payload).subscribe(
-            (response: ResponseAgent) => {
+            (response: AgentResponse) => {
                 if (response.error == false) {
                     this.dismissForm()
                     this.onDeleteAgent()

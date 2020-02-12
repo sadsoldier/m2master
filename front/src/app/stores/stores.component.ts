@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 
-import { StoreService, ResponseStore, ResponsePage, Store, Page } from '../store.service'
+import { StoreService, Store, StorePage, StoreResponse } from '../store.service'
 
 declare var $: any;
 
@@ -25,7 +25,7 @@ export class StoresComponent implements OnInit {
     noticeMessage: string = null
     alertMessage: string = null
 
-    page: Page = {
+    page: StorePage = {
         total: 0,
         limit: 5,
         offset: 0,
@@ -45,7 +45,7 @@ export class StoresComponent implements OnInit {
 
     list() {
         this.storeService.list(this.page).subscribe(
-            (response: ResponsePage) => {
+            (response: StoreResponse) => {
                 if (response.error == false) {
                     this.page = response.result
                 } else {

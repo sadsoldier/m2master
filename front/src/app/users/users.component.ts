@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 
-import { UserService, ResponseUser, ResponsePage, User, Page } from '../user.service'
+import { UserService, UserResponse, UserPage } from '../user.service'
 
 declare var $: any;
 
@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit {
     noticeMessage: string = null
     alertMessage: string = null
 
-    page: Page = {
+    page: UserPage = {
         total: 0,
         limit: 5,
         offset: 0,
@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
 
     list() {
         this.userService.list(this.page).subscribe(
-            (response: ResponsePage) => {
+            (response: UserResponse) => {
                 if (response.error == false) {
                     this.page = response.result
                 } else {

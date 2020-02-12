@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router } from "@angular/router"
 
-import { UserService, ResponseUser, User } from '../user.service'
+import { UserService, UserResponse, User } from '../user.service'
 import { LoginService } from '../login.service'
 
 @Component({
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         let password = event.value.password
 
         this.userService.check(username, password).subscribe(
-            (response: ResponseUser) => {
+            (response: UserResponse) => {
                 if (response.error == false) {
                     this.error = response.error
                     this.message = null
