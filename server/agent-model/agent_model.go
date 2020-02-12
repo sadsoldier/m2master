@@ -59,7 +59,7 @@ func (this *Model) Migrate() error {
     return nil
 }
 
-func (this *Model) List(page *Page) (error) {
+func (this *Model) List(page *Page) error {
     var request string
     var err error
     var total int
@@ -87,6 +87,23 @@ func (this *Model) List(page *Page) (error) {
     }
     page.Agents = &agents
     return nil
+}
+
+func (this *Model) GetById(id int) (*Agent, error) {
+    var request string
+    var err error
+
+    var agent Agent
+    request = `SELECT id, schema, hostname, port, username, '' as password
+                FROM agents
+                WHERE id = $1`
+
+    err = this.db.Select(&agent, request, id)
+    if err != nil {
+        log.Println(err)
+        return nil, err
+    }
+    return &agent, nil
 }
 
 func (this *Model) Create(agent Agent) error {

@@ -86,6 +86,24 @@ func (this *Model) List(page *Page) (error) {
     return nil
 }
 
+func (this *Model) GetById(id int) (*Store, error) {
+    var request string
+    var err error
+
+    var store Store
+    request = `SELECT id, type, schema, hostname, port, username, '' as password
+                FROM stores
+                WHERE id = $1`
+
+    err = this.db.Select(&store, request, id)
+    if err != nil {
+        log.Println(err)
+        return nil, err
+    }
+    return &store, nil
+}
+
+
 func (this *Model) Create(store Store) error {
     request := `INSERT INTO stores(type, schema, hostname, port, username, password)
                 VALUES ($1, $2, $3, $4, $5, $6)`
