@@ -3,7 +3,7 @@
  */
 
 
-package agentModel
+package scheduleModel
 
 import (
     "log"
@@ -157,7 +157,8 @@ func (this *Model) Update(schedule Schedule) error {
                     schedule.Hours,
                     schedule.Wdays,
                     schedule.Mdays,
-                    schedule.Depth)
+                    schedule.Depth,
+                    schedule.Id)
     if err != nil {
         log.Println(err)
         return err

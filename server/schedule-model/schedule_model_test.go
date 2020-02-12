@@ -2,7 +2,7 @@
  * Copyright 2020 Oleg Borodin  <borodin@unix7.org>
  */
 
-package agentModel
+package scheduleModel
 
 import (
     "testing"

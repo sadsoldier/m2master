@@ -64,9 +64,9 @@ func (this *Model) List(page *Page) (error) {
     var err error
     var total int
 
-    agentPattern := "%" + page.HostnamePattern + "%"
+    hostnamePattern := "%" + page.HostnamePattern + "%"
     request = `SELECT COUNT(id) as total FROM agents WHERE hostname LIKE $1`
-    err = this.db.QueryRow(request, agentPattern).Scan(&total)
+    err = this.db.QueryRow(request, hostnamePattern).Scan(&total)
     if err != nil {
         log.Println(err)
         return err
@@ -80,7 +80,7 @@ func (this *Model) List(page *Page) (error) {
                 ORDER BY hostname
                 LIMIT $2 OFFSET $3`
 
-    err = this.db.Select(&agents, request, agentPattern, page.Limit, page.Offset)
+    err = this.db.Select(&agents, request, hostnamePattern, page.Limit, page.Offset)
     if err != nil {
         log.Println(err)
         return err
