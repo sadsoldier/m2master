@@ -61,6 +61,34 @@ func (this *Model) Migrate() error {
     return nil
 }
 
+func (this *Model) ListAll(resoursePattern string) (*[]Schedule, error) {
+    var request string
+    var err error
+    resoursePattern = "%" + resoursePattern + "%"
+    var schedules []Schedule
+    request = `SELECT
+                    agent_id,
+                    store_id,
+                    type,
+                    store_path,
+                    resourse,
+                    mins,
+                    hours,
+                    wdays,
+                    mdays,
+                    depth
+                FROM schedules
+                WHERE resourse LIKE $1
+                ORDER BY resourse`
+    err = this.db.Select(&schedules, request, resoursePattern)
+    if err != nil {
+        log.Println(err)
+        return nil, err
+    }
+    log.Println(resoursePattern)
+    return &schedules, nil
+}
+
 func (this *Model) List(page *Page) (error) {
     var request string
     var err error
@@ -99,6 +127,8 @@ func (this *Model) List(page *Page) (error) {
     page.Schedules = &schedules
     return nil
 }
+
+
 
 func (this *Model) Create(schedule Schedule) error {
     request := `INSERT INTO schedules(
