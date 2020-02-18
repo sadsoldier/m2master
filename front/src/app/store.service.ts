@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 export interface Store {
     id?: number
-    type?: string
-    schema?: string
+    storeType?: string
+    scheme?: string
     hostname?: string
     port?: number
     username?: string
@@ -43,8 +43,8 @@ export class StoreService {
 
     create(store: Store) {
         return this.httpClient.post<StoreResponse>(`/api/v1/store/create`, {
-            "type": store.type,
-            "schema": store.schema,
+            "storeType": store.storeType,
+            "scheme": store.scheme,
             "hostname": store.hostname,
             "port": store.port,
             "password": store.password,
@@ -55,8 +55,8 @@ export class StoreService {
     update(store: Store) {
         return this.httpClient.post<StoreResponse>(`/api/v1/store/update`, {
             "id": store.id,
-            "type": store.type,
-            "schema": store.schema,
+            "storeType": store.storeType,
+            "scheme": store.scheme,
             "hostname": store.hostname,
             "port": store.port,
             "password": store.password,

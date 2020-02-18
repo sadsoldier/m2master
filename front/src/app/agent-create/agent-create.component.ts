@@ -35,7 +35,7 @@ export class AgentCreateComponent implements OnInit {
 
     createAgent(event) {
         var payload: Agent = {
-                schema: "https",
+                scheme: "https",
                 hostname: event.value.hostname,
                 username: event.value.username,
                 port: 7002,

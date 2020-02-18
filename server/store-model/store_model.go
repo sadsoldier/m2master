@@ -7,16 +7,18 @@ package storeModel
 
 import (
     "log"
+    "errors"
+    "fmt"
 
     "github.com/jmoiron/sqlx"
 )
 
-const schema = `
+const scheme = `
     DROP TABLE IF EXISTS stores;
     CREATE TABLE IF NOT EXISTS stores (
         id          INTEGER PRIMARY KEY,
         type        VARCHAR(255) NOT NULL,
-        schema      VARCHAR(255) NOT NULL,
+        scheme      VARCHAR(255) NOT NULL,
         hostname    VARCHAR(255) NOT NULL UNIQUE,
         port        INTEGER NOT NULL,
         username    VARCHAR(255) NOT NULL,
@@ -29,26 +31,26 @@ type Model struct {
 
 type Store struct {
     Id          int     `db:"id"        json:"id"`
+    Type        string  `db:"type"      json:"storeType"`
 
-    Type        string  `db:"type"      json:"type"`
-    Schema      string  `db:"schema"    json:"schema"`
+    Scheme      string  `db:"scheme"    json:"scheme"`
     Hostname    string  `db:"hostname"  json:"hostname"`
     Port        int     `db:"port"      json:"port"`
 
-    Username    string  `db:"username" json:"username"`
-    Password    string  `db:"password" json:"password"`
+    Username    string  `db:"username"  json:"username"`
+    Password    string  `db:"password"  json:"password"`
 }
 
 type Page struct {
     Total           int         `json:"total"`
     Offset          int         `json:"offset"`
     Limit           int         `json:"limit"`
-    HostnamePattern    string      `json:"store_pattern"`
+    HostnamePattern string      `json:"store_pattern"`
     Stores          *[]Store    `json:"stores,omitempty"`
 }
 
 func (this *Model) Migrate() error {
-    _, err := this.db.Exec(schema)
+    _, err := this.db.Exec(scheme)
     if err != nil {
         log.Println(err)
         return err
@@ -71,7 +73,7 @@ func (this *Model) List(page *Page) (error) {
     page.Total = total
 
     var stores []Store
-    request = `SELECT id, type, schema, hostname, port, username, '' as password
+    request = `SELECT id, type, scheme, hostname, port, username, '' as password
                 FROM stores
                 WHERE hostname LIKE $1
                 ORDER BY hostname
@@ -86,28 +88,35 @@ func (this *Model) List(page *Page) (error) {
     return nil
 }
 
-func (this *Model) GetById(id int) (*Store, error) {
+func (this *Model) GetById(id int) (Store, error) {
     var request string
     var err error
 
     var store Store
-    request = `SELECT id, type, schema, hostname, port, username, '' as password
+    var stores []Store
+    request = `SELECT id, type, scheme, hostname, port, username, password
                 FROM stores
-                WHERE id = $1`
+                WHERE id = $1 LIMIT 1`
 
-    err = this.db.Select(&store, request, id)
+    err = this.db.Select(&stores, request, id)
     if err != nil {
         log.Println(err)
-        return nil, err
+        return store, err
     }
-    return &store, nil
+    if len(stores) == 0 {
+        err = errors.New(fmt.Sprintf("store id=%d not found", id))
+        log.Println(err)
+        return store, err
+    }
+
+    return stores[0], nil
 }
 
 
 func (this *Model) Create(store Store) error {
-    request := `INSERT INTO stores(type, schema, hostname, port, username, password)
+    request := `INSERT INTO stores(type, scheme, hostname, port, username, password)
                 VALUES ($1, $2, $3, $4, $5, $6)`
-    _, err := this.db.Exec(request, store.Type, store.Schema, store.Hostname, store.Port, store.Username, store.Password)
+    _, err := this.db.Exec(request, store.Type, store.Scheme, store.Hostname, store.Port, store.Username, store.Password)
     if err != nil {
         log.Println(err)
         return err
@@ -130,16 +139,21 @@ func (this *Model) Update(store Store) error {
     var err error
     if len(store.Password) > 0 {
         request := `UPDATE stores
-                    SET type = $1, schema = $2, hostname = $3, port = $4, username = $5, password = $6
+                    SET type = $1, scheme = $2, hostname = $3, port = $4, username = $5, password = $6
                     WHERE id = $7`
-        _, err = this.db.Exec(request, store.Type, store.Schema, store.Hostname,
+        _, err = this.db.Exec(request, store.Type, store.Scheme, store.Hostname,
                                         store.Port, store.Username, store.Password, store.Id)
     } else {
         request := `UPDATE stores
-                    SET type = $1, schema = $2, hostname = $3, port = $4, username = $5
+                    SET type = $1, scheme = $2, hostname = $3, port = $4, username = $5
                     WHERE id = $6`
-        _, err = this.db.Exec(request, store.Type, store.Schema,store.Hostname,
-                                        store.Port, store.Username, store.Id)
+        _, err = this.db.Exec(request,
+                                store.Type,
+                                store.Scheme,
+                                store.Hostname,
+                                store.Port,
+                                store.Username,
+                                store.Id)
     }
     if err != nil {
         log.Println(err)

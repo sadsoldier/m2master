@@ -23,6 +23,71 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-create/agent-create.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/agent-create/agent-create.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"fas fa-plus fa-lg\"></i></a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"createAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Create agent</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.required\">Value is required</span>\n                                <span *ngIf=\"formPassword.errors.minlength\">Value is too short</span>\n                            </small>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Create</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-delete/agent-delete.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/agent-delete/agent-delete.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-trash-alt\"></i> Delete </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"deleteAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Delete agent [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group form-check\">\n                            <input id=\"{{ formId('confirmation') }}\" class=\"form-check-input\" type=\"checkbox\" formControlName=\"confirmation\" />\n                            <label class=\"form-check-label\" for=\"{{ formId('confirmation') }}\"> Confirmation </label>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Delete</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-option/agent-option.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/agent-option/agent-option.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\">\n        <ng-content></ng-content>\n    </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <div class=\"modal-header\">\n                    <h5 class=\"modal-title\">Agent [{{ agent.hostname }}] option</h5>\n                    <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                        <span>&times;</span>\n                    </button>\n                </div>\n\n                <div class=\"modal-body\">\n\n                    <div class=\"dropdown-item\">\n                        <agent-update [agent]=\"agent\" (update)=\"onUpdate()\"></agent-update>\n                    </div>\n\n                    <div class=\"dropdown-item\">\n                        <agent-delete [agent]=\"agent\" (update)=\"onUpdate()\"></agent-delete>\n                    </div>\n\n                </div>\n\n\n                <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                </div>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-update/agent-update.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/agent-update/agent-update.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-edit\"></i> Update </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"updateAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Update agent [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.invalidPassword\">Value is too short</span>\n                            </small>\n                        </div>\n\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Update</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/agents/agents.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/agents/agents.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<layout>\n\n    <div className=\"container-fluid\">\n        <div className=\"row mb-3\">\n            <div class=\"float-right\">\n                <agent-create (update)=\"list()\"></agent-create>\n            </div>\n            <h5>\n                <i class=\"fas fa-user-secret\"></i>\n                <span> Agents </span>\n                <a (click)=\"list()\"><i class=\"fas fa-sync fa-sm\"></i></a>\n            </h5>\n        </div>\n    </div>\n\n    <!-- Alert box -->\n    <ng-container *ngIf=\"alertMessage\">\n        <div class=\"alert alert-danger\" role=\"alert\" id=\"alert\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissAlert()\">\n                <span>&times;</span>\n            </button>\n            {{ alertMessage }}\n        </div>\n    </ng-container>\n\n    <!-- Notice box -->\n    <ng-container *ngIf=\"noticeMessage\">\n        <div class=\"alert alert-success\" role=\"alert\" id=\"notice\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissNotice()\">\n                <span>&times;</span>\n            </button>\n            {{ noticeMessage }}\n        </div>\n    </ng-container>\n\n    <form accept-charset=\"UTF-8\" [formGroup]=\"searchForm\">\n        <div class=\"form-row\">\n\n            <div class=\"col-6 my-1\">\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <div class=\"input-group-prepend\">\n                        <div class=\"input-group-text\">{{ page.total }}</div>\n                    </div>\n                    <input type=\"text\" class=\"form-control\" id=\"hostname-pattern\" formControlName=\"hostnamePattern\" />\n                </div>\n            </div>\n\n            <div class=\"col-2 ml-auto\">\n\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <select class=\"custom-select\" formControlName=\"pageLimit\" id=\"page-limit\">\n                        <option [ngValue]=\"3\">3</option>\n                        <option [ngValue]=\"5\">5</option>\n                        <option [ngValue]=\"10\">10</option>\n                        <option [ngValue]=\"25\">25</option>\n                        <option [ngValue]=\"50\">50</option>\n                    </select>\n                </div>\n            </div>\n\n        </div>\n    </form>\n\n    <ng-container *ngIf=\"page.agents\">\n        <table class=\"table table-striped table-hover table-sm\">\n\n            <thead class=\"thead-light\">\n                <tr>\n                    <th>#</th>\n                    <th>hostname</th>\n                    <th>uri</th>\n                </tr>\n            </thead>\n\n            <tbody>\n                <ng-container *ngFor=\"let item of page.agents; let i = index\">\n                    <tr>\n                        <td>{{ i + 1 + page.offset }}</td>\n                        <td>\n                            <agent-option [agent]=\"item\"  (update)=\"list()\">\n                                {{ item.hostname }}\n                            </agent-option>\n                        </td>\n                        <td>\n                                {{ item.scheme + \"://\" + item.hostname + \":\" + item.port }}\n                        </td>\n                    </tr>\n                </ng-container>\n            </tbody>\n\n        </table>\n\n        <pager [limit]=\"page.limit\" [total]=\"page.total\" [offset]=\"page.offset\" (newOffset)=\"setNewOffset($event)\" ></pager>\n\n    </ng-container>\n\n</layout>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html":
 /*!**************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
@@ -84,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mb-2\">\n    <div class=\"dropdown-divider\"></div>\n    <div class=\"dropdown-item active\"><i class=\"fas fa-hammer\"></i> Menu </div>\n\n    <a class=\"dropdown-item\" routerLink=\"/\"><i class=\"fas fa-home\"></i> Home </a>\n    <a class=\"dropdown-item\" routerLink=\"/users\"><i class=\"fas fa-users\"></i> Users </a>\n\n    <div class=\"dropdown-divider mb-3\"></div>\n\n    <div class=\"dropdown-item\" (click)=\"logout()\"><i class=\"fas fa-sign-out-alt\"></i> Logout </div>\n    <div class=\"dropdown-divider mb-3\"></div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mb-2\">\n    <div class=\"dropdown-divider\"></div>\n    <div class=\"dropdown-item active\"><i class=\"fas fa-hammer\"></i> Menu </div>\n\n    <a class=\"dropdown-item\" routerLink=\"/\"><i class=\"fas fa-home\"></i> Home </a>\n    <a class=\"dropdown-item\" routerLink=\"/agents\"><i class=\"fas fa-user-secret\"></i> Agents </a>\n    <a class=\"dropdown-item\" routerLink=\"/stores\"><i class=\"fas fa-archive\"></i> Stores </a>\n\n\n    <a class=\"dropdown-item\" routerLink=\"/users\"><i class=\"fas fa-users\"></i> Users </a>\n\n    <div class=\"dropdown-divider mb-3\"></div>\n\n    <div class=\"dropdown-item\" (click)=\"logout()\"><i class=\"fas fa-sign-out-alt\"></i> Logout </div>\n    <div class=\"dropdown-divider mb-3\"></div>\n</div>\n");
 
 /***/ }),
 
@@ -114,6 +179,71 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-create/store-create.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/store-create/store-create.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"fas fa-plus fa-lg\"></i></a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"createStore(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Create store</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('storeType') }}\">Type:</label>\n                            <select class=\"form-control\" formControlName=\"storeType\" id=\"{{ formId('storeType') }}\">\n                                <option value=\"s2\">s2</option>\n                                <option value=\"sftp\">sftp</option>\n                            </select>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('port') }}\">Port:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('port') }}\" formControlName=\"port\">\n\n                            <small *ngIf=\"formPort.invalid && (formPort.dirty || formPort.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPort.errors.required\">Value is required</span>\n                                <span *ngIf=\"formPort.errors.min\">Value must be > 0</span>\n                                <span *ngIf=\"formPort.errors.max\">Value must be less 65536</span>\n                            </small>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.required\">Value is required</span>\n                                <span *ngIf=\"formPassword.errors.minlength\">Value is too short</span>\n                            </small>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Create</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-delete/store-delete.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/store-delete/store-delete.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-trash-alt\"></i> Delete </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"deleteStore(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Delete store [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group form-check\">\n                            <input id=\"{{ formId('confirmation') }}\" class=\"form-check-input\" type=\"checkbox\" formControlName=\"confirmation\" />\n                            <label class=\"form-check-label\" for=\"{{ formId('confirmation') }}\"> Confirmation </label>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Delete</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-option/store-option.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/store-option/store-option.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\">\n        <ng-content></ng-content>\n    </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <div class=\"modal-header\">\n                    <h5 class=\"modal-title\">Store [{{ store.hostname }}] option</h5>\n                    <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                        <span>&times;</span>\n                    </button>\n                </div>\n\n                <div class=\"modal-body\">\n\n                    <div class=\"dropdown-item\">\n                        <store-update [store]=\"store\" (update)=\"onUpdate()\"></store-update>\n                    </div>\n\n                    <div class=\"dropdown-item\">\n                        <store-delete [store]=\"store\" (update)=\"onUpdate()\"></store-delete>\n                    </div>\n\n                </div>\n\n\n                <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                </div>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-update/store-update.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/store-update/store-update.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-edit\"></i> Update </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"updateStore(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Update store [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('storeType') }}\">Type:</label>\n                            <select class=\"form-control\" formControlName=\"storeType\" id=\"{{ formId('storeType') }}\">\n                                <option value=\"s2\">s2</option>\n                                <option value=\"sftp\">sftp</option>\n                            </select>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('port') }}\">Port:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('port') }}\" formControlName=\"port\">\n\n                            <small *ngIf=\"formPort.invalid && (formPort.dirty || formPort.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPort.errors.required\">Value is required</span>\n                                <span *ngIf=\"formPort.errors.min\">Value must be > 0</span>\n                                <span *ngIf=\"formPort.errors.max\">Value must be less 65536</span>\n                            </small>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.invalidPassword\">Value is too short</span>\n                            </small>\n                        </div>\n\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Update</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/stores/stores.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/stores/stores.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<layout>\n\n    <div className=\"container-fluid\">\n        <div className=\"row mb-3\">\n            <div class=\"float-right\">\n                <store-create (update)=\"list()\"></store-create>\n            </div>\n            <h5>\n                <i class=\"fas fa-archive\"></i>\n                <span> Stores </span>\n                <a (click)=\"list()\"><i class=\"fas fa-sync fa-sm\"></i></a>\n            </h5>\n        </div>\n    </div>\n\n    <!-- Alert box -->\n    <ng-container *ngIf=\"alertMessage\">\n        <div class=\"alert alert-danger\" role=\"alert\" id=\"alert\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissAlert()\">\n                <span>&times;</span>\n            </button>\n            {{ alertMessage }}\n        </div>\n    </ng-container>\n\n    <!-- Notice box -->\n    <ng-container *ngIf=\"noticeMessage\">\n        <div class=\"alert alert-success\" role=\"alert\" id=\"notice\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissNotice()\">\n                <span>&times;</span>\n            </button>\n            {{ noticeMessage }}\n        </div>\n    </ng-container>\n\n    <form accept-charset=\"UTF-8\" [formGroup]=\"searchForm\">\n        <div class=\"form-row\">\n\n            <div class=\"col-6 my-1\">\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <div class=\"input-group-prepend\">\n                        <div class=\"input-group-text\">{{ page.total }}</div>\n                    </div>\n                    <input type=\"text\" class=\"form-control\" id=\"hostname-pattern\" formControlName=\"hostnamePattern\" />\n                </div>\n            </div>\n\n            <div class=\"col-2 ml-auto\">\n\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <select class=\"custom-select\" formControlName=\"pageLimit\" id=\"page-limit\">\n                        <option [ngValue]=\"3\">3</option>\n                        <option [ngValue]=\"5\">5</option>\n                        <option [ngValue]=\"10\">10</option>\n                        <option [ngValue]=\"25\">25</option>\n                        <option [ngValue]=\"50\">50</option>\n                    </select>\n                </div>\n            </div>\n\n        </div>\n    </form>\n\n    <ng-container *ngIf=\"page.stores\">\n        <table class=\"table table-striped table-hover table-sm\">\n\n            <thead class=\"thead-light\">\n                <tr>\n                    <th>#</th>\n                    <th>hostname</th>\n                    <th>type</th>\n                    <th>uri</th>\n                </tr>\n            </thead>\n\n            <tbody>\n                <ng-container *ngFor=\"let item of page.stores; let i = index\">\n                    <tr>\n                        <td>{{ i + 1 + page.offset }}</td>\n                        <td>\n                            <store-option [store]=\"item\"  (update)=\"list()\">\n                                {{ item.hostname }}\n                            </store-option>\n                        </td>\n                        <td>{{ item.storeType }}</td>\n                        <td>\n                                {{ item.scheme + \"://\" + item.hostname + \":\" + item.port }}\n                        </td>\n                    </tr>\n                </ng-container>\n            </tbody>\n\n        </table>\n\n        <pager [limit]=\"page.limit\" [total]=\"page.total\" [offset]=\"page.offset\" (newOffset)=\"setNewOffset($event)\" ></pager>\n\n    </ng-container>\n\n</layout>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-create/user-create.component.html":
 /*!**********************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/user-create/user-create.component.html ***!
@@ -136,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-trash-alt\"></i> Delete </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"deleteUser(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Delete user [{{ formUsername.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group form-check\">\n                            <input id=\"{{ formId('confirmation') }}\" class=\"form-check-input\" type=\"checkbox\" formControlName=\"confirmation\" />\n                            <label class=\"form-check-label\" for=\"{{ formId('superuser') }}\"> Confirmation </label>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Delete</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-trash-alt\"></i> Delete </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"deleteUser(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Delete user [{{ formUsername.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group form-check\">\n                            <input id=\"{{ formId('confirmation') }}\" class=\"form-check-input\" type=\"checkbox\" formControlName=\"confirmation\" />\n                            <label class=\"form-check-label\" for=\"{{ formId('confirmation') }}\"> Confirmation </label>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Delete</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
 
 /***/ }),
 
@@ -175,7 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<layout>\n\n    <div className=\"container-fluid\">\n        <div className=\"row mb-3\">\n            <div class=\"float-right\">\n                <user-create (update)=\"list()\"></user-create>\n            </div>\n            <h5>\n                <i class=\"fas fa-users\"></i>\n                <span> Users </span>\n                <a (click)=\"list()\"><i class=\"fas fa-sync fa-sm\"></i></a>\n            </h5>\n        </div>\n    </div>\n\n    <!-- Alert box -->\n    <ng-container *ngIf=\"alertMessage\">\n        <div class=\"alert alert-danger\" role=\"alert\" id=\"alert\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissAlert()\">\n                <span>&times;</span>\n            </button>\n            <h5>Alert</h5>\n            {{ alertMessage }}\n        </div>\n    </ng-container>\n\n    <!-- Notice box -->\n    <ng-container *ngIf=\"noticeMessage\">\n        <div class=\"alert alert-success\" role=\"alert\" id=\"notice\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissNotice()\">\n                <span>&times;</span>\n            </button>\n            {{ noticeMessage }}\n        </div>\n    </ng-container>\n\n\n    <form accept-charset=\"UTF-8\" [formGroup]=\"searchForm\">\n        <div class=\"form-row\">\n\n            <div class=\"col-sm-5 my-1\">\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <div class=\"input-group-prepend\">\n                        <div class=\"input-group-text\">Users: {{ page.total }}</div>\n                    </div>\n                    <input type=\"text\" class=\"form-control\" id=\"user-pattern\" formControlName=\"userPattern\" />\n                </div>\n            </div>\n\n            <div class=\"col-sm-2 my-1 ml-auto float-right d-inline-block\">\n\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <div class=\"input-group-prepend\">\n                        <label class=\"input-group-text\" for=\"page-limit\">Per page</label>\n                    </div>\n                    <select class=\"custom-select\" formControlName=\"pageLimit\" id=\"page-limit\">\n                        <option [ngValue]=\"3\">3</option>\n                        <option [ngValue]=\"5\">5</option>\n                        <option [ngValue]=\"10\">10</option>\n                        <option [ngValue]=\"25\">25</option>\n                        <option [ngValue]=\"50\">50</option>\n                    </select>\n                </div>\n            </div>\n\n        </div>\n    </form>\n\n    <ng-container *ngIf=\"page.users\">\n        <table class=\"table table-striped table-hover table-sm\">\n\n            <thead class=\"thead-light\">\n                <tr>\n                    <th>#</th>\n                    <th>name</th>\n                    <th>mode</th>\n<!--\n                    <th><i class=\"far fa-edit\"></i></th>\n                    <th><i class=\"far fa-trash-alt\"></i></th>\n-->\n                </tr>\n            </thead>\n\n            <tbody>\n                <ng-container *ngFor=\"let item of page.users; let i = index\">\n                    <tr>\n                        <td>{{ i + 1 + page.offset }}</td>\n                        <td><user-option [user]=\"item\"  (update)=\"list()\">{{ item.username  }}</user-option></td>\n                        <td>\n                            <span *ngIf=\"item.isadmin\"><i class=\"fas fa-user-plus\"></i></span>\n                            <span *ngIf=\"!item.isadmin\"><i class=\"fas fa-microchip\"></i></span>\n                        </td>\n<!--\n                        <td><user-update [user]=\"item\" (update)=\"list()\"></user-update></td>\n                        <td><user-delete [user]=\"item\" (update)=\"list()\"></user-delete></td>\n-->\n                    </tr>\n                </ng-container>\n            </tbody>\n\n        </table>\n\n        <pager [limit]=\"page.limit\" [total]=\"page.total\" [offset]=\"page.offset\" (newOffset)=\"setNewOffset($event)\" ></pager>\n\n\n    </ng-container>\n\n</layout>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<layout>\n\n    <div className=\"container-fluid\">\n        <div className=\"row mb-3\">\n            <div class=\"float-right\">\n                <user-create (update)=\"list()\"></user-create>\n            </div>\n            <h5>\n                <i class=\"fas fa-users\"></i>\n                <span> Users </span>\n                <a (click)=\"list()\"><i class=\"fas fa-sync fa-sm\"></i></a>\n            </h5>\n        </div>\n    </div>\n\n    <!-- Alert box -->\n    <ng-container *ngIf=\"alertMessage\">\n        <div class=\"alert alert-danger\" role=\"alert\" id=\"alert\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissAlert()\">\n                <span>&times;</span>\n            </button>\n            {{ alertMessage }}\n        </div>\n    </ng-container>\n\n    <!-- Notice box -->\n    <ng-container *ngIf=\"noticeMessage\">\n        <div class=\"alert alert-success\" role=\"alert\" id=\"notice\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissNotice()\">\n                <span>&times;</span>\n            </button>\n            {{ noticeMessage }}\n        </div>\n    </ng-container>\n\n    <form accept-charset=\"UTF-8\" [formGroup]=\"searchForm\">\n        <div class=\"form-row\">\n\n            <div class=\"col-6 my-1\">\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <div class=\"input-group-prepend\">\n                        <div class=\"input-group-text\">{{ page.total }}</div>\n                    </div>\n                    <input type=\"text\" class=\"form-control\" id=\"user-pattern\" formControlName=\"userPattern\" />\n                </div>\n            </div>\n\n            <div class=\"col-2 ml-auto\">\n\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <select class=\"custom-select\" formControlName=\"pageLimit\" id=\"page-limit\">\n                        <option [ngValue]=\"3\">3</option>\n                        <option [ngValue]=\"5\">5</option>\n                        <option [ngValue]=\"10\">10</option>\n                        <option [ngValue]=\"25\">25</option>\n                        <option [ngValue]=\"50\">50</option>\n                    </select>\n                </div>\n            </div>\n\n        </div>\n    </form>\n\n    <ng-container *ngIf=\"page.users\">\n        <table class=\"table table-striped table-hover table-sm\">\n\n            <thead class=\"thead-light\">\n                <tr>\n                    <th>#</th>\n                    <th>name</th>\n                    <th>mode</th>\n                </tr>\n            </thead>\n\n            <tbody>\n                <ng-container *ngFor=\"let item of page.users; let i = index\">\n                    <tr>\n                        <td>{{ i + 1 + page.offset }}</td>\n                        <td><user-option [user]=\"item\"  (update)=\"list()\">{{ item.username  }}</user-option></td>\n                        <td>\n                            <span *ngIf=\"item.isadmin\"><i class=\"fas fa-user-plus\"></i></span>\n                            <span *ngIf=\"!item.isadmin\"><i class=\"fas fa-microchip\"></i></span>\n                        </td>\n                    </tr>\n                </ng-container>\n            </tbody>\n\n        </table>\n\n        <pager [limit]=\"page.limit\" [total]=\"page.total\" [offset]=\"page.offset\" (newOffset)=\"setNewOffset($event)\" ></pager>\n\n    </ng-container>\n\n</layout>\n");
 
 /***/ }),
 
@@ -408,6 +538,720 @@ function __importDefault(mod) {
 
 /***/ }),
 
+/***/ "./src/app/agent-create/agent-create.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/agent-create/agent-create.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC1jcmVhdGUvYWdlbnQtY3JlYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/agent-create/agent-create.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/agent-create/agent-create.component.ts ***!
+  \********************************************************/
+/*! exports provided: AgentCreateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AgentCreateComponent", function() { return AgentCreateComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _agent_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../agent.service */ "./src/app/agent.service.ts");
+
+
+
+
+var AgentCreateComponent = /** @class */ (function () {
+    function AgentCreateComponent(formBuilder, agentService) {
+        this.formBuilder = formBuilder;
+        this.agentService = agentService;
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.alertMessage = "";
+        this.minHostnameLength = 3;
+        this.minUsernameLength = 5;
+        this.minPasswordLength = 5;
+    }
+    AgentCreateComponent.prototype.onCreateAgent = function () {
+        this.update.emit(null);
+    };
+    AgentCreateComponent.prototype.createAgent = function (event) {
+        var _this = this;
+        var payload = {
+            scheme: "https",
+            hostname: event.value.hostname,
+            username: event.value.username,
+            port: 7002,
+            password: event.value.password,
+        };
+        this.agentService.create(payload).subscribe(function (response) {
+            if (response.error == false) {
+                _this.dismissForm();
+                _this.onCreateAgent();
+                return;
+            }
+            if (response.message != null) {
+                _this.showAlert("Backend error: " + response.message);
+            }
+            else {
+                _this.showAlert("Backend error.");
+            }
+        }, function (error) {
+            _this.showAlert("Connection error: " + error.message);
+        });
+    };
+    AgentCreateComponent.prototype.modalId = function () {
+        return "agent-create-modal";
+    };
+    AgentCreateComponent.prototype.formId = function (base) {
+        return "agent-create-form-" + base;
+    };
+    AgentCreateComponent.prototype.showForm = function () {
+        this.alertMessage = "";
+        this.form.reset();
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    AgentCreateComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+        this.form.reset();
+    };
+    Object.defineProperty(AgentCreateComponent.prototype, "formHostname", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AgentCreateComponent.prototype, "formUsername", {
+        get: function () {
+            return this.form.get('username');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AgentCreateComponent.prototype, "formPassword", {
+        get: function () {
+            return this.form.get('password');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AgentCreateComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    AgentCreateComponent.prototype.dismissAlert = function () {
+        this.alertMessage = "";
+    };
+    AgentCreateComponent.prototype.ngOnInit = function () {
+        this.form = this.formBuilder.group({
+            hostname: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minHostnameLength)]],
+            username: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minUsernameLength)]],
+            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minPasswordLength)]],
+        });
+    };
+    AgentCreateComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _agent_service__WEBPACK_IMPORTED_MODULE_3__["AgentService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], AgentCreateComponent.prototype, "agent", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], AgentCreateComponent.prototype, "update", void 0);
+    AgentCreateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'agent-create',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./agent-create.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-create/agent-create.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./agent-create.component.scss */ "./src/app/agent-create/agent-create.component.scss")).default]
+        })
+    ], AgentCreateComponent);
+    return AgentCreateComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/agent-delete/agent-delete.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/agent-delete/agent-delete.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC1kZWxldGUvYWdlbnQtZGVsZXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/agent-delete/agent-delete.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/agent-delete/agent-delete.component.ts ***!
+  \********************************************************/
+/*! exports provided: AgentDeleteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AgentDeleteComponent", function() { return AgentDeleteComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _agent_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../agent.service */ "./src/app/agent.service.ts");
+
+
+
+
+var AgentDeleteComponent = /** @class */ (function () {
+    function AgentDeleteComponent(formBuilder, agentService) {
+        this.formBuilder = formBuilder;
+        this.agentService = agentService;
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.alertMessage = "";
+    }
+    AgentDeleteComponent.prototype.onDeleteAgent = function () {
+        this.update.emit(null);
+    };
+    AgentDeleteComponent.prototype.deleteAgent = function (event) {
+        var _this = this;
+        var payload = {
+            id: event.value.id,
+        };
+        this.agentService.deletex(payload).subscribe(function (response) {
+            if (response.error == false) {
+                _this.dismissForm();
+                _this.onDeleteAgent();
+                return;
+            }
+            if (response.message != null) {
+                _this.showAlert("Backend error: " + response.message);
+            }
+            else {
+                _this.showAlert("Backend error.");
+            }
+        }, function (error) {
+            _this.showAlert("Connection error: " + error.message);
+        });
+    };
+    AgentDeleteComponent.prototype.modalId = function () {
+        return "agent-delete-modal-" + this.agent.hostname;
+    };
+    AgentDeleteComponent.prototype.formId = function (base) {
+        return "agent-delete-form-" + base + "-" + this.agent.hostname;
+    };
+    AgentDeleteComponent.prototype.showForm = function () {
+        this.alertMessage = "";
+        this.form.reset();
+        this.form.patchValue({
+            id: this.agent.id,
+            hostname: this.agent.hostname,
+            confirmation: false
+        });
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    AgentDeleteComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+        this.form.reset();
+    };
+    AgentDeleteComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    AgentDeleteComponent.prototype.dismissAlert = function () {
+        this.alertMessage = "";
+    };
+    Object.defineProperty(AgentDeleteComponent.prototype, "formHostname", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AgentDeleteComponent.prototype.confirmationValidator = function () {
+        return function (control) {
+            var value = control.value;
+            if (value == null) {
+                return { invalidConfirmation: "Invalid confirmation" };
+            }
+            if (value == false) {
+                return { invalidConfirmation: "Invalid confirmation" };
+            }
+            return null;
+        };
+    };
+    AgentDeleteComponent.prototype.ngOnInit = function () {
+        this.form = this.formBuilder.group({
+            id: -1,
+            hostname: "",
+            confirmation: [false, [this.confirmationValidator()]]
+        });
+    };
+    AgentDeleteComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _agent_service__WEBPACK_IMPORTED_MODULE_3__["AgentService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], AgentDeleteComponent.prototype, "agent", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], AgentDeleteComponent.prototype, "update", void 0);
+    AgentDeleteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'agent-delete',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./agent-delete.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-delete/agent-delete.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./agent-delete.component.scss */ "./src/app/agent-delete/agent-delete.component.scss")).default]
+        })
+    ], AgentDeleteComponent);
+    return AgentDeleteComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/agent-option/agent-option.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/agent-option/agent-option.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC1vcHRpb24vYWdlbnQtb3B0aW9uLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/agent-option/agent-option.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/agent-option/agent-option.component.ts ***!
+  \********************************************************/
+/*! exports provided: AgentOptionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AgentOptionComponent", function() { return AgentOptionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AgentOptionComponent = /** @class */ (function () {
+    function AgentOptionComponent() {
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    AgentOptionComponent.prototype.onUpdate = function () {
+        console.log("event");
+        this.update.emit(null);
+        this.dismissForm();
+    };
+    AgentOptionComponent.prototype.modalId = function () {
+        return "agent-option-modal-" + this.agent.hostname;
+    };
+    AgentOptionComponent.prototype.showForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    AgentOptionComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+    };
+    AgentOptionComponent.prototype.ngOnInit = function () {
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], AgentOptionComponent.prototype, "agent", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], AgentOptionComponent.prototype, "update", void 0);
+    AgentOptionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'agent-option',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./agent-option.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-option/agent-option.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./agent-option.component.scss */ "./src/app/agent-option/agent-option.component.scss")).default]
+        })
+    ], AgentOptionComponent);
+    return AgentOptionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/agent-update/agent-update.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/agent-update/agent-update.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC11cGRhdGUvYWdlbnQtdXBkYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/agent-update/agent-update.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/agent-update/agent-update.component.ts ***!
+  \********************************************************/
+/*! exports provided: AgentUpdateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AgentUpdateComponent", function() { return AgentUpdateComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _agent_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../agent.service */ "./src/app/agent.service.ts");
+
+
+
+
+var AgentUpdateComponent = /** @class */ (function () {
+    function AgentUpdateComponent(formBuilder, agentService) {
+        this.formBuilder = formBuilder;
+        this.agentService = agentService;
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.alertMessage = "";
+        this.minHostnameLength = 3;
+        this.minUsernameLength = 5;
+        this.minPasswordLength = 5;
+    }
+    AgentUpdateComponent.prototype.onUpdateAgent = function () {
+        this.update.emit(null);
+    };
+    AgentUpdateComponent.prototype.updateAgent = function (event) {
+        var _this = this;
+        var payload = {
+            id: event.value.id,
+            scheme: "https",
+            hostname: event.value.hostname,
+            port: 7002,
+            username: event.value.username,
+            password: event.value.password,
+        };
+        this.agentService.update(payload).subscribe(function (response) {
+            if (response.error == false) {
+                _this.dismissForm();
+                _this.onUpdateAgent();
+                return;
+            }
+            if (response.message != null) {
+                _this.showAlert("Backend error: " + response.message);
+            }
+            else {
+                _this.showAlert("Backend error.");
+            }
+        }, function (error) {
+            _this.showAlert("Connection error: " + error.message);
+        });
+    };
+    AgentUpdateComponent.prototype.modalId = function () {
+        return "agent-update-modal-" + this.agent.hostname;
+    };
+    AgentUpdateComponent.prototype.formId = function (base) {
+        return "agent-update-form-" + base + "-" + this.agent.hostname;
+    };
+    AgentUpdateComponent.prototype.showForm = function () {
+        this.alertMessage = "";
+        this.form.reset();
+        this.form.patchValue({
+            id: this.agent.id,
+            hostname: this.agent.hostname,
+            username: this.agent.username,
+            password: ""
+        });
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    AgentUpdateComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+        this.form.reset();
+    };
+    Object.defineProperty(AgentUpdateComponent.prototype, "formHostname", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AgentUpdateComponent.prototype, "formUsername", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AgentUpdateComponent.prototype, "formPassword", {
+        get: function () {
+            return this.form.get('password');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AgentUpdateComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    AgentUpdateComponent.prototype.dismissAlert = function () {
+        this.alertMessage = "";
+    };
+    AgentUpdateComponent.prototype.passwordValidator = function () {
+        var _this = this;
+        return function (control) {
+            var value = control.value;
+            if (value == null) {
+                return null;
+            }
+            if (value.length > 0 && value.length < _this.minPasswordLength) {
+                return { invalidPassword: "Password too short" };
+            }
+            return null;
+        };
+    };
+    AgentUpdateComponent.prototype.ngOnInit = function () {
+        this.form = this.formBuilder.group({
+            id: null,
+            hostname: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minHostnameLength)]],
+            username: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minUsernameLength)]],
+            password: ["", [this.passwordValidator()]]
+        });
+    };
+    AgentUpdateComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _agent_service__WEBPACK_IMPORTED_MODULE_3__["AgentService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], AgentUpdateComponent.prototype, "agent", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], AgentUpdateComponent.prototype, "update", void 0);
+    AgentUpdateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'agent-update',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./agent-update.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/agent-update/agent-update.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./agent-update.component.scss */ "./src/app/agent-update/agent-update.component.scss")).default]
+        })
+    ], AgentUpdateComponent);
+    return AgentUpdateComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/agent.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/agent.service.ts ***!
+  \**********************************/
+/*! exports provided: AgentService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AgentService", function() { return AgentService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var AgentService = /** @class */ (function () {
+    function AgentService(httpClient) {
+        this.httpClient = httpClient;
+    }
+    AgentService.prototype.list = function (page) {
+        return this.httpClient.post("/api/v1/agent/list", {
+            "limit": page.limit,
+            "offset": page.offset,
+            "hostnamePattern": page.hostnamePattern
+        });
+    };
+    AgentService.prototype.create = function (agent) {
+        return this.httpClient.post("/api/v1/agent/create", {
+            "scheme": agent.scheme,
+            "hostname": agent.hostname,
+            "port": agent.port,
+            "password": agent.password,
+            "username": agent.username,
+        });
+    };
+    AgentService.prototype.update = function (agent) {
+        return this.httpClient.post("/api/v1/agent/update", {
+            "id": agent.id,
+            "scheme": agent.scheme,
+            "hostname": agent.hostname,
+            "port": agent.port,
+            "password": agent.password,
+            "username": agent.username,
+        });
+    };
+    AgentService.prototype.deletex = function (agent) {
+        return this.httpClient.post("/api/v1/agent/delete", {
+            "id": agent.id
+        });
+    };
+    AgentService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    AgentService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], AgentService);
+    return AgentService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/agents/agents.component.scss":
+/*!**********************************************!*\
+  !*** ./src/app/agents/agents.component.scss ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudHMvYWdlbnRzLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/agents/agents.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/agents/agents.component.ts ***!
+  \********************************************/
+/*! exports provided: AgentsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AgentsComponent", function() { return AgentsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _agent_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../agent.service */ "./src/app/agent.service.ts");
+
+
+
+
+
+var AgentsComponent = /** @class */ (function () {
+    function AgentsComponent(formBuilder, agentService) {
+        this.formBuilder = formBuilder;
+        this.agentService = agentService;
+        this.noticeMessage = null;
+        this.alertMessage = null;
+        this.page = {
+            total: 0,
+            limit: 5,
+            offset: 0,
+            hostnamePattern: "",
+            agents: []
+        };
+    }
+    AgentsComponent.prototype.setNewOffset = function (newOffset) {
+        this.page.offset = newOffset;
+        this.list();
+    };
+    AgentsComponent.prototype.list = function () {
+        var _this = this;
+        this.agentService.list(this.page).subscribe(function (response) {
+            if (response.error == false) {
+                _this.page = response.result;
+                if (_this.page.agents == null) {
+                    _this.page.agents = [];
+                }
+            }
+            else {
+                if (response.message != null) {
+                    _this.alertMessage = "Backend error: " + response.message;
+                }
+                else {
+                    _this.alertMessage = "Backend error.";
+                }
+            }
+        }, function (error) {
+            if (error.message != null) {
+                _this.alertMessage = "Communication error: " + error.message;
+            }
+            else {
+                _this.alertMessage = "Communication error.";
+            }
+        });
+    };
+    /* Alerts */
+    AgentsComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    AgentsComponent.prototype.dismissAlert = function () {
+        this.alertMessage = null;
+    };
+    /* Notices */
+    AgentsComponent.prototype.showNotice = function (message) {
+        this.noticeMessage = message;
+    };
+    AgentsComponent.prototype.dismissNotice = function () {
+        this.noticeMessage = null;
+    };
+    AgentsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.searchForm = this.formBuilder.group({
+            hostnamePattern: [""],
+            pageLimit: [this.page.limit],
+        });
+        this.list();
+        this.searchForm.get('hostnamePattern').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .subscribe(function (value) {
+            _this.page.hostnamePattern = value;
+            _this.list();
+        });
+        this.searchForm.get('pageLimit').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .subscribe(function (value) {
+            console.log(value);
+            _this.page.limit = value;
+            _this.list();
+        });
+    };
+    AgentsComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _agent_service__WEBPACK_IMPORTED_MODULE_4__["AgentService"] }
+    ]; };
+    AgentsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'agents',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./agents.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/agents/agents.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./agents.component.scss */ "./src/app/agents/agents.component.scss")).default]
+        })
+    ], AgentsComponent);
+    return AgentsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.scss":
 /*!************************************!*\
   !*** ./src/app/app.component.scss ***!
@@ -417,7 +1261,7 @@ function __importDefault(mod) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -479,12 +1323,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
 /* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./users/users.component */ "./src/app/users/users.component.ts");
-/* harmony import */ var _user_create_user_create_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./user-create/user-create.component */ "./src/app/user-create/user-create.component.ts");
-/* harmony import */ var _user_update_user_update_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./user-update/user-update.component */ "./src/app/user-update/user-update.component.ts");
-/* harmony import */ var _user_delete_user_delete_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./user-delete/user-delete.component */ "./src/app/user-delete/user-delete.component.ts");
-/* harmony import */ var _user_option_user_option_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./user-option/user-option.component */ "./src/app/user-option/user-option.component.ts");
-/* harmony import */ var _pager_pager_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pager/pager.component */ "./src/app/pager/pager.component.ts");
+/* harmony import */ var _pager_pager_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pager/pager.component */ "./src/app/pager/pager.component.ts");
+/* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./users/users.component */ "./src/app/users/users.component.ts");
+/* harmony import */ var _user_create_user_create_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./user-create/user-create.component */ "./src/app/user-create/user-create.component.ts");
+/* harmony import */ var _user_update_user_update_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./user-update/user-update.component */ "./src/app/user-update/user-update.component.ts");
+/* harmony import */ var _user_delete_user_delete_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./user-delete/user-delete.component */ "./src/app/user-delete/user-delete.component.ts");
+/* harmony import */ var _user_option_user_option_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user-option/user-option.component */ "./src/app/user-option/user-option.component.ts");
+/* harmony import */ var _agents_agents_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./agents/agents.component */ "./src/app/agents/agents.component.ts");
+/* harmony import */ var _agent_option_agent_option_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./agent-option/agent-option.component */ "./src/app/agent-option/agent-option.component.ts");
+/* harmony import */ var _agent_create_agent_create_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./agent-create/agent-create.component */ "./src/app/agent-create/agent-create.component.ts");
+/* harmony import */ var _agent_update_agent_update_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./agent-update/agent-update.component */ "./src/app/agent-update/agent-update.component.ts");
+/* harmony import */ var _agent_delete_agent_delete_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./agent-delete/agent-delete.component */ "./src/app/agent-delete/agent-delete.component.ts");
+/* harmony import */ var _stores_stores_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./stores/stores.component */ "./src/app/stores/stores.component.ts");
+/* harmony import */ var _store_option_store_option_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./store-option/store-option.component */ "./src/app/store-option/store-option.component.ts");
+/* harmony import */ var _store_create_store_create_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./store-create/store-create.component */ "./src/app/store-create/store-create.component.ts");
+/* harmony import */ var _store_update_store_update_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./store-update/store-update.component */ "./src/app/store-update/store-update.component.ts");
+/* harmony import */ var _store_delete_store_delete_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./store-delete/store-delete.component */ "./src/app/store-delete/store-delete.component.ts");
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -515,12 +1379,22 @@ var AppModule = /** @class */ (function () {
                 _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_10__["NotFoundComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_11__["LoginComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
-                _users_users_component__WEBPACK_IMPORTED_MODULE_12__["UsersComponent"],
-                _user_create_user_create_component__WEBPACK_IMPORTED_MODULE_13__["UserCreateComponent"],
-                _user_update_user_update_component__WEBPACK_IMPORTED_MODULE_14__["UserUpdateComponent"],
-                _user_delete_user_delete_component__WEBPACK_IMPORTED_MODULE_15__["UserDeleteComponent"],
-                _user_option_user_option_component__WEBPACK_IMPORTED_MODULE_16__["UserOptionComponent"],
-                _pager_pager_component__WEBPACK_IMPORTED_MODULE_17__["PagerComponent"]
+                _users_users_component__WEBPACK_IMPORTED_MODULE_13__["UsersComponent"],
+                _user_create_user_create_component__WEBPACK_IMPORTED_MODULE_14__["UserCreateComponent"],
+                _user_update_user_update_component__WEBPACK_IMPORTED_MODULE_15__["UserUpdateComponent"],
+                _user_delete_user_delete_component__WEBPACK_IMPORTED_MODULE_16__["UserDeleteComponent"],
+                _user_option_user_option_component__WEBPACK_IMPORTED_MODULE_17__["UserOptionComponent"],
+                _pager_pager_component__WEBPACK_IMPORTED_MODULE_12__["PagerComponent"],
+                _agents_agents_component__WEBPACK_IMPORTED_MODULE_18__["AgentsComponent"],
+                _agent_option_agent_option_component__WEBPACK_IMPORTED_MODULE_19__["AgentOptionComponent"],
+                _agent_create_agent_create_component__WEBPACK_IMPORTED_MODULE_20__["AgentCreateComponent"],
+                _agent_update_agent_update_component__WEBPACK_IMPORTED_MODULE_21__["AgentUpdateComponent"],
+                _agent_delete_agent_delete_component__WEBPACK_IMPORTED_MODULE_22__["AgentDeleteComponent"],
+                _stores_stores_component__WEBPACK_IMPORTED_MODULE_23__["StoresComponent"],
+                _store_option_store_option_component__WEBPACK_IMPORTED_MODULE_24__["StoreOptionComponent"],
+                _store_create_store_create_component__WEBPACK_IMPORTED_MODULE_25__["StoreCreateComponent"],
+                _store_update_store_update_component__WEBPACK_IMPORTED_MODULE_26__["StoreUpdateComponent"],
+                _store_delete_store_delete_component__WEBPACK_IMPORTED_MODULE_27__["StoreDeleteComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -548,7 +1422,7 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJob21lL2hvbWUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -594,7 +1468,7 @@ var HomeComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9sYXlvdXQuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsYXlvdXQvbGF5b3V0LmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -702,7 +1576,7 @@ var LoginService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -810,7 +1684,7 @@ var LoginComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lbnUvbWVudS5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtZW51L21lbnUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -870,7 +1744,7 @@ var MenuComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25vdC1mb3VuZC9ub3QtZm91bmQuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJub3QtZm91bmQvbm90LWZvdW5kLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -962,7 +1836,7 @@ var PageGuard = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VyL3BhZ2VyLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwYWdlci9wYWdlci5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1061,8 +1935,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./users/users.component */ "./src/app/users/users.component.ts");
-/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
-/* harmony import */ var _page_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./page.guard */ "./src/app/page.guard.ts");
+/* harmony import */ var _agents_agents_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./agents/agents.component */ "./src/app/agents/agents.component.ts");
+/* harmony import */ var _stores_stores_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./stores/stores.component */ "./src/app/stores/stores.component.ts");
+/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
+/* harmony import */ var _page_guard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./page.guard */ "./src/app/page.guard.ts");
+
+
 
 
 
@@ -1073,10 +1951,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: "login", component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"], data: { name: "Login" } },
-    { path: "users", component: _users_users_component__WEBPACK_IMPORTED_MODULE_5__["UsersComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_7__["PageGuard"]], data: { name: "Users" } },
-    { path: "", component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_7__["PageGuard"]], data: { name: "Home" } },
-    { path: "notfound", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_6__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_7__["PageGuard"]] },
-    { path: "**", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_6__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_7__["PageGuard"]] },
+    { path: "users", component: _users_users_component__WEBPACK_IMPORTED_MODULE_5__["UsersComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Users" } },
+    { path: "agents", component: _agents_agents_component__WEBPACK_IMPORTED_MODULE_6__["AgentsComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Agents" } },
+    { path: "stores", component: _stores_stores_component__WEBPACK_IMPORTED_MODULE_7__["StoresComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Stores" } },
+    { path: "", component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Home" } },
+    { path: "notfound", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]] },
+    { path: "**", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]] },
 ];
 var RoutingModule = /** @class */ (function () {
     function RoutingModule() {
@@ -1094,6 +1974,760 @@ var RoutingModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/store-create/store-create.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/store-create/store-create.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS1jcmVhdGUvc3RvcmUtY3JlYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/store-create/store-create.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/store-create/store-create.component.ts ***!
+  \********************************************************/
+/*! exports provided: StoreCreateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreCreateComponent", function() { return StoreCreateComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _store_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store.service */ "./src/app/store.service.ts");
+
+
+
+
+var StoreCreateComponent = /** @class */ (function () {
+    function StoreCreateComponent(formBuilder, storeService) {
+        this.formBuilder = formBuilder;
+        this.storeService = storeService;
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.alertMessage = "";
+        this.minHostnameLength = 3;
+        this.minUsernameLength = 5;
+        this.minPasswordLength = 5;
+    }
+    StoreCreateComponent.prototype.onCreateStore = function () {
+        this.update.emit(null);
+    };
+    StoreCreateComponent.prototype.createStore = function (event) {
+        var _this = this;
+        var storeType = event.value.storeType;
+        var scheme;
+        if (storeType == "sftp") {
+            scheme = "sftp";
+        }
+        else if (storeType == "s2") {
+            scheme = "https";
+        }
+        var payload = {
+            storeType: event.value.storeType,
+            scheme: scheme,
+            hostname: event.value.hostname,
+            username: event.value.username,
+            port: Number(event.value.port),
+            password: event.value.password,
+        };
+        this.storeService.create(payload).subscribe(function (response) {
+            if (response.error == false) {
+                _this.dismissForm();
+                _this.onCreateStore();
+                return;
+            }
+            if (response.message != null) {
+                _this.showAlert("Backend error: " + response.message);
+            }
+            else {
+                _this.showAlert("Backend error.");
+            }
+        }, function (error) {
+            _this.showAlert("Connection error: " + error.message);
+        });
+    };
+    StoreCreateComponent.prototype.modalId = function () {
+        return "store-create-modal";
+    };
+    StoreCreateComponent.prototype.formId = function (base) {
+        return "store-create-form-" + base;
+    };
+    StoreCreateComponent.prototype.showForm = function () {
+        this.alertMessage = "";
+        this.form.reset();
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    StoreCreateComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+        this.form.reset();
+    };
+    Object.defineProperty(StoreCreateComponent.prototype, "formHostname", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StoreCreateComponent.prototype, "formPort", {
+        get: function () {
+            return this.form.get('port');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StoreCreateComponent.prototype, "formUsername", {
+        get: function () {
+            return this.form.get('username');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StoreCreateComponent.prototype, "formPassword", {
+        get: function () {
+            return this.form.get('password');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    StoreCreateComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    StoreCreateComponent.prototype.dismissAlert = function () {
+        this.alertMessage = "";
+    };
+    StoreCreateComponent.prototype.ngOnInit = function () {
+        this.form = this.formBuilder.group({
+            storeType: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            port: [0, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(65535)]],
+            hostname: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minHostnameLength)]],
+            username: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minUsernameLength)]],
+            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minPasswordLength)]],
+        });
+    };
+    StoreCreateComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _store_service__WEBPACK_IMPORTED_MODULE_3__["StoreService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], StoreCreateComponent.prototype, "store", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], StoreCreateComponent.prototype, "update", void 0);
+    StoreCreateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'store-create',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./store-create.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-create/store-create.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./store-create.component.scss */ "./src/app/store-create/store-create.component.scss")).default]
+        })
+    ], StoreCreateComponent);
+    return StoreCreateComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/store-delete/store-delete.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/store-delete/store-delete.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS1kZWxldGUvc3RvcmUtZGVsZXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/store-delete/store-delete.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/store-delete/store-delete.component.ts ***!
+  \********************************************************/
+/*! exports provided: StoreDeleteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreDeleteComponent", function() { return StoreDeleteComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _store_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store.service */ "./src/app/store.service.ts");
+
+
+
+
+var StoreDeleteComponent = /** @class */ (function () {
+    function StoreDeleteComponent(formBuilder, storeService) {
+        this.formBuilder = formBuilder;
+        this.storeService = storeService;
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.alertMessage = "";
+    }
+    StoreDeleteComponent.prototype.onDeleteStore = function () {
+        this.update.emit(null);
+    };
+    StoreDeleteComponent.prototype.deleteStore = function (event) {
+        var _this = this;
+        var payload = {
+            id: event.value.id,
+        };
+        this.storeService.deletex(payload).subscribe(function (response) {
+            if (response.error == false) {
+                _this.dismissForm();
+                _this.onDeleteStore();
+                return;
+            }
+            if (response.message != null) {
+                _this.showAlert("Backend error: " + response.message);
+            }
+            else {
+                _this.showAlert("Backend error.");
+            }
+        }, function (error) {
+            _this.showAlert("Connection error: " + error.message);
+        });
+    };
+    StoreDeleteComponent.prototype.modalId = function () {
+        return "store-delete-modal-" + this.store.hostname;
+    };
+    StoreDeleteComponent.prototype.formId = function (base) {
+        return "store-delete-form-" + base + "-" + this.store.hostname;
+    };
+    StoreDeleteComponent.prototype.showForm = function () {
+        this.alertMessage = "";
+        this.form.reset();
+        this.form.patchValue({
+            id: this.store.id,
+            hostname: this.store.hostname,
+            confirmation: false
+        });
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    StoreDeleteComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+        this.form.reset();
+    };
+    StoreDeleteComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    StoreDeleteComponent.prototype.dismissAlert = function () {
+        this.alertMessage = "";
+    };
+    Object.defineProperty(StoreDeleteComponent.prototype, "formHostname", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    StoreDeleteComponent.prototype.confirmationValidator = function () {
+        return function (control) {
+            var value = control.value;
+            if (value == null) {
+                return { invalidConfirmation: "Invalid confirmation" };
+            }
+            if (value == false) {
+                return { invalidConfirmation: "Invalid confirmation" };
+            }
+            return null;
+        };
+    };
+    StoreDeleteComponent.prototype.ngOnInit = function () {
+        this.form = this.formBuilder.group({
+            id: -1,
+            hostname: "",
+            confirmation: [false, [this.confirmationValidator()]]
+        });
+    };
+    StoreDeleteComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _store_service__WEBPACK_IMPORTED_MODULE_3__["StoreService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], StoreDeleteComponent.prototype, "store", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], StoreDeleteComponent.prototype, "update", void 0);
+    StoreDeleteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'store-delete',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./store-delete.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-delete/store-delete.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./store-delete.component.scss */ "./src/app/store-delete/store-delete.component.scss")).default]
+        })
+    ], StoreDeleteComponent);
+    return StoreDeleteComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/store-option/store-option.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/store-option/store-option.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS1vcHRpb24vc3RvcmUtb3B0aW9uLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/store-option/store-option.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/store-option/store-option.component.ts ***!
+  \********************************************************/
+/*! exports provided: StoreOptionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreOptionComponent", function() { return StoreOptionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var StoreOptionComponent = /** @class */ (function () {
+    function StoreOptionComponent() {
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    StoreOptionComponent.prototype.onUpdate = function () {
+        console.log("event");
+        this.update.emit(null);
+        this.dismissForm();
+    };
+    StoreOptionComponent.prototype.modalId = function () {
+        return "store-option-modal-" + this.store.hostname;
+    };
+    StoreOptionComponent.prototype.showForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    StoreOptionComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+    };
+    StoreOptionComponent.prototype.ngOnInit = function () {
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], StoreOptionComponent.prototype, "store", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], StoreOptionComponent.prototype, "update", void 0);
+    StoreOptionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'store-option',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./store-option.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-option/store-option.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./store-option.component.scss */ "./src/app/store-option/store-option.component.scss")).default]
+        })
+    ], StoreOptionComponent);
+    return StoreOptionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/store-update/store-update.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/store-update/store-update.component.scss ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS11cGRhdGUvc3RvcmUtdXBkYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/store-update/store-update.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/store-update/store-update.component.ts ***!
+  \********************************************************/
+/*! exports provided: StoreUpdateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreUpdateComponent", function() { return StoreUpdateComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _store_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store.service */ "./src/app/store.service.ts");
+
+
+
+
+var StoreUpdateComponent = /** @class */ (function () {
+    function StoreUpdateComponent(formBuilder, storeService) {
+        this.formBuilder = formBuilder;
+        this.storeService = storeService;
+        this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.alertMessage = "";
+        this.minHostnameLength = 3;
+        this.minUsernameLength = 5;
+        this.minPasswordLength = 5;
+    }
+    StoreUpdateComponent.prototype.onUpdateStore = function () {
+        this.update.emit(null);
+    };
+    StoreUpdateComponent.prototype.updateStore = function (event) {
+        var _this = this;
+        var storeType = event.value.storeType;
+        var scheme;
+        if (storeType == "sftp") {
+            scheme = "sftp";
+        }
+        else if (storeType == "s2") {
+            scheme = "https";
+        }
+        var payload = {
+            id: event.value.id,
+            storeType: storeType,
+            scheme: scheme,
+            hostname: event.value.hostname,
+            port: Number(event.value.port),
+            username: event.value.username,
+            password: event.value.password,
+        };
+        this.storeService.update(payload).subscribe(function (response) {
+            if (response.error == false) {
+                _this.dismissForm();
+                _this.onUpdateStore();
+                return;
+            }
+            if (response.message != null) {
+                _this.showAlert("Backend error: " + response.message);
+            }
+            else {
+                _this.showAlert("Backend error.");
+            }
+        }, function (error) {
+            _this.showAlert("Connection error: " + error.message);
+        });
+    };
+    StoreUpdateComponent.prototype.modalId = function () {
+        return "store-update-modal-" + this.store.hostname;
+    };
+    StoreUpdateComponent.prototype.formId = function (base) {
+        return "store-update-form-" + base + "-" + this.store.hostname;
+    };
+    StoreUpdateComponent.prototype.showForm = function () {
+        this.alertMessage = "";
+        this.form.reset();
+        this.form.patchValue({
+            id: this.store.id,
+            storeType: this.store.storeType,
+            hostname: this.store.hostname,
+            port: this.store.port,
+            username: this.store.username,
+            password: ""
+        });
+        var id = this.modalId();
+        $('#' + id).modal('show');
+    };
+    StoreUpdateComponent.prototype.dismissForm = function () {
+        var id = this.modalId();
+        $('#' + id).modal('hide');
+        this.form.reset();
+    };
+    Object.defineProperty(StoreUpdateComponent.prototype, "formHostname", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StoreUpdateComponent.prototype, "formPort", {
+        get: function () {
+            return this.form.get('port');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StoreUpdateComponent.prototype, "formUsername", {
+        get: function () {
+            return this.form.get('hostname');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StoreUpdateComponent.prototype, "formPassword", {
+        get: function () {
+            return this.form.get('password');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    StoreUpdateComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    StoreUpdateComponent.prototype.dismissAlert = function () {
+        this.alertMessage = "";
+    };
+    StoreUpdateComponent.prototype.passwordValidator = function () {
+        var _this = this;
+        return function (control) {
+            var value = control.value;
+            if (value == null) {
+                return null;
+            }
+            if (value.length > 0 && value.length < _this.minPasswordLength) {
+                return { invalidPassword: "Password too short" };
+            }
+            return null;
+        };
+    };
+    StoreUpdateComponent.prototype.ngOnInit = function () {
+        this.form = this.formBuilder.group({
+            id: null,
+            storeType: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            hostname: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minHostnameLength)]],
+            port: [0, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(1), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(65535)]],
+            username: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minUsernameLength)]],
+            password: ["", [this.passwordValidator()]]
+        });
+    };
+    StoreUpdateComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _store_service__WEBPACK_IMPORTED_MODULE_3__["StoreService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], StoreUpdateComponent.prototype, "store", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], StoreUpdateComponent.prototype, "update", void 0);
+    StoreUpdateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'store-update',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./store-update.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/store-update/store-update.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./store-update.component.scss */ "./src/app/store-update/store-update.component.scss")).default]
+        })
+    ], StoreUpdateComponent);
+    return StoreUpdateComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/store.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/store.service.ts ***!
+  \**********************************/
+/*! exports provided: StoreService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreService", function() { return StoreService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var StoreService = /** @class */ (function () {
+    function StoreService(httpClient) {
+        this.httpClient = httpClient;
+    }
+    StoreService.prototype.list = function (page) {
+        return this.httpClient.post("/api/v1/store/list", {
+            "limit": page.limit,
+            "offset": page.offset,
+            "hostnamePattern": page.hostnamePattern
+        });
+    };
+    StoreService.prototype.create = function (store) {
+        return this.httpClient.post("/api/v1/store/create", {
+            "storeType": store.storeType,
+            "scheme": store.scheme,
+            "hostname": store.hostname,
+            "port": store.port,
+            "password": store.password,
+            "username": store.username,
+        });
+    };
+    StoreService.prototype.update = function (store) {
+        return this.httpClient.post("/api/v1/store/update", {
+            "id": store.id,
+            "storeType": store.storeType,
+            "scheme": store.scheme,
+            "hostname": store.hostname,
+            "port": store.port,
+            "password": store.password,
+            "username": store.username,
+        });
+    };
+    StoreService.prototype.deletex = function (store) {
+        return this.httpClient.post("/api/v1/store/delete", {
+            "id": store.id
+        });
+    };
+    StoreService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    StoreService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], StoreService);
+    return StoreService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/stores/stores.component.scss":
+/*!**********************************************!*\
+  !*** ./src/app/stores/stores.component.scss ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZXMvc3RvcmVzLmNvbXBvbmVudC5zY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/stores/stores.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/stores/stores.component.ts ***!
+  \********************************************/
+/*! exports provided: StoresComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoresComponent", function() { return StoresComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _store_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store.service */ "./src/app/store.service.ts");
+
+
+
+
+
+var StoresComponent = /** @class */ (function () {
+    function StoresComponent(formBuilder, storeService) {
+        this.formBuilder = formBuilder;
+        this.storeService = storeService;
+        this.noticeMessage = null;
+        this.alertMessage = null;
+        this.page = {
+            total: 0,
+            limit: 5,
+            offset: 0,
+            hostnamePattern: "",
+            stores: []
+        };
+    }
+    StoresComponent.prototype.setNewOffset = function (newOffset) {
+        this.page.offset = newOffset;
+        this.list();
+    };
+    StoresComponent.prototype.list = function () {
+        var _this = this;
+        this.storeService.list(this.page).subscribe(function (response) {
+            if (response.error == false) {
+                _this.page = response.result;
+                if (_this.page.stores == null) {
+                    _this.page.stores = [];
+                }
+            }
+            else {
+                if (response.message != null) {
+                    _this.alertMessage = "Backend error: " + response.message;
+                }
+                else {
+                    _this.alertMessage = "Backend error.";
+                }
+            }
+        }, function (error) {
+            if (error.message != null) {
+                _this.alertMessage = "Communication error: " + error.message;
+            }
+            else {
+                _this.alertMessage = "Communication error.";
+            }
+        });
+    };
+    /* Alerts */
+    StoresComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    StoresComponent.prototype.dismissAlert = function () {
+        this.alertMessage = null;
+    };
+    /* Notices */
+    StoresComponent.prototype.showNotice = function (message) {
+        this.noticeMessage = message;
+    };
+    StoresComponent.prototype.dismissNotice = function () {
+        this.noticeMessage = null;
+    };
+    StoresComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.searchForm = this.formBuilder.group({
+            hostnamePattern: [""],
+            pageLimit: [this.page.limit],
+        });
+        this.list();
+        this.searchForm.get('hostnamePattern').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .subscribe(function (value) {
+            _this.page.hostnamePattern = value;
+            _this.list();
+        });
+        this.searchForm.get('pageLimit').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .subscribe(function (value) {
+            console.log(value);
+            _this.page.limit = value;
+            _this.list();
+        });
+    };
+    StoresComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _store_service__WEBPACK_IMPORTED_MODULE_4__["StoreService"] }
+    ]; };
+    StoresComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'stores',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./stores.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/stores/stores.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./stores.component.scss */ "./src/app/stores/stores.component.scss")).default]
+        })
+    ], StoresComponent);
+    return StoresComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/user-create/user-create.component.scss":
 /*!********************************************************!*\
   !*** ./src/app/user-create/user-create.component.scss ***!
@@ -1103,7 +2737,7 @@ var RoutingModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItY3JlYXRlL3VzZXItY3JlYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLWNyZWF0ZS91c2VyLWNyZWF0ZS5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1242,7 +2876,7 @@ var UserCreateComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItZGVsZXRlL3VzZXItZGVsZXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLWRlbGV0ZS91c2VyLWRlbGV0ZS5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1382,7 +3016,7 @@ var UserDeleteComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItb3B0aW9uL3VzZXItb3B0aW9uLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLW9wdGlvbi91c2VyLW9wdGlvbi5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1451,7 +3085,7 @@ var UserOptionComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItdXBkYXRlL3VzZXItdXBkYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLXVwZGF0ZS91c2VyLXVwZGF0ZS5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1621,7 +3255,7 @@ var UserService = /** @class */ (function () {
         return this.httpClient.post("/api/v1/user/list", {
             "limit": page.limit,
             "offset": page.offset,
-            "user_pattern": page.user_pattern
+            "userPattern": page.userPattern
         });
     };
     UserService.prototype.check = function (username, password) {
@@ -1674,7 +3308,7 @@ var UserService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXJzL3VzZXJzLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2Vycy91c2Vycy5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1706,14 +3340,11 @@ var UsersComponent = /** @class */ (function () {
         this.alertMessage = null;
         this.page = {
             total: 0,
-            limit: 3,
+            limit: 5,
             offset: 0,
-            user_pattern: "",
-            users: null
+            userPattern: "",
+            users: []
         };
-        this.minUsernameLength = 5;
-        this.minPasswordLength = 5;
-        this.currentPage = 0;
     }
     UsersComponent.prototype.setNewOffset = function (newOffset) {
         this.page.offset = newOffset;
@@ -1724,152 +3355,23 @@ var UsersComponent = /** @class */ (function () {
         this.userService.list(this.page).subscribe(function (response) {
             if (response.error == false) {
                 _this.page = response.result;
-                _this.paginate();
+            }
+            else {
+                if (response.message != null) {
+                    _this.alertMessage = "Backend error: " + response.message;
+                }
+                else {
+                    _this.alertMessage = "Backend error.";
+                }
             }
         }, function (error) {
-            console.log(error);
-            _this.users = null;
-        });
-    };
-    UsersComponent.prototype.createUser = function (event) {
-        var _this = this;
-        var payload = {
-            username: event.value.username,
-            password: event.value.password
-        };
-        this.dismissCreateForm();
-        this.userService.create(payload).subscribe(function (response) {
-            if (response.error == true) {
-                _this.showAlert("Operation error");
-                return;
+            if (error.message != null) {
+                _this.alertMessage = "Communication error: " + error.message;
             }
-            _this.showNotice("User created");
-            _this.list();
-        }, function (error) {
-            _this.showAlert("Connection error");
-            console.log(error);
-        });
-    };
-    UsersComponent.prototype.updateUser = function (event) {
-        var _this = this;
-        var payload = {
-            id: event.value.id,
-            username: event.value.username,
-            password: event.value.password
-        };
-        this.dismissUpdateForm();
-        this.userService.update(payload).subscribe(function (response) {
-            if (response.error == true) {
-                _this.showAlert("Operation error");
-                return;
+            else {
+                _this.alertMessage = "Communication error.";
             }
-            _this.showNotice("User updated");
-            _this.list();
-        }, function (error) {
-            _this.showAlert("Connection error");
-            console.log(error);
         });
-    };
-    UsersComponent.prototype.deleteUser = function (event) {
-        var _this = this;
-        console.log(event);
-        var payload = {
-            id: event.value.id,
-            username: event.value.username,
-            password: event.value.password
-        };
-        console.log(payload);
-        this.dismissDeleteForm();
-        this.userService.deletex(payload).subscribe(function (response) {
-            if (response.error == true) {
-                _this.showAlert("Operation error");
-                return;
-            }
-            _this.showNotice("User deleted");
-            _this.list();
-        }, function (error) {
-            _this.showAlert("Connection error");
-            console.log(error);
-        });
-    };
-    /* Create form */
-    UsersComponent.prototype.showCreateForm = function () {
-        $("#create-user").modal('show');
-    };
-    UsersComponent.prototype.dismissCreateForm = function () {
-        $("#create-user").modal('hide');
-        this.createForm.reset();
-    };
-    Object.defineProperty(UsersComponent.prototype, "createFormUsername", {
-        get: function () {
-            return this.createForm.get('username');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(UsersComponent.prototype, "createFormPassword", {
-        get: function () {
-            return this.createForm.get('password');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /* Update form */
-    UsersComponent.prototype.showUpdateForm = function (item) {
-        console.log(item);
-        this.updateForm.reset();
-        this.updateForm.patchValue({
-            id: item.id,
-            username: item.username,
-            password: null
-        });
-        $("#update-user").modal('show');
-    };
-    UsersComponent.prototype.dismissUpdateForm = function () {
-        $("#update-user").modal('hide');
-        this.updateForm.reset();
-    };
-    Object.defineProperty(UsersComponent.prototype, "updateFormUsername", {
-        get: function () {
-            return this.updateForm.get('username');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(UsersComponent.prototype, "updateFormPassword", {
-        get: function () {
-            return this.updateForm.get('password');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /* Delete form */
-    UsersComponent.prototype.showDeleteForm = function (item) {
-        this.deleteForm.patchValue({
-            id: item.id,
-            username: item.username,
-            password: null,
-            confirmation: false
-        });
-        $("#delete-user").modal('show');
-    };
-    Object.defineProperty(UsersComponent.prototype, "deleteFormUsername", {
-        get: function () {
-            return this.deleteForm.get('username');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(UsersComponent.prototype, "deleteFormAcceptTerm", {
-        get: function () {
-            return this.deleteForm.get('acceptTerm');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    UsersComponent.prototype.dismissDeleteForm = function () {
-        $("#delete-user").modal('hide');
-        this.deleteForm.reset();
     };
     /* Alerts */
     UsersComponent.prototype.showAlert = function (message) {
@@ -1885,100 +3387,21 @@ var UsersComponent = /** @class */ (function () {
     UsersComponent.prototype.dismissNotice = function () {
         this.noticeMessage = null;
     };
-    /* Pagination */
-    UsersComponent.prototype.pageCount = function (total, limit) {
-        //console.log(total, limit)
-        var pagesRaw = total / limit;
-        var pagesLow = Math.floor(pagesRaw);
-        var pages = 0;
-        if (pagesRaw == pagesLow) {
-            pages = pagesLow;
-        }
-        else {
-            pages = pagesLow + 1;
-        }
-        return pages;
-    };
-    UsersComponent.prototype.resolvePageNumber = function (offset, limit, maxPage) {
-        var p = 0;
-        for (p = 0; p < maxPage; p++) {
-            if (offset >= p * limit && offset < (p + 1) * limit) {
-                return p;
-            }
-        }
-        return 0;
-    };
-    UsersComponent.prototype.changePage = function (offset) {
-        this.page.offset = offset;
-        this.list();
-    };
-    UsersComponent.prototype.paginate = function () {
-        var paginatorItems = [];
-        var pageCount = this.pageCount(this.page.total, this.page.limit);
-        if (pageCount == 1) {
-            this.page.offset = 0;
-        }
-        this.currentPage = this.resolvePageNumber(this.page.offset, this.page.limit, pageCount);
-        var i = 0;
-        for (i = 0; i < pageCount; i++) {
-            if (i > this.currentPage - 4 && i < this.currentPage) {
-                var item = {
-                    visibleNumber: i + 1,
-                    offset: i * this.page.limit,
-                    active: false
-                };
-                paginatorItems.push(item);
-            }
-            if (i == this.currentPage) {
-                var item = {
-                    visibleNumber: i + 1,
-                    offset: i * this.page.limit,
-                    active: true
-                };
-                paginatorItems.push(item);
-            }
-            if (i > this.currentPage && i < this.currentPage + 4) {
-                var item = {
-                    visibleNumber: i + 1,
-                    offset: i * this.page.limit,
-                    active: false
-                };
-                paginatorItems.push(item);
-            }
-        }
-        this.paginatorItems = paginatorItems;
-    };
     UsersComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.createForm = this.formBuilder.group({
-            id: null,
-            username: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minUsernameLength)]],
-            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minPasswordLength)]]
-        });
-        this.updateForm = this.formBuilder.group({
-            id: null,
-            username: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minUsernameLength)]],
-            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(this.minPasswordLength)]]
-        });
-        this.deleteForm = this.formBuilder.group({
-            id: null,
-            username: [""],
-            password: [""],
-            confirmation: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].requiredTrue]
-        });
         this.searchForm = this.formBuilder.group({
             userPattern: [""],
-            pageLimit: [""],
+            pageLimit: [this.page.limit],
         });
         this.list();
         this.searchForm.get('userPattern').valueChanges
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(400), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
             .subscribe(function (value) {
-            _this.page.user_pattern = value;
+            _this.page.userPattern = value;
             _this.list();
         });
         this.searchForm.get('pageLimit').valueChanges
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(400), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
             .subscribe(function (value) {
             console.log(value);
             _this.page.limit = value;

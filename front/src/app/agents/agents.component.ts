@@ -48,6 +48,9 @@ export class AgentsComponent implements OnInit {
             (response: AgentResponse) => {
                 if (response.error == false) {
                     this.page = response.result
+                    if (this.page.agents == null) {
+                        this.page.agents = []
+                    }
                 } else {
                     if (response.message != null) {
                         this.alertMessage = "Backend error: " + response.message

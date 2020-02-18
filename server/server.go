@@ -42,6 +42,9 @@ import (
     "master/server/store-model"
     "master/server/store-controller"
 
+    "master/server/schedule-controller"
+
+
     "master/daemon"
     "master/config"
     "master/bundle"

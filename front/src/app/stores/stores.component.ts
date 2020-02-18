@@ -48,6 +48,9 @@ export class StoresComponent implements OnInit {
             (response: StoreResponse) => {
                 if (response.error == false) {
                     this.page = response.result
+                    if (this.page.stores == null) {
+                        this.page.stores = []
+                    }
                 } else {
                     if (response.message != null) {
                         this.alertMessage = "Backend error: " + response.message

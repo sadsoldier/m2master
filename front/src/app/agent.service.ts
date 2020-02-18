@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 export interface Agent {
     id?: number
-    schema?: string
+    scheme?: string
     hostname?: string
     port?: number
     username?: string
@@ -42,7 +42,7 @@ export class AgentService {
 
     create(agent: Agent) {
         return this.httpClient.post<AgentResponse>(`/api/v1/agent/create`, {
-            "schema": agent.schema,
+            "scheme": agent.scheme,
             "hostname": agent.hostname,
             "port": agent.port,
             "password": agent.password,
@@ -53,7 +53,7 @@ export class AgentService {
     update(agent: Agent) {
         return this.httpClient.post<AgentResponse>(`/api/v1/agent/update`, {
             "id": agent.id,
-            "schema": agent.schema,
+            "scheme": agent.scheme,
             "hostname": agent.hostname,
             "port": agent.port,
             "password": agent.password,

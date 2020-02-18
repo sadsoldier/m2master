@@ -68,6 +68,7 @@
                 <tr>
                     <th>#</th>
                     <th>hostname</th>
+                    <th>type</th>
                     <th>uri</th>
                 </tr>
             </thead>
@@ -81,8 +82,9 @@
                                 {{ item.hostname }}
                             </store-option>
                         </td>
+                        <td>{{ item.storeType }}</td>
                         <td>
-                                {{ item.schema + "://" + item.hostname + ":" + item.port }}
+                                {{ item.scheme + "://" + item.hostname + ":" + item.port }}
                         </td>
                     </tr>
                 </ng-container>

@@ -36,7 +36,7 @@ export class AgentUpdateComponent implements OnInit {
     updateAgent(event) {
         var payload: Agent = {
                 id: event.value.id,
-                schema: "https",
+                scheme: "https",
                 hostname: event.value.hostname,
                 port: 7002,
                 username: event.value.username,

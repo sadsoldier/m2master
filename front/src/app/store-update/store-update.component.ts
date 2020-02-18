@@ -34,14 +34,25 @@ export class StoreUpdateComponent implements OnInit {
     }
 
     updateStore(event) {
+        var storeType = event.value.storeType
+
+        var scheme
+        if (storeType == "sftp") {
+            scheme = "sftp"
+        } else if (storeType == "s2") {
+            scheme = "https"
+        }
+
         var payload: Store = {
                 id: event.value.id,
-                schema: "https",
+                storeType: storeType,
+                scheme: scheme,
                 hostname: event.value.hostname,
-                port: 7002,
+                port: Number(event.value.port),
                 username: event.value.username,
                 password: event.value.password,
         }
+
         this.storeService.update(payload).subscribe(
             (response: StoreResponse) => {
                 if (response.error == false) {
@@ -74,7 +85,9 @@ export class StoreUpdateComponent implements OnInit {
         this.form.reset()
         this.form.patchValue({
             id: this.store.id,
+            storeType: this.store.storeType,
             hostname: this.store.hostname,
+            port: this.store.port,
             username: this.store.username,
             password: ""
         })
@@ -90,6 +103,9 @@ export class StoreUpdateComponent implements OnInit {
 
     get formHostname(){
        return this.form.get('hostname')
+    }
+    get formPort(){
+       return this.form.get('port')
     }
     get formUsername(){
        return this.form.get('hostname')
@@ -122,8 +138,10 @@ export class StoreUpdateComponent implements OnInit {
     ngOnInit() {
         this.form = this.formBuilder.group({
             id: null,
-            hostname: [ "", [ Validators.required, Validators.minLength(this.minHostnameLength)] ],
-            username: [ "", [ Validators.required, Validators.minLength(this.minUsernameLength)] ],
+            storeType: [ "", [ Validators.required ] ],
+            hostname: [ "", [ Validators.required, Validators.minLength(this.minHostnameLength) ] ],
+            port: [ 0, [ Validators.required, Validators.min(1), Validators.max(65535) ] ],
+            username: [ "", [ Validators.required, Validators.minLength(this.minUsernameLength) ] ],
             password: [ "", [ this.passwordValidator() ] ]
         })
     }

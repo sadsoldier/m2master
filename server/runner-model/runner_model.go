@@ -6,102 +6,176 @@
 package runnerModel
 
 import (
+    "bytes"
+    "crypto/tls"
+    "encoding/json"
+    "errors"
+    "fmt"
+    "io/ioutil"
     "log"
-    "regexp"
-    "strings"
-    "strconv"
+    "net/http"
+
+    //"io"
+    //"log"
+    //"mime/multipart"
+    //"net/url"
+    //"os"
+    //"path/filepath"
+    //"regexp"
+    //"strconv"
+    //"strings"
     "time"
+    "math/rand"
 
     "github.com/jmoiron/sqlx"
 
-    "master/server/schedule-model"
+    //"master/server/schedule-model"
+    "master/server/agent-model"
+    "master/server/store-model"
+
 )
-
-type DumpRequest struct {
-    ResourseType    string      `json:"resorseType"` // pgsql, mysql, file
-    Resourse        string      `json:"resourse"`
-
-    TransportType   string      `json:"transport"`  // s2, sftp
-    StorageURI      string      `json:"storage"`
-
-    JobId           string      `json:"jobId"`
-    JobOrigin       string      `json:"jobOrigin"`
-    Timestamp       string      `json:"timetsamp"`
-    ReportURI       string      `json:"reportURI"`
-    MagicCode       string      `json:"magicCode"`
-}
-
-type RestoreRequest struct {
-    TransportType   string      `json:"transportType"`
-    StorageURI      string      `json:"storageURI"`
-
-    SourseFilename  string      `json:"source"`
-
-    ResourseType    string      `json:"resourseType"`
-    Destination     string      `json:"destination"`
-    ResourseOwner   string      `json:"resourseOwner"`
-
-    JobId           string      `json:"jobId"`
-    JobOrigin       string      `json:"jobOrigin"`
-    Timestamp       string      `json:"timetsamp"`
-
-    ReportURI       string      `json:"reportTo"`
-    MagicCode       string      `json:"magicCode"`
-}
 
 
 type Model struct {
     dbx *sqlx.DB
 }
 
-func (this *Model) Run() {
+type DumpForm struct {
+    ResourseType    string      `json:"resourseType"`   // pgsql, mysql, file
+    ResourseName    string      `json:"resourseName"`
+
+    TransportType   string      `json:"transport"`      // s2, sftp
+    StoreURI        string      `json:"storeURI"`
+
+    JobId           string      `json:"jobId"`
+    JobOrigin       string      `json:"jobOrigin"`
+    Timestamp       string      `json:"timestamp"`
+    ReportURI       string      `json:"reportURI"`
+    MagicCode       string      `json:"magicCode"`
+}
+
+type RestoreForm struct {
+    TransportType   string      `json:"transportType"`
+    StorageURI      string      `json:"storageURI"`
+
+    DumpFilename    string      `json:"dumpFilename"`
+
+    ResourseType    string      `json:"resourseType"`
+    ResourseOwner   string      `json:"resourseOwner"`
+    Destination     string      `json:"destination"`
+
+    JobId           string      `json:"jobId"`
+    JobOrigin       string      `json:"jobOrigin"`
+    Timestamp       string      `json:"timestamp"`
+
+    ReportURI       string      `json:"reportURI"`
+    MagicCode       string      `json:"magicCode"`
+}
+
+type DumpRequestOrder struct {
+    AgentId         int
+    ResourseType    string
+    ResourseName    string
+
+    StoreId         int
+    StorePath       string
+
+    JobOrigin       string
+}
+
+type Response struct {
+    Error       bool        `json:"error"`
+    Message     string      `json:"message"`
+}
+
+
+func (this *Model) SendDumpRequest(order DumpRequestOrder) error {
 
     var err error
 
-    schedule := scheduleModel.New(this.dbx)
-    schedules, err := schedule.ListAll("")
+    agentInstance := agentModel.New(this.dbx)
+    agent, err := agentInstance.GetById(order.AgentId)
     if err != nil {
-        log.Println(err)
+        return err
     }
 
-    now := time.Now()
-    hour := now.Hour()
-    min := now.Minute()
-    mday := now.Day()
-    wday := int(now.Weekday())
-
-
-    for _, item := range *schedules {
-        //if len(item.Wdays) == 0 {
-        //    continue
-        //}
-
-        mapMdays := Expander(item.Mdays, 1, 31) // 1..31
-        if mapMdays[mday] != true {
-            continue
-        }
-
-        mapWdays := Expander(item.Wdays, 1, 7)  // 1..7
-        if mapWdays[wday] != true {
-            continue
-        }
-
-        mapHours := Expander(item.Hours, 0, 23) // 0..23
-        if mapHours[hour] != true {
-            continue
-        }
-
-        mapMins := Expander(item.Mins, 0, 59)  // 0..59
-        if mapMins[min] != true {
-            continue
-        }
-
-        log.Println("generate job", item)
+    storeInstance := storeModel.New(this.dbx)
+    store, err := storeInstance.GetById(order.StoreId)
+    if err != nil {
+        return err
     }
 
+    log.Println(agent, store)
 
+    storeURI := fmt.Sprintf("%s://%s:%s@%s:%d/%s",
+            store.Scheme,
+            store.Username,
+            store.Password,
+            store.Hostname,
+            store.Port,
+            order.StorePath)
+
+    form := DumpForm{
+        ResourseType:   "pgsql",
+        ResourseName:   "template1",
+
+        TransportType:  store.Type,
+        StoreURI:       storeURI,
+
+        JobId:          randString(12),
+        JobOrigin:      order.JobOrigin,
+        Timestamp:      time.Now().Format(time.RFC3339),
+        ReportURI:      "localhost",
+        MagicCode:      randString(12),
+    }
+
+    log.Println(agent, store, form)
+
+    transCfg := &http.Transport{
+         TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+    }
+    client := &http.Client{Transport: transCfg}
+
+    data, _ := json.Marshal(form)
+    reader := bytes.NewReader([]byte(data))
+
+    agentURL := fmt.Sprintf("%s://%s:%s@%s:%d/api/v1/db/dump",
+            agent.Scheme,
+            agent.Username,
+            agent.Password,
+            agent.Hostname,
+            agent.Port)
+
+    log.Println(form, agentURL)
+
+    resp, err := client.Post(agentURL, "application/json", reader)
+    if err != nil {
+        return err
+    }
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        return err
+    }
+
+    var response Response
+    err = json.Unmarshal(body, &response)
+    if err != nil {
+        return err
+    }
+
+    if response.Error == true {
+        log.Println(response.Message)
+        return errors.New(response.Message)
+    }
+
+    return nil
 }
 
+func (this *Model) SendRestoreRequest() error {
+    return nil
+}
 
 func New(dbx *sqlx.DB) *Model {
     model := Model{
@@ -110,62 +184,11 @@ func New(dbx *sqlx.DB) *Model {
     return &model
 }
 
-
-/* Expand comma-separated list records like * /N, N-M,* */
-
-func Expander(items string, min, max int) map[int]bool  {
-
-    //items = strings.ReplaceAll(items, "--", "-")
-    //items = strings.ReplaceAll(items, ",,", ",")
-    //items = strings.ReplaceAll(items, "//", "/")
-
-    field := make(map[int]bool)
-
-    for i := min; i < max; i++ {
-        field[i] = false
+func randString(n int) string {
+    const letters = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    arr := make([]byte, n)
+    for i := range arr {
+        arr[i] = letters[rand.Intn(len(letters))]
     }
-
-    for _, item := range strings.Split(items, ",") {
-        if len(item) == 0 {
-            continue
-        }
-
-        var match bool
-
-        match, _ = regexp.MatchString(`^\*$`, item)
-        if match {
-            for i := min; i < max; i++ {
-                field[i] = true
-            }
-        }
-
-        match, _ = regexp.MatchString(`^\*/[0-9]+$`, item)
-        if match {
-            arr := strings.Split(item, "/")
-            period, _ := strconv.Atoi(arr[1])
-
-            num := min
-            field[num] = true // low bound always true?
-            for i := min; i < max; i++ {
-                num = num + period
-                if num > max {
-                    break
-                }
-                field[num] = true
-            }
-        }
-
-        match, _ = regexp.MatchString(`^[0-9]+-[0-9]+$`, item)
-        if match {
-            arr := strings.Split(item, "-")
-            begin, _ := strconv.Atoi(arr[0])
-            end, _ := strconv.Atoi(arr[1])
-
-            for i := begin; i < end + 1 && i < max; i++ {
-                field[i] = true
-            }
-        }
-    }
-
-    return field
+    return string(arr)
 }

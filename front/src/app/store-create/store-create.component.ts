@@ -35,11 +35,21 @@ export class StoreCreateComponent implements OnInit {
     }
 
     createStore(event) {
+        var storeType = event.value.storeType
+
+        var scheme
+        if (storeType == "sftp") {
+            scheme = "sftp"
+        } else if (storeType == "s2") {
+            scheme = "https"
+        }
+
         var payload: Store = {
-                schema: "https",
+                storeType: event.value.storeType,
+                scheme: scheme,
                 hostname: event.value.hostname,
                 username: event.value.username,
-                port: 7002,
+                port: Number(event.value.port),
                 password: event.value.password,
         }
         this.storeService.create(payload).subscribe(
@@ -86,6 +96,10 @@ export class StoreCreateComponent implements OnInit {
        return this.form.get('hostname')
     }
 
+    get formPort(){
+       return this.form.get('port')
+    }
+
     get formUsername(){
        return this.form.get('username')
     }
@@ -104,6 +118,8 @@ export class StoreCreateComponent implements OnInit {
 
     ngOnInit() {
         this.form = this.formBuilder.group({
+            storeType: [ "", [ Validators.required ] ],
+            port: [ 0, [ Validators.required, Validators.min(1), Validators.max(65535) ] ],
             hostname: [ "", [ Validators.required, Validators.minLength(this.minHostnameLength) ] ],
             username: [ "", [ Validators.required, Validators.minLength(this.minUsernameLength) ] ],
             password: [ "", [ Validators.required, Validators.minLength(this.minPasswordLength) ] ],

@@ -40,7 +40,7 @@ func TestCreate(t *testing.T) {
 
     model := New(dbx)
     agent := Agent{
-        Schema:     "https",
+        Scheme:     "https",
         Hostname:   "localhost",
         Port:       7002,
         Username:   "user1",
@@ -79,7 +79,7 @@ func TestUpdate(t *testing.T) {
 
     model := New(dbx)
     agent := Agent{
-        Schema:     "http",
+        Scheme:     "http",
         Hostname:   "some.bare",
         Port:       7007,
         Username:   "user21",

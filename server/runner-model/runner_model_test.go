@@ -6,17 +6,14 @@ package runnerModel
 
 import (
     "testing"
-    "os"
-    //"fmt"
-
-    "github.com/jmoiron/sqlx"
+    //"log"
+   "github.com/jmoiron/sqlx"
     _ "github.com/mattn/go-sqlite3"
-
-    "master/server/schedule-model"
 )
 
+
 func createDB() (*sqlx.DB, error) {
-    db, err := sqlx.Open("sqlite3", "test.db")
+    db, err := sqlx.Open("sqlite3", "m2srv.db")
     if err != nil {
         return db, err
     }
@@ -27,77 +24,27 @@ func createDB() (*sqlx.DB, error) {
     return db, nil
 }
 
-func TestCreate(t *testing.T) {
-
-    var err error
-    os.Remove("test.db")
+func TestDump(t *testing.T) {
 
     dbx, err := createDB()
     if err != nil {
         t.Error(err)
     }
 
-    model := scheduleModel.New(dbx)
-    schedule1 := scheduleModel.Schedule{
-            AgentId: 1,
-            StoreId: 1,
-            Type: "dump",
-            StorePath: "/" ,
-            Resourse: "qwerty",
-            Mins: "*/1",
-            Hours: "*/1",
-            Wdays: "*/1",
-            Mdays: "*/1",
-            Depth: 10,
-    }
-
-    schedule2 := scheduleModel.Schedule{
-            AgentId: 1,
-            StoreId: 1,
-            Type: "dump",
-            StorePath: "/" ,
-            Resourse: "qwerty",
-            Mins: "*/2",
-            Hours: "*/1",
-            Wdays: "*/1",
-            Mdays: "*/1",
-            Depth: 10,
-    }
-
-    schedule3 := scheduleModel.Schedule{
-            AgentId: 1,
-            StoreId: 1,
-            Type: "dump",
-            StorePath: "/" ,
-            Resourse: "qwerty",
-            Mins: "*",
-            Hours: "*/1",
-            Wdays: "*/1",
-            Mdays: "*/1",
-            Depth: 10,
-    }
-
-
-
-    err = model.Migrate()
-    if err != nil {
-        t.Error(err)
-    }
-
-    err = model.Create(schedule1)
-    if err != nil {
-        t.Error(err)
-    }
-    err = model.Create(schedule2)
-    if err != nil {
-        t.Error(err)
-    }
-    err = model.Create(schedule3)
-    if err != nil {
-        t.Error(err)
+    order := DumpRequestOrder{
+        AgentId:         1,
+        ResourseType:    "pgsql",
+        ResourseName:    "template2",
+        StoreId:         1,
+        StorePath:       "/data/",
+        JobOrigin:       "localhost",
     }
 
     runner := New(dbx)
-    runner.Run()
+
+    err = runner.SendDumpRequest(order)
+    if err != nil {
+        t.Error(err)
+    }
 
 }

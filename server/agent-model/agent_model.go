@@ -9,18 +9,19 @@ import (
     //"math/rand"
     "log"
     //"strings"
-    //"errors"
+    "errors"
+    "fmt"
 
     "github.com/jmoiron/sqlx"
     //_ "github.com/jackc/pgx/v4/stdlib"
 
 )
 
-const schema = `
+const scheme = `
     DROP TABLE IF EXISTS agents;
     CREATE TABLE IF NOT EXISTS agents (
         id          INTEGER PRIMARY KEY,
-        schema      VARCHAR(255) NOT NULL,
+        scheme      VARCHAR(255) NOT NULL,
         hostname    VARCHAR(255) NOT NULL UNIQUE,
         port        INTEGER NOT NULL,
         username    VARCHAR(255) NOT NULL,
@@ -34,7 +35,7 @@ type Model struct {
 type Agent struct {
     Id          int     `db:"id"        json:"id"`
 
-    Schema      string  `db:"schema"    json:"schema"`
+    Scheme      string  `db:"scheme"    json:"scheme"`
     Hostname    string  `db:"hostname"  json:"hostname"`
     Port        int     `db:"port"      json:"port"`
 
@@ -51,7 +52,7 @@ type Page struct {
 }
 
 func (this *Model) Migrate() error {
-    _, err := this.db.Exec(schema)
+    _, err := this.db.Exec(scheme)
     if err != nil {
         log.Println(err)
         return err
@@ -74,7 +75,7 @@ func (this *Model) List(page *Page) error {
     page.Total = total
 
     var agents []Agent
-    request = `SELECT id, schema, hostname, port, username, '' as password
+    request = `SELECT id, scheme, hostname, port, username, '' as password
                 FROM agents
                 WHERE hostname LIKE $1
                 ORDER BY hostname
@@ -89,27 +90,35 @@ func (this *Model) List(page *Page) error {
     return nil
 }
 
-func (this *Model) GetById(id int) (*Agent, error) {
+func (this *Model) GetById(id int) (Agent, error) {
     var request string
     var err error
 
+    var agents []Agent
     var agent Agent
-    request = `SELECT id, schema, hostname, port, username, '' as password
-                FROM agents
-                WHERE id = $1`
 
-    err = this.db.Select(&agent, request, id)
+    request = `SELECT id, scheme, hostname, port, username, password
+                FROM agents
+                WHERE id = $1 LIMIT 1`
+
+    err = this.db.Select(&agents, request, id)
     if err != nil {
         log.Println(err)
-        return nil, err
+        return agent, err
     }
-    return &agent, nil
+
+    if len(agents) == 0 {
+        err = errors.New(fmt.Sprintf("agent id=%d not found", id))
+        log.Println(err)
+        return agent, err
+    }
+    return agents[0], nil
 }
 
 func (this *Model) Create(agent Agent) error {
-    request := `INSERT INTO agents(schema, hostname, port, username, password)
+    request := `INSERT INTO agents(scheme, hostname, port, username, password)
                 VALUES ($1, $2, $3, $4, $5)`
-    _, err := this.db.Exec(request, agent.Schema, agent.Hostname, agent.Port, agent.Username, agent.Password)
+    _, err := this.db.Exec(request, agent.Scheme, agent.Hostname, agent.Port, agent.Username, agent.Password)
     if err != nil {
         log.Println(err)
         return err
@@ -132,15 +141,15 @@ func (this *Model) Update(agent Agent) error {
     var err error
     if len(agent.Password) > 0 {
         request := `UPDATE agents
-                    SET schema = $1, hostname = $2, port = $3, username = $4, password = $5
+                    SET scheme = $1, hostname = $2, port = $3, username = $4, password = $5
                     WHERE id = $6`
-        _, err = this.db.Exec(request, agent.Schema,agent.Hostname,
+        _, err = this.db.Exec(request, agent.Scheme,agent.Hostname,
                                         agent.Port, agent.Username, agent.Password, agent.Id)
     } else {
         request := `UPDATE agents
-                    SET schema = $1, hostname = $2, port = $3, username = $4
+                    SET scheme = $1, hostname = $2, port = $3, username = $4
                     WHERE id = $5`
-        _, err = this.db.Exec(request, agent.Schema,agent.Hostname,
+        _, err = this.db.Exec(request, agent.Scheme,agent.Hostname,
                                         agent.Port, agent.Username, agent.Id)
     }
     if err != nil {

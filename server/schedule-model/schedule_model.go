@@ -7,10 +7,11 @@ package scheduleModel
 
 import (
     "log"
+    "errors"
     "github.com/jmoiron/sqlx"
 )
 
-const schema = `
+const scheme = `
     DROP TABLE IF EXISTS schedules;
     CREATE TABLE IF NOT EXISTS schedules (
         id          INTEGER PRIMARY KEY,
@@ -31,17 +32,17 @@ type Model struct {
 }
 
 type Schedule struct {
-    Id          int     `db:"id"        json:"id"`
-    AgentId     int     `db:"agent_id"  json:"agentId"`
-    StoreId     int     `db:"store_id"  json:"storeId"`
-    Type        string  `db:"type"      json:"type"` // dump, restore, ?copy
-    StorePath   string  `db:"store_path"  json:"id"`
-    Resourse    string  `db:"resourse"  json:"resourse"`
-    Mins        string  `db:"mins"      json:"mins"`
-    Hours       string  `db:"hours"     json:"hours"`
-    Mdays       string  `db:"mdays"     json:"mdays"`
-    Wdays       string  `db:"wdays"     json:"wdays"`
-    Depth       int     `db:"depth"     json:"depth"`
+    Id          int     `db:"id"            json:"id"`
+    AgentId     int     `db:"agent_id"      json:"agentId"`
+    StoreId     int     `db:"store_id"      json:"storeId"`
+    Type        string  `db:"type"          json:"type"`        // dump, restore, ?copy
+    StorePath   string  `db:"store_path"    json:"store_path"`
+    Resourse    string  `db:"resourse"      json:"resourse"`
+    Mins        string  `db:"mins"          json:"mins"`
+    Hours       string  `db:"hours"         json:"hours"`
+    Mdays       string  `db:"mdays"         json:"mdays"`
+    Wdays       string  `db:"wdays"         json:"wdays"`
+    Depth       int     `db:"depth"         json:"depth"`
 }
 
 type Page struct {
@@ -53,7 +54,7 @@ type Page struct {
 }
 
 func (this *Model) Migrate() error {
-    _, err := this.db.Exec(schema)
+    _, err := this.db.Exec(scheme)
     if err != nil {
         log.Println(err)
         return err
@@ -67,6 +68,7 @@ func (this *Model) ListAll(resoursePattern string) (*[]Schedule, error) {
     resoursePattern = "%" + resoursePattern + "%"
     var schedules []Schedule
     request = `SELECT
+                    id,
                     agent_id,
                     store_id,
                     type,
@@ -89,6 +91,41 @@ func (this *Model) ListAll(resoursePattern string) (*[]Schedule, error) {
     return &schedules, nil
 }
 
+func (this *Model) GetById(id int) (Schedule, error) {
+    var request string
+    var err error
+    var schedules []Schedule
+    var schedule Schedule
+    request = `SELECT
+                    id,
+                    agent_id,
+                    store_id,
+                    type,
+                    store_path,
+                    resourse,
+                    mins,
+                    hours,
+                    wdays,
+                    mdays,
+                    depth
+                FROM schedules
+                WHERE id = $1`
+    err = this.db.Select(&schedules, request, id)
+    if err != nil {
+        log.Println(err)
+        return schedule, err
+    }
+
+    if len(schedules) == 0 {
+        err := errors.New("schedule not found")
+        log.Println(err)
+        return schedule, err
+    }
+    schedule = schedules[0]
+    return schedule, nil
+}
+
+
 func (this *Model) List(page *Page) (error) {
     var request string
     var err error
@@ -105,6 +142,7 @@ func (this *Model) List(page *Page) (error) {
 
     var schedules []Schedule
     request = `SELECT
+                    id,
                     agent_id,
                     store_id,
                     type,
@@ -127,8 +165,6 @@ func (this *Model) List(page *Page) (error) {
     page.Schedules = &schedules
     return nil
 }
-
-
 
 func (this *Model) Create(schedule Schedule) error {
     request := `INSERT INTO schedules(

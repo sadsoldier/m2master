@@ -19,6 +19,14 @@
                     <div class="modal-body">
 
                         <div class="form-group">
+                            <label for="{{ formId('storeType') }}">Type:</label>
+                            <select class="form-control" formControlName="storeType" id="{{ formId('storeType') }}">
+                                <option value="s2">s2</option>
+                                <option value="sftp">sftp</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="{{ formId('hostname') }}">Hostname:</label>
                             <input type="text" class="form-control" id="{{ formId('hostname') }}" formControlName="hostname">
 
@@ -27,6 +35,17 @@
                                 <span *ngIf="formHostname.errors.minlength">Value is too short</span>
                             </small>
 
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ formId('port') }}">Port:</label>
+                            <input type="text" class="form-control" id="{{ formId('port') }}" formControlName="port">
+
+                            <small *ngIf="formPort.invalid && (formPort.dirty || formPort.touched)" class="form-text text-muted">
+                                <span *ngIf="formPort.errors.required">Value is required</span>
+                                <span *ngIf="formPort.errors.min">Value must be > 0</span>
+                                <span *ngIf="formPort.errors.max">Value must be less 65536</span>
+                            </small>
                         </div>
 
                         <div class="form-group">
