@@ -54,7 +54,7 @@ func TestCreate(t *testing.T) {
     router.POST("/create", controller.Create)
 
     agent := agentModel.Agent{
-        Schema:     "http",
+        Scheme:     "http",
         Hostname:   "some.bare",
         Port:       7007,
         Username:   "user21",
@@ -97,7 +97,7 @@ func TestUpdate(t *testing.T) {
     router.POST("/update", controller.Update)
 
     agent := agentModel.Agent{
-        Schema:     "https",
+        Scheme:     "https",
         Hostname:   "localhost",
         Port:       7003,
         Username:   "user1",

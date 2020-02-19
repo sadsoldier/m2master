@@ -19,7 +19,7 @@ const scheme = `
         id          INTEGER PRIMARY KEY,
         type        VARCHAR(255) NOT NULL,
         scheme      VARCHAR(255) NOT NULL,
-        hostname    VARCHAR(255) NOT NULL UNIQUE,
+        hostname    VARCHAR(255) NOT NULL,
         port        INTEGER NOT NULL,
         username    VARCHAR(255) NOT NULL,
         password    VARCHAR(255) NOT NULL,
@@ -94,6 +94,22 @@ func (this *Model) List(page *Page) (error) {
     return nil
 }
 
+func (this *Model) ListAll(hostnamePattern string) (*[]Store, error) {
+    var request string
+    var err error
+    hostnamePattern = "%" + hostnamePattern + "%"
+    var stores []Store
+    request = `SELECT id, type, scheme, hostname, port, username, '' as password, uri, safe_uri
+                FROM stores
+                ORDER BY hostname`
+    err = this.db.Select(&stores, request, hostnamePattern)
+    if err != nil {
+        log.Println(err)
+        return nil, err
+    }
+    return &stores, nil
+}
+
 func (this *Model) GetById(id int) (Store, error) {
     var request string
     var err error
@@ -148,7 +164,6 @@ func (this *Model) Create(store Store) error {
     }
     return nil
 }
-
 
 func (this *Model) Update(store Store) error {
     var err error

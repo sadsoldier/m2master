@@ -18,7 +18,7 @@ import (
     "master/server/store-model"
 )
 
-type StoreController struct {
+type Controller struct {
     config *config.Config
     db *sqlx.DB
     store *storeModel.Model
@@ -71,14 +71,36 @@ func sendResult(context *gin.Context, result interface{}) {
     context.JSON(http.StatusOK, &response)
 }
 
-func (this *StoreController) List(context *gin.Context) {
+func (this *Controller) List(context *gin.Context) {
     var page storeModel.Page
     _ = context.Bind(&page)
     this.store.List(&page)
     sendResult(context, &page)
 }
 
-func (this *StoreController) Create(context *gin.Context) {
+type ListAllReq struct {
+    HostnamePattern string      `json:"hostnamePattern"`
+}
+
+func (this *Controller) ListAll(context *gin.Context) {
+    var err error
+    var req ListAllReq
+    err = context.Bind(&req)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+
+    stores, err := this.store.ListAll(req.HostnamePattern)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+    sendResult(context, *stores)
+}
+
+
+func (this *Controller) Create(context *gin.Context) {
     var store storeModel.Store
     var err error
     err = context.Bind(&store)
@@ -95,7 +117,7 @@ func (this *StoreController) Create(context *gin.Context) {
     sendOk(context)
 }
 
-func (this *StoreController) Update(context *gin.Context) {
+func (this *Controller) Update(context *gin.Context) {
     var store storeModel.Store
     var err error
     err = context.Bind(&store)
@@ -112,7 +134,7 @@ func (this *StoreController) Update(context *gin.Context) {
     sendOk(context)
 }
 
-func (this *StoreController) Delete(context *gin.Context) {
+func (this *Controller) Delete(context *gin.Context) {
     var store storeModel.Store
     var err error
     err = context.Bind(&store)
@@ -129,8 +151,8 @@ func (this *StoreController) Delete(context *gin.Context) {
     sendOk(context)
 }
 
-func New(config *config.Config, db *sqlx.DB) *StoreController {
-    return &StoreController{
+func New(config *config.Config, db *sqlx.DB) *Controller {
+    return &Controller{
         config: config,
         db: db,
         store: storeModel.New(db),

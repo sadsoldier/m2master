@@ -54,7 +54,7 @@ func TestCreate(t *testing.T) {
     router.POST("/create", controller.Create)
 
     store := storeModel.Store{
-        Schema:     "http",
+        Scheme:     "http",
         Hostname:   "some.bare",
         Port:       7007,
         Username:   "user21",
@@ -97,8 +97,9 @@ func TestUpdate(t *testing.T) {
     router.POST("/update", controller.Update)
 
     store := storeModel.Store{
+        Id:         1,
         Type:       "s2",
-        Schema:     "https",
+        Scheme:     "https",
         Hostname:   "localhost",
         Port:       7003,
         Username:   "user1",

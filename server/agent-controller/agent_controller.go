@@ -18,7 +18,7 @@ import (
     "master/server/agent-model"
 )
 
-type AgentController struct {
+type Controller struct {
     config *config.Config
     db *sqlx.DB
     agent *agentModel.Model
@@ -71,14 +71,48 @@ func sendResult(context *gin.Context, result interface{}) {
     context.JSON(http.StatusOK, &response)
 }
 
-func (this *AgentController) List(context *gin.Context) {
+func (this *Controller) List(context *gin.Context) {
+    var err error
     var page agentModel.Page
-    _ = context.Bind(&page)
-    this.agent.List(&page)
+    err = context.Bind(&page)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+
+    err = this.agent.List(&page)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+
     sendResult(context, &page)
 }
 
-func (this *AgentController) Create(context *gin.Context) {
+type ListAllReq struct {
+    HostnamePattern string      `json:"hostnamePattern"`
+}
+
+func (this *Controller) ListAll(context *gin.Context) {
+    var err error
+    var req ListAllReq
+    err = context.Bind(&req)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+
+    agents, err := this.agent.ListAll(req.HostnamePattern)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+    sendResult(context, *agents)
+}
+
+
+
+func (this *Controller) Create(context *gin.Context) {
     var agent agentModel.Agent
     var err error
     err = context.Bind(&agent)
@@ -95,7 +129,7 @@ func (this *AgentController) Create(context *gin.Context) {
     sendOk(context)
 }
 
-func (this *AgentController) Update(context *gin.Context) {
+func (this *Controller) Update(context *gin.Context) {
     var agent agentModel.Agent
     var err error
     err = context.Bind(&agent)
@@ -112,7 +146,7 @@ func (this *AgentController) Update(context *gin.Context) {
     sendOk(context)
 }
 
-func (this *AgentController) Delete(context *gin.Context) {
+func (this *Controller) Delete(context *gin.Context) {
     var agent agentModel.Agent
     var err error
     err = context.Bind(&agent)
@@ -129,8 +163,8 @@ func (this *AgentController) Delete(context *gin.Context) {
     sendOk(context)
 }
 
-func New(config *config.Config, db *sqlx.DB) *AgentController {
-    return &AgentController{
+func New(config *config.Config, db *sqlx.DB) *Controller {
+    return &Controller{
         config: config,
         db: db,
         agent: agentModel.New(db),

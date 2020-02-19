@@ -79,6 +79,7 @@ func TestUpdate(t *testing.T) {
 
     model := New(dbx)
     agent := Agent{
+        Id:         1,
         Scheme:     "http",
         Hostname:   "some.bare",
         Port:       7007,

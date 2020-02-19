@@ -18,7 +18,7 @@ const scheme = `
     CREATE TABLE IF NOT EXISTS agents (
         id          INTEGER PRIMARY KEY,
         scheme      VARCHAR(255) NOT NULL,
-        hostname    VARCHAR(255) NOT NULL UNIQUE,
+        hostname    VARCHAR(255) NOT NULL,
         port        INTEGER NOT NULL,
         username    VARCHAR(255) NOT NULL,
         password    VARCHAR(255) NOT NULL,
@@ -90,6 +90,23 @@ func (this *Model) List(page *Page) error {
     page.Agents = &agents
     return nil
 }
+
+func (this *Model) ListAll(hostnamePattern string) (*[]Agent, error) {
+    var request string
+    var err error
+    hostnamePattern = "%" + hostnamePattern + "%"
+    var agents []Agent
+    request = `SELECT id, scheme, hostname, port, username, '' as password, uri, safe_uri
+                FROM agents
+                ORDER BY hostname`
+    err = this.db.Select(&agents, request, hostnamePattern)
+    if err != nil {
+        log.Println(err)
+        return nil, err
+    }
+    return &agents, nil
+}
+
 
 func (this *Model) GetById(id int) (Agent, error) {
     var request string

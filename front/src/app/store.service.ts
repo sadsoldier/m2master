@@ -27,6 +27,13 @@ export interface StoreResponse {
     result:     StorePage
 }
 
+export interface StoreAllResponse {
+    error:      boolean
+    message:    string
+    result:     Store[]
+}
+
+
 @Injectable({
     providedIn: 'root'
 })
@@ -40,6 +47,12 @@ export class StoreService {
             "limit":        page.limit,
             "offset":       page.offset,
             "hostnamePattern": page.hostnamePattern
+        })
+    }
+
+    listAll(hostnamePattern: string) {
+        return this.httpClient.post<StoreAllResponse>(`/api/v1/store/listall`, {
+            "hostnamePattern": hostnamePattern,
         })
     }
 
