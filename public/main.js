@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"fas fa-plus fa-lg\"></i></a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"createAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Create agent</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.required\">Value is required</span>\n                                <span *ngIf=\"formPassword.errors.minlength\">Value is too short</span>\n                            </small>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Create</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"fas fa-plus fa-lg\"></i></a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"createAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Create agent</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.required\">Value is required</span>\n                                <span *ngIf=\"formPassword.errors.minlength\">Value is too short</span>\n                            </small>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Create</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-trash-alt\"></i> Delete </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"deleteAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Delete agent [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group form-check\">\n                            <input id=\"{{ formId('confirmation') }}\" class=\"form-check-input\" type=\"checkbox\" formControlName=\"confirmation\" />\n                            <label class=\"form-check-label\" for=\"{{ formId('confirmation') }}\"> Confirmation </label>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Delete</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\" class=\"nav-link\"><i class=\"far fa-trash-alt\"></i> Delete </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"deleteAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Delete agent [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group form-check\">\n                            <input id=\"{{ formId('confirmation') }}\" class=\"form-check-input\" type=\"checkbox\" formControlName=\"confirmation\" />\n                            <label class=\"form-check-label\" for=\"{{ formId('confirmation') }}\"> Confirmation </label>\n                        </div>\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Delete</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\"><i class=\"far fa-edit\"></i> Update </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"updateAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Update agent [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.invalidPassword\">Value is too short</span>\n                            </small>\n                        </div>\n\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Update</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container>\n\n    <a (click)=\"showForm()\" class=\"nav-link\"><i class=\"far fa-edit\"></i> Update </a>\n\n    <div class=\"modal fade\" id=\"{{ modalId() }}\" tabindex=\"-1\" role=\"dialog\">\n        <div class=\"modal-dialog\" role=\"document\">\n\n            <div class=\"modal-content\">\n\n                <form accept-charset=\"UTF-8\" [formGroup]=\"form\" (ngSubmit)=\"updateAgent(form)\">\n\n                    <div class=\"modal-header\">\n                        <h5 class=\"modal-title\">Update agent [{{ formHostname.value }}]</h5>\n                        <button type=\"button\" class=\"close\" (click)=\"dismissForm()\">\n                            <span>&times;</span>\n                        </button>\n                    </div>\n\n                    <div class=\"modal-body\">\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('hostname') }}\">Hostname:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('hostname') }}\" formControlName=\"hostname\">\n\n                            <small *ngIf=\"formHostname.invalid && (formHostname.dirty || formHostname.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formHostname.errors.required\">Value is required</span>\n                                <span *ngIf=\"formHostname.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('username') }}\">Username:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('username') }}\" formControlName=\"username\">\n\n                            <small *ngIf=\"formUsername.invalid && (formUsername.dirty || formUsername.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formUsername.errors.required\">Value is required</span>\n                                <span *ngIf=\"formUsername.errors.minlength\">Value is too short</span>\n                            </small>\n\n                        </div>\n\n\n\n                        <div class=\"form-group\">\n                            <label for=\"{{ formId('password') }}\">Password:</label>\n                            <input type=\"text\" class=\"form-control\" id=\"{{ formId('password') }}\" formControlName=\"password\">\n\n                            <small *ngIf=\"formPassword.invalid && (formPassword.dirty || formPassword.touched)\" class=\"form-text text-muted\">\n                                <span *ngIf=\"formPassword.errors.invalidPassword\">Value is too short</span>\n                            </small>\n                        </div>\n\n\n                    </div>\n\n                    <div *ngIf=\"this.alertMessage\" class=\"alert alert-warning border mx-4\" role=\"alert\">\n                        <div class=\"text-center\">{{ this.alertMessage }}</div>\n                    </div>\n\n\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-sm btn-secondary\" (click)=\"dismissForm()\">Cancel</button>\n                        <button type=\"submit\" class=\"btn btn-sm btn-primary\" [disabled]=\"!form.valid\">Update</button>\n                    </div>\n\n                </form>\n\n            </div>\n        </div>\n    </div>\n\n</ng-container>\n");
 
 /***/ }),
 
@@ -149,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mb-2\">\n    <div class=\"dropdown-divider\"></div>\n    <div class=\"dropdown-item active\"><i class=\"fas fa-hammer\"></i> Menu </div>\n\n    <a class=\"dropdown-item\" routerLink=\"/\"><i class=\"fas fa-home\"></i> Home </a>\n    <a class=\"dropdown-item\" routerLink=\"/agents\"><i class=\"fas fa-user-secret\"></i> Agents </a>\n    <a class=\"dropdown-item\" routerLink=\"/stores\"><i class=\"fas fa-archive\"></i> Stores </a>\n\n\n    <a class=\"dropdown-item\" routerLink=\"/users\"><i class=\"fas fa-users\"></i> Users </a>\n\n    <div class=\"dropdown-divider mb-3\"></div>\n\n    <div class=\"dropdown-item\" (click)=\"logout()\"><i class=\"fas fa-sign-out-alt\"></i> Logout </div>\n    <div class=\"dropdown-divider mb-3\"></div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mb-2\">\n    <div class=\"dropdown-divider\"></div>\n    <div class=\"dropdown-item active\"><i class=\"fas fa-hammer\"></i> Menu </div>\n\n    <a class=\"dropdown-item\" routerLink=\"/\"><i class=\"fas fa-home\"></i> Home </a>\n    <a class=\"dropdown-item\" routerLink=\"/agents\"><i class=\"fas fa-user-secret\"></i> Agents </a>\n    <a class=\"dropdown-item\" routerLink=\"/stores\"><i class=\"fas fa-archive\"></i> Stores </a>\n\n    <a class=\"dropdown-item\" routerLink=\"/schedules\"><i class=\"fas fa-calendar-alt\"></i> Schedules </a>\n\n\n    <a class=\"dropdown-item\" routerLink=\"/users\"><i class=\"fas fa-users\"></i> Users </a>\n\n    <div class=\"dropdown-divider mb-3\"></div>\n\n    <div class=\"dropdown-item\" (click)=\"logout()\"><i class=\"fas fa-sign-out-alt\"></i> Logout </div>\n    <div class=\"dropdown-divider mb-3\"></div>\n</div>\n");
 
 /***/ }),
 
@@ -176,6 +176,71 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<nav>\n    <ul class=\"pagination pagination-sm\">\n\n        <ng-container *ngIf=\"currentPage() > 0\">\n            <li class=\"page-item\" (click)=\"onCellClick(currentPage() - 1)\">\n                <div class=\"page-link\">\n                    <small>&laquo;</small>\n                </div>\n            </li>\n        </ng-container>\n\n        <ng-container *ngIf=\"currentPage() == 0\">\n            <li class=\"page-item\">\n                <div class=\"page-link disabled\">\n                    <small>&laquo;</small>\n                </div>\n            </li>\n        </ng-container>\n\n        <ng-container *ngFor=\"let item of pageArray(); let i = index;\">\n\n            <!-- always show current page cell -->\n            <ng-container *ngIf=\"i == currentPage()\">\n                 <li class=\"page-item active\" (click)=\"onCellClick(i)\">\n                        <div class=\"page-link\">\n                            <small>{{ showRange(i) }}</small>\n                        </div>\n                 </li>\n            </ng-container>\n\n            <!-- for not current page cell -->\n            <ng-container *ngIf=\"i != currentPage()\">\n\n                <!-- always show first page cell -->\n                <ng-container *ngIf=\"i == 0\">\n                     <li class=\"page-item\" (click)=\"onCellClick(i)\">\n                            <div class=\"page-link\">\n                                <small>{{ showRange(i) }}</small>\n                            </div>\n                     </li>\n                </ng-container>\n\n                <!-- always show last page cell -->\n                <ng-container *ngIf=\"i == countPages() - 1\">\n                     <li class=\"page-item\" (click)=\"onCellClick(i)\">\n                            <div class=\"page-link\">\n                                <small>{{ showRange(i) }}</small>\n                            </div>\n                     </li>\n                </ng-container>\n\n                <!-- for not last or first page cell -->\n                <ng-container *ngIf=\"i != 0 && i != countPages() - 1 \">\n                    <!-- subrange lower of current cell -->\n                    <ng-container *ngIf=\"i > (currentPage() - 3) && i < currentPage()\">\n                         <li class=\"page-item\" (click)=\"onCellClick(i)\">\n                                <div class=\"page-link\">\n                                    <small>{{ showRange(i) }}</small>\n                                </div>\n                         </li>\n                    </ng-container>\n\n                    <!-- subrabge upper of cuttern cell -->\n                    <ng-container *ngIf=\"i > currentPage() && i < (currentPage() + 3)\">\n                         <li class=\"page-item\" (click)=\"onCellClick(i)\">\n                                <div class=\"page-link\">\n                                    <small>{{ showRange(i) }}</small>\n                                </div>\n                         </li>\n                    </ng-container>\n\n                    <!-- low bordure page cell -->\n                    <ng-container *ngIf=\"i == (currentPage() - 3)\">\n                         <li class=\"page-item\" (click)=\"onCellClick(i)\">\n                                <div class=\"page-link\">\n                                    <small>...</small>\n                                </div>\n                         </li>\n                    </ng-container>\n\n                    <!-- upper bordure page cell -->\n                   <ng-container *ngIf=\"i == (currentPage() + 3)\">\n                         <li class=\"page-item\" (click)=\"onCellClick(i)\">\n                                <div class=\"page-link\">\n                                    <small>...</small>\n                                </div>\n                         </li>\n                    </ng-container>\n\n                </ng-container> <!-- *ngIf=\"i != 0 && i != countPages()\" -->\n\n            </ng-container> <!-- *ngIf=\"i != currentPage()\" -->\n\n        </ng-container> <!-- *ngFor=\"let item of pageArray(); let i = index;\" -->\n\n        <ng-container *ngIf=\"currentPage() < (countPages() - 1)\">\n            <li class=\"page-item\" (click)=\"onCellClick(currentPage() + 1)\">\n                <div class=\"page-link\">\n                    <small>&raquo;</small>\n                </div>\n            </li>\n        </ng-container>\n\n        <ng-container *ngIf=\"currentPage() == (countPages() - 1)\">\n            <li class=\"page-item disabled\">\n                <div class=\"page-link\">\n                    <small>&raquo;</small>\n                </div>\n            </li>\n        </ng-container>\n\n\n\n\n    </ul>\n</nav>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-create/schedule-create.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-create/schedule-create.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>schedule-create works!</p>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-delete/schedule-delete.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-delete/schedule-delete.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>schedule-delete works!</p>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-option/schedule-option.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-option/schedule-option.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>schedule-option works!</p>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-update/schedule-update.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-update/schedule-update.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>schedule-update works!</p>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedules/schedules.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/schedules/schedules.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<layout>\n\n    <div className=\"container-fluid\">\n        <div className=\"row mb-3\">\n            <div class=\"float-right\">\n                +\n            </div>\n            <h5>\n                <i class=\"fas fa-user-secret\"></i>\n                <span> Schedules </span>\n                <a (click)=\"list()\"><i class=\"fas fa-sync fa-sm\"></i></a>\n            </h5>\n        </div>\n    </div>\n\n    <!-- Alert box -->\n    <ng-container *ngIf=\"alertMessage\">\n        <div class=\"alert alert-danger\" role=\"alert\" id=\"alert\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissAlert()\">\n                <span>&times;</span>\n            </button>\n            {{ alertMessage }}\n        </div>\n    </ng-container>\n\n    <!-- Notice box -->\n    <ng-container *ngIf=\"noticeMessage\">\n        <div class=\"alert alert-success\" role=\"alert\" id=\"notice\">\n            <button type=\"button\" class=\"close\" (click)=\"dismissNotice()\">\n                <span>&times;</span>\n            </button>\n            {{ noticeMessage }}\n        </div>\n    </ng-container>\n\n    <form accept-charset=\"UTF-8\" [formGroup]=\"searchForm\">\n        <div class=\"form-row\">\n\n            <div class=\"col-6 my-1\">\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <div class=\"input-group-prepend\">\n                        <div class=\"input-group-text\">{{ page.total }}</div>\n                    </div>\n                    <input type=\"text\" class=\"form-control\" id=\"hostname-pattern\" formControlName=\"hostnamePattern\" />\n                </div>\n            </div>\n\n            <div class=\"col-2 ml-auto\">\n\n                <div class=\"input-group input-group-sm flex-nowrap\">\n                    <select class=\"custom-select\" formControlName=\"pageLimit\" id=\"page-limit\">\n                        <option [ngValue]=\"3\">3</option>\n                        <option [ngValue]=\"5\">5</option>\n                        <option [ngValue]=\"10\">10</option>\n                        <option [ngValue]=\"25\">25</option>\n                        <option [ngValue]=\"50\">50</option>\n                    </select>\n                </div>\n            </div>\n\n        </div>\n    </form>\n\n    <ng-container *ngIf=\"page.schedules\">\n        <table class=\"table table-striped table-hover table-sm\">\n\n            <thead class=\"thead-light\">\n                <tr>\n                    <th>#</th>\n                    <th>hostname</th>\n                </tr>\n            </thead>\n\n            <tbody>\n                <ng-container *ngFor=\"let item of page.schedules; let i = index\">\n                    <tr>\n                        <td>{{ i + 1 + page.offset }}</td>\n                        <td>\n                            {{ item.agentId }}\n                        </td>\n                    </tr>\n                </ng-container>\n            </tbody>\n\n        </table>\n\n        <pager [limit]=\"page.limit\" [total]=\"page.total\" [offset]=\"page.offset\" (newOffset)=\"setNewOffset($event)\" ></pager>\n\n    </ng-container>\n\n</layout>\n");
 
 /***/ }),
 
@@ -547,7 +612,7 @@ function __importDefault(mod) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC1jcmVhdGUvYWdlbnQtY3JlYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FnZW50LWNyZWF0ZS9hZ2VudC1jcmVhdGUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -691,7 +756,7 @@ var AgentCreateComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC1kZWxldGUvYWdlbnQtZGVsZXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FnZW50LWRlbGV0ZS9hZ2VudC1kZWxldGUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -831,7 +896,7 @@ var AgentDeleteComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC1vcHRpb24vYWdlbnQtb3B0aW9uLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FnZW50LW9wdGlvbi9hZ2VudC1vcHRpb24uY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -900,7 +965,7 @@ var AgentOptionComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudC11cGRhdGUvYWdlbnQtdXBkYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FnZW50LXVwZGF0ZS9hZ2VudC11cGRhdGUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -1131,7 +1196,7 @@ var AgentService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZ2VudHMvYWdlbnRzLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FnZW50cy9hZ2VudHMuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -1261,7 +1326,7 @@ var AgentsComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1339,6 +1404,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_create_store_create_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./store-create/store-create.component */ "./src/app/store-create/store-create.component.ts");
 /* harmony import */ var _store_update_store_update_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./store-update/store-update.component */ "./src/app/store-update/store-update.component.ts");
 /* harmony import */ var _store_delete_store_delete_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./store-delete/store-delete.component */ "./src/app/store-delete/store-delete.component.ts");
+/* harmony import */ var _schedules_schedules_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./schedules/schedules.component */ "./src/app/schedules/schedules.component.ts");
+/* harmony import */ var _schedule_create_schedule_create_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./schedule-create/schedule-create.component */ "./src/app/schedule-create/schedule-create.component.ts");
+/* harmony import */ var _schedule_update_schedule_update_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./schedule-update/schedule-update.component */ "./src/app/schedule-update/schedule-update.component.ts");
+/* harmony import */ var _schedule_option_schedule_option_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./schedule-option/schedule-option.component */ "./src/app/schedule-option/schedule-option.component.ts");
+/* harmony import */ var _schedule_delete_schedule_delete_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./schedule-delete/schedule-delete.component */ "./src/app/schedule-delete/schedule-delete.component.ts");
+
+
+
+
+
 
 
 
@@ -1394,7 +1469,12 @@ var AppModule = /** @class */ (function () {
                 _store_option_store_option_component__WEBPACK_IMPORTED_MODULE_24__["StoreOptionComponent"],
                 _store_create_store_create_component__WEBPACK_IMPORTED_MODULE_25__["StoreCreateComponent"],
                 _store_update_store_update_component__WEBPACK_IMPORTED_MODULE_26__["StoreUpdateComponent"],
-                _store_delete_store_delete_component__WEBPACK_IMPORTED_MODULE_27__["StoreDeleteComponent"]
+                _store_delete_store_delete_component__WEBPACK_IMPORTED_MODULE_27__["StoreDeleteComponent"],
+                _schedules_schedules_component__WEBPACK_IMPORTED_MODULE_28__["SchedulesComponent"],
+                _schedule_create_schedule_create_component__WEBPACK_IMPORTED_MODULE_29__["ScheduleCreateComponent"],
+                _schedule_update_schedule_update_component__WEBPACK_IMPORTED_MODULE_30__["ScheduleUpdateComponent"],
+                _schedule_option_schedule_option_component__WEBPACK_IMPORTED_MODULE_31__["ScheduleOptionComponent"],
+                _schedule_delete_schedule_delete_component__WEBPACK_IMPORTED_MODULE_32__["ScheduleDeleteComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1422,7 +1502,7 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJob21lL2hvbWUuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1468,7 +1548,7 @@ var HomeComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsYXlvdXQvbGF5b3V0LmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9sYXlvdXQuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -1576,7 +1656,7 @@ var LoginService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -1684,7 +1764,7 @@ var LoginComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtZW51L21lbnUuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lbnUvbWVudS5jb21wb25lbnQuc2NzcyJ9 */");
 
 /***/ }),
 
@@ -1744,7 +1824,7 @@ var MenuComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJub3QtZm91bmQvbm90LWZvdW5kLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25vdC1mb3VuZC9ub3QtZm91bmQuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -1836,7 +1916,7 @@ var PageGuard = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwYWdlci9wYWdlci5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VyL3BhZ2VyLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -1937,8 +2017,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./users/users.component */ "./src/app/users/users.component.ts");
 /* harmony import */ var _agents_agents_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./agents/agents.component */ "./src/app/agents/agents.component.ts");
 /* harmony import */ var _stores_stores_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./stores/stores.component */ "./src/app/stores/stores.component.ts");
-/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
-/* harmony import */ var _page_guard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./page.guard */ "./src/app/page.guard.ts");
+/* harmony import */ var _schedules_schedules_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./schedules/schedules.component */ "./src/app/schedules/schedules.component.ts");
+/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
+/* harmony import */ var _page_guard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./page.guard */ "./src/app/page.guard.ts");
+
 
 
 
@@ -1951,12 +2033,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: "login", component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"], data: { name: "Login" } },
-    { path: "users", component: _users_users_component__WEBPACK_IMPORTED_MODULE_5__["UsersComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Users" } },
-    { path: "agents", component: _agents_agents_component__WEBPACK_IMPORTED_MODULE_6__["AgentsComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Agents" } },
-    { path: "stores", component: _stores_stores_component__WEBPACK_IMPORTED_MODULE_7__["StoresComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Stores" } },
-    { path: "", component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]], data: { name: "Home" } },
-    { path: "notfound", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]] },
-    { path: "**", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_9__["PageGuard"]] },
+    { path: "users", component: _users_users_component__WEBPACK_IMPORTED_MODULE_5__["UsersComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_10__["PageGuard"]], data: { name: "Users" } },
+    { path: "agents", component: _agents_agents_component__WEBPACK_IMPORTED_MODULE_6__["AgentsComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_10__["PageGuard"]], data: { name: "Agents" } },
+    { path: "stores", component: _stores_stores_component__WEBPACK_IMPORTED_MODULE_7__["StoresComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_10__["PageGuard"]], data: { name: "Stores" } },
+    { path: "schedules", component: _schedules_schedules_component__WEBPACK_IMPORTED_MODULE_8__["SchedulesComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_10__["PageGuard"]], data: { name: "Schedules" } },
+    { path: "", component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_10__["PageGuard"]], data: { name: "Home" } },
+    { path: "notfound", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_9__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_10__["PageGuard"]] },
+    { path: "**", component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_9__["NotFoundComponent"], canActivate: [_page_guard__WEBPACK_IMPORTED_MODULE_10__["PageGuard"]] },
 ];
 var RoutingModule = /** @class */ (function () {
     function RoutingModule() {
@@ -1974,6 +2057,396 @@ var RoutingModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/schedule-create/schedule-create.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/schedule-create/schedule-create.component.css ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NjaGVkdWxlLWNyZWF0ZS9zY2hlZHVsZS1jcmVhdGUuY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/schedule-create/schedule-create.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/schedule-create/schedule-create.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ScheduleCreateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScheduleCreateComponent", function() { return ScheduleCreateComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ScheduleCreateComponent = /** @class */ (function () {
+    function ScheduleCreateComponent() {
+    }
+    ScheduleCreateComponent.prototype.ngOnInit = function () {
+    };
+    ScheduleCreateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-schedule-create',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./schedule-create.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-create/schedule-create.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./schedule-create.component.css */ "./src/app/schedule-create/schedule-create.component.css")).default]
+        })
+    ], ScheduleCreateComponent);
+    return ScheduleCreateComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/schedule-delete/schedule-delete.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/schedule-delete/schedule-delete.component.css ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NjaGVkdWxlLWRlbGV0ZS9zY2hlZHVsZS1kZWxldGUuY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/schedule-delete/schedule-delete.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/schedule-delete/schedule-delete.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ScheduleDeleteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScheduleDeleteComponent", function() { return ScheduleDeleteComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ScheduleDeleteComponent = /** @class */ (function () {
+    function ScheduleDeleteComponent() {
+    }
+    ScheduleDeleteComponent.prototype.ngOnInit = function () {
+    };
+    ScheduleDeleteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-schedule-delete',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./schedule-delete.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-delete/schedule-delete.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./schedule-delete.component.css */ "./src/app/schedule-delete/schedule-delete.component.css")).default]
+        })
+    ], ScheduleDeleteComponent);
+    return ScheduleDeleteComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/schedule-option/schedule-option.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/schedule-option/schedule-option.component.css ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NjaGVkdWxlLW9wdGlvbi9zY2hlZHVsZS1vcHRpb24uY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/schedule-option/schedule-option.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/schedule-option/schedule-option.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ScheduleOptionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScheduleOptionComponent", function() { return ScheduleOptionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ScheduleOptionComponent = /** @class */ (function () {
+    function ScheduleOptionComponent() {
+    }
+    ScheduleOptionComponent.prototype.ngOnInit = function () {
+    };
+    ScheduleOptionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-schedule-option',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./schedule-option.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-option/schedule-option.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./schedule-option.component.css */ "./src/app/schedule-option/schedule-option.component.css")).default]
+        })
+    ], ScheduleOptionComponent);
+    return ScheduleOptionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/schedule-update/schedule-update.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/schedule-update/schedule-update.component.css ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NjaGVkdWxlLXVwZGF0ZS9zY2hlZHVsZS11cGRhdGUuY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/schedule-update/schedule-update.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/schedule-update/schedule-update.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ScheduleUpdateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScheduleUpdateComponent", function() { return ScheduleUpdateComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ScheduleUpdateComponent = /** @class */ (function () {
+    function ScheduleUpdateComponent() {
+    }
+    ScheduleUpdateComponent.prototype.ngOnInit = function () {
+    };
+    ScheduleUpdateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-schedule-update',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./schedule-update.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule-update/schedule-update.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./schedule-update.component.css */ "./src/app/schedule-update/schedule-update.component.css")).default]
+        })
+    ], ScheduleUpdateComponent);
+    return ScheduleUpdateComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/schedule.service.ts":
+/*!*************************************!*\
+  !*** ./src/app/schedule.service.ts ***!
+  \*************************************/
+/*! exports provided: ScheduleService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScheduleService", function() { return ScheduleService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var ScheduleService = /** @class */ (function () {
+    function ScheduleService(httpClient) {
+        this.httpClient = httpClient;
+    }
+    ScheduleService.prototype.list = function (page) {
+        return this.httpClient.post("/api/v1/schedule/list", {
+            "limit": page.limit,
+            "offset": page.offset,
+            "hostnamePattern": page.hostnamePattern
+        });
+    };
+    ScheduleService.prototype.create = function (schedule) {
+        return this.httpClient.post("/api/v1/schedule/create", {
+            "agentId": schedule.agentId,
+            "storeId": schedule.storeId,
+            "actionType": schedule.actionType,
+            "storePath": schedule.storePath,
+            "resourse": schedule.resourse,
+            "mins": schedule.mins,
+            "hours": schedule.hours,
+            "mdays": schedule.mdays,
+            "wdays": schedule.wdays,
+            "depth": schedule.depth
+        });
+    };
+    ScheduleService.prototype.update = function (schedule) {
+        return this.httpClient.post("/api/v1/schedule/update", {
+            "id": schedule.id,
+            "agentId": schedule.agentId,
+            "storeId": schedule.storeId,
+            "actionType": schedule.actionType,
+            "storePath": schedule.storePath,
+            "resourse": schedule.resourse,
+            "mins": schedule.mins,
+            "hours": schedule.hours,
+            "mdays": schedule.mdays,
+            "wdays": schedule.wdays,
+            "depth": schedule.depth
+        });
+    };
+    ScheduleService.prototype.deletex = function (schedule) {
+        return this.httpClient.post("/api/v1/schedule/delete", {
+            "id": schedule.id
+        });
+    };
+    ScheduleService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    ScheduleService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], ScheduleService);
+    return ScheduleService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/schedules/schedules.component.scss":
+/*!****************************************************!*\
+  !*** ./src/app/schedules/schedules.component.scss ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NjaGVkdWxlcy9zY2hlZHVsZXMuY29tcG9uZW50LnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/schedules/schedules.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/schedules/schedules.component.ts ***!
+  \**************************************************/
+/*! exports provided: SchedulesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SchedulesComponent", function() { return SchedulesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _schedule_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../schedule.service */ "./src/app/schedule.service.ts");
+
+
+
+
+
+var SchedulesComponent = /** @class */ (function () {
+    function SchedulesComponent(formBuilder, scheduleService) {
+        this.formBuilder = formBuilder;
+        this.scheduleService = scheduleService;
+        this.noticeMessage = null;
+        this.alertMessage = null;
+        this.page = {
+            total: 0,
+            limit: 5,
+            offset: 0,
+            hostnamePattern: "",
+            schedules: []
+        };
+    }
+    SchedulesComponent.prototype.setNewOffset = function (newOffset) {
+        this.page.offset = newOffset;
+        this.list();
+    };
+    SchedulesComponent.prototype.list = function () {
+        var _this = this;
+        this.scheduleService.list(this.page).subscribe(function (response) {
+            if (response.error == false) {
+                _this.page = response.result;
+                if (_this.page.schedules == null) {
+                    _this.page.schedules = [];
+                }
+            }
+            else {
+                if (response.message != null) {
+                    _this.alertMessage = "Backend error: " + response.message;
+                }
+                else {
+                    _this.alertMessage = "Backend error.";
+                }
+            }
+        }, function (error) {
+            if (error.message != null) {
+                _this.alertMessage = "Communication error: " + error.message;
+            }
+            else {
+                _this.alertMessage = "Communication error.";
+            }
+        });
+    };
+    /* Alerts */
+    SchedulesComponent.prototype.showAlert = function (message) {
+        this.alertMessage = message;
+    };
+    SchedulesComponent.prototype.dismissAlert = function () {
+        this.alertMessage = null;
+    };
+    /* Notices */
+    SchedulesComponent.prototype.showNotice = function (message) {
+        this.noticeMessage = message;
+    };
+    SchedulesComponent.prototype.dismissNotice = function () {
+        this.noticeMessage = null;
+    };
+    SchedulesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.searchForm = this.formBuilder.group({
+            hostnamePattern: [""],
+            pageLimit: [this.page.limit],
+        });
+        this.list();
+        this.searchForm.get('hostnamePattern').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .subscribe(function (value) {
+            _this.page.hostnamePattern = value;
+            _this.list();
+        });
+        this.searchForm.get('pageLimit').valueChanges
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(300), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])())
+            .subscribe(function (value) {
+            console.log(value);
+            _this.page.limit = value;
+            _this.list();
+        });
+    };
+    SchedulesComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _schedule_service__WEBPACK_IMPORTED_MODULE_4__["ScheduleService"] }
+    ]; };
+    SchedulesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'schedules',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./schedules.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedules/schedules.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./schedules.component.scss */ "./src/app/schedules/schedules.component.scss")).default]
+        })
+    ], SchedulesComponent);
+    return SchedulesComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/store-create/store-create.component.scss":
 /*!**********************************************************!*\
   !*** ./src/app/store-create/store-create.component.scss ***!
@@ -1983,7 +2456,7 @@ var RoutingModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS1jcmVhdGUvc3RvcmUtY3JlYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JlLWNyZWF0ZS9zdG9yZS1jcmVhdGUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -2145,7 +2618,7 @@ var StoreCreateComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS1kZWxldGUvc3RvcmUtZGVsZXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JlLWRlbGV0ZS9zdG9yZS1kZWxldGUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -2285,7 +2758,7 @@ var StoreDeleteComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS1vcHRpb24vc3RvcmUtb3B0aW9uLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JlLW9wdGlvbi9zdG9yZS1vcHRpb24uY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -2354,7 +2827,7 @@ var StoreOptionComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS11cGRhdGUvc3RvcmUtdXBkYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JlLXVwZGF0ZS9zdG9yZS11cGRhdGUuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -2607,7 +3080,7 @@ var StoreService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZXMvc3RvcmVzLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3Jlcy9zdG9yZXMuY29tcG9uZW50LnNjc3MifQ== */");
 
 /***/ }),
 
@@ -2737,7 +3210,7 @@ var StoresComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLWNyZWF0ZS91c2VyLWNyZWF0ZS5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItY3JlYXRlL3VzZXItY3JlYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -2876,7 +3349,7 @@ var UserCreateComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLWRlbGV0ZS91c2VyLWRlbGV0ZS5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItZGVsZXRlL3VzZXItZGVsZXRlLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -3016,7 +3489,7 @@ var UserDeleteComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLW9wdGlvbi91c2VyLW9wdGlvbi5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItb3B0aW9uL3VzZXItb3B0aW9uLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -3085,7 +3558,7 @@ var UserOptionComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLXVwZGF0ZS91c2VyLXVwZGF0ZS5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXItdXBkYXRlL3VzZXItdXBkYXRlLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 
@@ -3308,7 +3781,7 @@ var UserService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2Vycy91c2Vycy5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXJzL3VzZXJzLmNvbXBvbmVudC5zY3NzIn0= */");
 
 /***/ }),
 

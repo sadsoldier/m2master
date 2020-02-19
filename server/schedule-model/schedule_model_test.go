@@ -37,16 +37,16 @@ func TestCreate(t *testing.T) {
 
     model := New(dbx)
     schedule := Schedule{
-            AgentId: 1,
-            StoreId: 1,
-            Type: "dump",
-            StorePath: "/" ,
-            Resourse: "qwerty",
-            Mins: "5",
-            Hours: "5",
-            Wdays: "1",
-            Mdays: "2",
-            Depth: 10,
+            AgentId:    1,
+            StoreId:    1,
+            ActionType: "dump",
+            StorePath:  "/" ,
+            Resourse:   "qwerty",
+            Mins:       "5",
+            Hours:      "5",
+            Wdays:      "1",
+            Mdays:      "2",
+            Depth:      10,
     }
 
     err = model.Migrate()
@@ -81,17 +81,17 @@ func TestUpdate(t *testing.T) {
 
     model := New(dbx)
     schedule := Schedule{
-            Id: 1,
-            AgentId: 2,
-            StoreId: 2,
-            Type: "restore",
-            StorePath: "/" ,
-            Resourse: "qwerty",
-            Mins: "5",
-            Hours: "5",
-            Wdays: "1",
-            Mdays: "2",
-            Depth: 10,
+            Id:         1,
+            AgentId:    2,
+            StoreId:    2,
+            ActionType: "restore",
+            StorePath:  "/" ,
+            Resourse:   "qwerty",
+            Mins:       "5",
+            Hours:      "5",
+            Wdays:      "1",
+            Mdays:      "2",
+            Depth:      10,
     }
 
     err = model.Migrate()

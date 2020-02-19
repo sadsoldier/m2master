@@ -17,7 +17,7 @@ const scheme = `
         id          INTEGER PRIMARY KEY,
         agent_id    INTEGER NOT NULL,
         store_id    INTEGER NOT NULL,
-        type        VARCHAR(255) NOT NULL,
+        action_type VARCHAR(255) NOT NULL,
         store_path  VARCHAR(255) NOT NULL,
         resourse    VARCHAR(255) NOT NULL,
         mins        VARCHAR(255) NOT NULL,
@@ -34,9 +34,13 @@ type Model struct {
 type Schedule struct {
     Id          int     `db:"id"            json:"id"`
     AgentId     int     `db:"agent_id"      json:"agentId"`
+    AgentURI    string  `db:"-"             json:"agentURI"`
+
     StoreId     int     `db:"store_id"      json:"storeId"`
-    Type        string  `db:"type"          json:"type"`        // dump, restore, ?copy
-    StorePath   string  `db:"store_path"    json:"store_path"`
+    StoreURI    string  `db:"-"             json:"storeURI"`
+
+    ActionType  string  `db:"action_type"   json:"actionType"`        // dump, restore, ?copy
+    StorePath   string  `db:"store_path"    json:"storePath"`
     Resourse    string  `db:"resourse"      json:"resourse"`
     Mins        string  `db:"mins"          json:"mins"`
     Hours       string  `db:"hours"         json:"hours"`
@@ -53,8 +57,81 @@ type Page struct {
     Schedules       *[]Schedule `json:"schedules"`
 }
 
+
 func (this *Model) Migrate() error {
     _, err := this.db.Exec(scheme)
+    if err != nil {
+        log.Println(err)
+        return err
+    }
+    return nil
+}
+
+
+func (this *Model) List(page *Page) (error) {
+    var request string
+    var err error
+    var total int
+
+    resoursePattern := "%" + page.ResoursePattern + "%"
+    request = `SELECT COUNT(id) as total FROM schedules WHERE resourse LIKE $1`
+    err = this.db.QueryRow(request, resoursePattern).Scan(&total)
+    if err != nil {
+        log.Println(err)
+        return err
+    }
+    page.Total = total
+
+    var schedules []Schedule
+    request = `SELECT
+                    id,
+                    agent_id,
+                    store_id,
+                    action_type,
+                    store_path,
+                    resourse,
+                    mins,
+                    hours,
+                    wdays,
+                    mdays,
+                    depth
+                FROM schedules
+                WHERE resourse LIKE $1
+                ORDER BY resourse
+                LIMIT $2 OFFSET $3`
+    err = this.db.Select(&schedules, request, resoursePattern, page.Limit, page.Offset)
+    if err != nil {
+        log.Println(err)
+        return err
+    }
+    page.Schedules = &schedules
+    return nil
+}
+
+func (this *Model) Create(schedule Schedule) error {
+    request := `INSERT INTO schedules(
+                    agent_id,
+                    store_id,
+                    action_type,
+                    store_path,
+                    resourse,
+                    mins,
+                    hours,
+                    wdays,
+                    mdays,
+                    depth)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`
+    _, err := this.db.Exec(request,
+            schedule.AgentId,
+            schedule.StoreId,
+            schedule.ActionType,
+            schedule.StorePath,
+            schedule.Resourse,
+            schedule.Mins,
+            schedule.Hours,
+            schedule.Wdays,
+            schedule.Mdays,
+            schedule.Depth)
     if err != nil {
         log.Println(err)
         return err
@@ -68,18 +145,18 @@ func (this *Model) ListAll(resoursePattern string) (*[]Schedule, error) {
     resoursePattern = "%" + resoursePattern + "%"
     var schedules []Schedule
     request = `SELECT
-                    id,
-                    agent_id,
-                    store_id,
-                    type,
-                    store_path,
-                    resourse,
-                    mins,
-                    hours,
-                    wdays,
-                    mdays,
-                    depth
-                FROM schedules
+                    s.id,
+                    s.agent_id,
+                    s.store_id,
+                    s.action_type,
+                    s.store_path,
+                    s.resourse,
+                    s.mins,
+                    s.hours,
+                    s.wdays,
+                    s.mdays,
+                    s.depth
+                FROM schedules as s
                 WHERE resourse LIKE $1
                 ORDER BY resourse`
     err = this.db.Select(&schedules, request, resoursePattern)
@@ -87,7 +164,6 @@ func (this *Model) ListAll(resoursePattern string) (*[]Schedule, error) {
         log.Println(err)
         return nil, err
     }
-    log.Println(resoursePattern)
     return &schedules, nil
 }
 
@@ -100,7 +176,7 @@ func (this *Model) GetById(id int) (Schedule, error) {
                     id,
                     agent_id,
                     store_id,
-                    type,
+                    action_type,
                     store_path,
                     resourse,
                     mins,
@@ -126,78 +202,6 @@ func (this *Model) GetById(id int) (Schedule, error) {
 }
 
 
-func (this *Model) List(page *Page) (error) {
-    var request string
-    var err error
-    var total int
-
-    resoursePattern := "%" + page.ResoursePattern + "%"
-    request = `SELECT COUNT(id) as total FROM schedules WHERE resourse LIKE $1`
-    err = this.db.QueryRow(request, resoursePattern).Scan(&total)
-    if err != nil {
-        log.Println(err)
-        return err
-    }
-    page.Total = total
-
-    var schedules []Schedule
-    request = `SELECT
-                    id,
-                    agent_id,
-                    store_id,
-                    type,
-                    store_path,
-                    resourse,
-                    mins,
-                    hours,
-                    wdays,
-                    mdays,
-                    depth
-                FROM schedules
-                WHERE resourse LIKE $1
-                ORDER BY resourse
-                LIMIT $2 OFFSET $3`
-    err = this.db.Select(&schedules, request, resoursePattern, page.Limit, page.Offset)
-    if err != nil {
-        log.Println(err)
-        return err
-    }
-    page.Schedules = &schedules
-    return nil
-}
-
-func (this *Model) Create(schedule Schedule) error {
-    request := `INSERT INTO schedules(
-                    agent_id,
-                    store_id,
-                    type,
-                    store_path,
-                    resourse,
-                    mins,
-                    hours,
-                    wdays,
-                    mdays,
-                    depth)
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`
-    _, err := this.db.Exec(request,
-            schedule.AgentId,
-            schedule.StoreId,
-            schedule.Type,
-            schedule.StorePath,
-            schedule.Resourse,
-            schedule.Mins,
-            schedule.Hours,
-            schedule.Wdays,
-            schedule.Mdays,
-            schedule.Depth)
-    if err != nil {
-        log.Println(err)
-        return err
-    }
-    return nil
-}
-
-
 func (this *Model) Update(schedule Schedule) error {
     var err error
     request := `UPDATE schedules
@@ -216,7 +220,7 @@ func (this *Model) Update(schedule Schedule) error {
     _, err = this.db.Exec(request,
                     schedule.AgentId,
                     schedule.StoreId,
-                    schedule.Type,
+                    schedule.ActionType,
                     schedule.StorePath,
                     schedule.Resourse,
                     schedule.Mins,

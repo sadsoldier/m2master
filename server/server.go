@@ -43,7 +43,7 @@ import (
     "master/server/store-controller"
 
     "master/server/schedule-controller"
-
+    "master/server/schedule-model"
 
     "master/daemon"
     "master/config"
@@ -87,6 +87,9 @@ func (this *Server) Migrate() {
 
     store := storeModel.New(db)
     store.Migrate()
+
+    schedule := scheduleModel.New(db)
+    schedule.Migrate()
 
     os.Exit(0)
 }
@@ -334,6 +337,7 @@ func (this *Server) Run() error {
 
     scheduleController := scheduleController.New(this.Config, this.db)
     botGroup.POST("/schedule/list", scheduleController.List)
+    botGroup.POST("/schedule/listall", scheduleController.ListAll)
     botGroup.POST("/schedule/create", scheduleController.Create)
     botGroup.POST("/schedule/update", scheduleController.Update)
     botGroup.POST("/schedule/delete", scheduleController.Delete)

@@ -78,6 +78,29 @@ func (this *ScheduleController) List(context *gin.Context) {
     sendResult(context, &page)
 }
 
+type ListAllReq struct {
+    ResoursePattern string      `json:"resoursePattern"`
+}
+
+
+func (this *ScheduleController) ListAll(context *gin.Context) {
+    var err error
+    var req ListAllReq
+    err = context.Bind(&req)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+
+    schedules, err := this.schedule.ListAll(req.ResoursePattern)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+    sendResult(context, *schedules)
+}
+
+
 func (this *ScheduleController) Create(context *gin.Context) {
     var schedule scheduleModel.Schedule
     var err error

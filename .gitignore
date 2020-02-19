@@ -20,6 +20,6 @@ m2cli
 builder
 config/config.go
 bundle/public.go
-
+public/
 
 

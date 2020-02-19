@@ -311,7 +311,13 @@ EXTRA_m2srv_SOURCES = \
 	tools/file.go \
 	bundle/public.go \
 	\
-	server/server.go \
+	server/agent-controller/agent_controller.go \
+	server/agent-model/agent_model.go \
+	server/runner-model/runner_model.go \
+	server/schedule-controller/schedule_controller.go \
+	server/schedule-model/schedule_model.go \
+	server/store-controller/store_controller.go \
+	server/store-model/store_model.go \
 	server/user-controller/user_controller.go \
 	server/user-model/user_model.go
 

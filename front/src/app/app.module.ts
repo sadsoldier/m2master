@@ -34,7 +34,12 @@ import { StoresComponent } from './stores/stores.component';
 import { StoreOptionComponent } from './store-option/store-option.component';
 import { StoreCreateComponent } from './store-create/store-create.component';
 import { StoreUpdateComponent } from './store-update/store-update.component';
-import { StoreDeleteComponent } from './store-delete/store-delete.component'
+import { StoreDeleteComponent } from './store-delete/store-delete.component';
+import { SchedulesComponent } from './schedules/schedules.component';
+import { ScheduleCreateComponent } from './schedule-create/schedule-create.component';
+import { ScheduleUpdateComponent } from './schedule-update/schedule-update.component';
+import { ScheduleOptionComponent } from './schedule-option/schedule-option.component';
+import { ScheduleDeleteComponent } from './schedule-delete/schedule-delete.component'
 
 @NgModule({
     declarations: [
@@ -59,7 +64,12 @@ import { StoreDeleteComponent } from './store-delete/store-delete.component'
         StoreOptionComponent,
         StoreCreateComponent,
         StoreUpdateComponent,
-        StoreDeleteComponent
+        StoreDeleteComponent,
+        SchedulesComponent,
+        ScheduleCreateComponent,
+        ScheduleUpdateComponent,
+        ScheduleOptionComponent,
+        ScheduleDeleteComponent
     ],
     imports: [
         BrowserModule,
