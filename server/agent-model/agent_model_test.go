@@ -127,6 +127,4 @@ func TestDelete(t *testing.T) {
     }
 
     os.Remove("test.db")
-
-
 }

@@ -39,7 +39,7 @@ func TestCreate(t *testing.T) {
 
     model := New(dbx)
     store := Store{
-        Scheme:     "https",
+        Scheme:     "http",
         Hostname:   "localhost",
         Port:       7002,
         Username:   "user1",
@@ -78,7 +78,7 @@ func TestUpdate(t *testing.T) {
 
     model := New(dbx)
     store := Store{
-        Scheme:     "http",
+        Scheme:     "https",
         Hostname:   "some.bare",
         Port:       7007,
         Username:   "user21",

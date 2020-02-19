@@ -2,27 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface Store {
-    id?: number
+    id?:        number
     storeType?: string
-    scheme?: string
-    hostname?: string
-    port?: number
-    username?: string
-    password?: string
+    scheme?:    string
+    hostname?:  string
+    port?:      number
+    username?:  string
+    password?:  string
+    uri?:       string
+    safeURI?:   string
 }
 
 export interface StorePage {
-    total?: number
-    offset: number
-    limit: number
+    total?:     number
+    offset:     number
+    limit:      number
     hostnamePattern: string
-    stores: Store[]
+    stores:     Store[]
 }
 
 export interface StoreResponse {
-    error: boolean
-    message: string
-    result: StorePage
+    error:      boolean
+    message:    string
+    result:     StorePage
 }
 
 @Injectable({
@@ -35,35 +37,34 @@ export class StoreService {
 
     list(page: StorePage) {
         return this.httpClient.post<StoreResponse>(`/api/v1/store/list`, {
-            "limit": page.limit,
-            "offset": page.offset,
+            "limit":        page.limit,
+            "offset":       page.offset,
             "hostnamePattern": page.hostnamePattern
         })
     }
 
     create(store: Store) {
         return this.httpClient.post<StoreResponse>(`/api/v1/store/create`, {
-            "storeType": store.storeType,
-            "scheme": store.scheme,
-            "hostname": store.hostname,
-            "port": store.port,
-            "password": store.password,
-            "username": store.username,
+            "storeType":    store.storeType,
+            "scheme":       store.scheme,
+            "hostname":     store.hostname,
+            "port":         store.port,
+            "password":     store.password,
+            "username":     store.username,
         })
     }
 
     update(store: Store) {
         return this.httpClient.post<StoreResponse>(`/api/v1/store/update`, {
-            "id": store.id,
-            "storeType": store.storeType,
-            "scheme": store.scheme,
-            "hostname": store.hostname,
-            "port": store.port,
-            "password": store.password,
-            "username": store.username,
+            "id":           store.id,
+            "storeType":    store.storeType,
+            "scheme":       store.scheme,
+            "hostname":     store.hostname,
+            "port":         store.port,
+            "password":     store.password,
+            "username":     store.username,
         })
     }
-
 
     deletex(store: Store) {
         return this.httpClient.post<StoreResponse>(`/api/v1/store/delete`, {

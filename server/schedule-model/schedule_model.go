@@ -34,14 +34,12 @@ type Model struct {
 type Schedule struct {
     Id          int     `db:"id"            json:"id"`
     AgentId     int     `db:"agent_id"      json:"agentId"`
-    AgentURI    string  `db:"-"             json:"agentURI"`
-
     StoreId     int     `db:"store_id"      json:"storeId"`
-    StoreURI    string  `db:"-"             json:"storeURI"`
 
     ActionType  string  `db:"action_type"   json:"actionType"`        // dump, restore, ?copy
     StorePath   string  `db:"store_path"    json:"storePath"`
     Resourse    string  `db:"resourse"      json:"resourse"`
+
     Mins        string  `db:"mins"          json:"mins"`
     Hours       string  `db:"hours"         json:"hours"`
     Mdays       string  `db:"mdays"         json:"mdays"`

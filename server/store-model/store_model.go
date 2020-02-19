@@ -22,7 +22,9 @@ const scheme = `
         hostname    VARCHAR(255) NOT NULL UNIQUE,
         port        INTEGER NOT NULL,
         username    VARCHAR(255) NOT NULL,
-        password    VARCHAR(255) NOT NULL
+        password    VARCHAR(255) NOT NULL,
+        uri         VARCHAR(255) NOT NULL,
+        safe_uri    VARCHAR(255) NOT NULL
     );`
 
 type Model struct {
@@ -39,6 +41,10 @@ type Store struct {
 
     Username    string  `db:"username"  json:"username"`
     Password    string  `db:"password"  json:"password"`
+
+    URI         string  `db:"uri"       json:"uri"`
+    SafeURI     string  `db:"safe_uri"  json:"safeURI"`
+
 }
 
 type Page struct {
@@ -73,7 +79,7 @@ func (this *Model) List(page *Page) (error) {
     page.Total = total
 
     var stores []Store
-    request = `SELECT id, type, scheme, hostname, port, username, '' as password
+    request = `SELECT id, type, scheme, hostname, port, username, '' as password, uri, safe_uri
                 FROM stores
                 WHERE hostname LIKE $1
                 ORDER BY hostname
@@ -94,7 +100,7 @@ func (this *Model) GetById(id int) (Store, error) {
 
     var store Store
     var stores []Store
-    request = `SELECT id, type, scheme, hostname, port, username, password
+    request = `SELECT id, type, scheme, hostname, port, username, password, uri, safe_uri
                 FROM stores
                 WHERE id = $1 LIMIT 1`
 
@@ -114,15 +120,81 @@ func (this *Model) GetById(id int) (Store, error) {
 
 
 func (this *Model) Create(store Store) error {
-    request := `INSERT INTO stores(type, scheme, hostname, port, username, password)
-                VALUES ($1, $2, $3, $4, $5, $6)`
-    _, err := this.db.Exec(request, store.Type, store.Scheme, store.Hostname, store.Port, store.Username, store.Password)
+    request := `INSERT INTO stores(type, scheme, hostname, port, username, password, uri, safe_uri)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
+    uri := fmt.Sprintf("%s://%s:%s@%s:%d",
+                    store.Scheme,
+                    store.Username,
+                    store.Password,
+                    store.Hostname,
+                    store.Port)
+    safeURI := fmt.Sprintf("%s://%s:%d",
+                    store.Scheme,
+                    store.Hostname,
+                    store.Port)
+
+    _, err := this.db.Exec(
+                    request,
+                    store.Type,
+                    store.Scheme,
+                    store.Hostname,
+                    store.Port,
+                    store.Username,
+                    store.Password,
+                    uri, safeURI)
     if err != nil {
         log.Println(err)
         return err
     }
     return nil
 }
+
+
+func (this *Model) Update(store Store) error {
+    var err error
+
+    oldStore, err := this.GetById(store.Id)
+    if err != nil {
+        log.Println(err)
+        return err
+    }
+
+    if len(store.Password) == 0 {
+        store.Password = oldStore.Password
+    }
+
+    uri := fmt.Sprintf("%s://%s:%s@%s:%d",
+                    store.Scheme,
+                    store.Username,
+                    store.Password,
+                    store.Hostname,
+                    store.Port)
+    safeURI := fmt.Sprintf("%s://%s:%d",
+                    store.Scheme,
+                    store.Hostname,
+                    store.Port)
+
+    request := `UPDATE stores
+                SET type = $1, scheme = $2, hostname = $3, port = $4, username = $5, password = $6, uri = $7, safe_uri = $8
+                WHERE id = $9`
+    _, err = this.db.Exec(request,
+                    store.Type,
+                    store.Scheme,
+                    store.Hostname,
+                    store.Port,
+                    store.Username,
+                    store.Password,
+                    uri,
+                    safeURI,
+                    store.Id)
+    if err != nil {
+        log.Println(err)
+        return err
+    }
+    return nil
+}
+
+
 
 func (this *Model) Delete(store Store) error {
     request := `DELETE FROM stores WHERE id = $1`
@@ -131,33 +203,6 @@ func (this *Model) Delete(store Store) error {
         log.Println(err)
         return err
 
-    }
-    return nil
-}
-
-func (this *Model) Update(store Store) error {
-    var err error
-    if len(store.Password) > 0 {
-        request := `UPDATE stores
-                    SET type = $1, scheme = $2, hostname = $3, port = $4, username = $5, password = $6
-                    WHERE id = $7`
-        _, err = this.db.Exec(request, store.Type, store.Scheme, store.Hostname,
-                                        store.Port, store.Username, store.Password, store.Id)
-    } else {
-        request := `UPDATE stores
-                    SET type = $1, scheme = $2, hostname = $3, port = $4, username = $5
-                    WHERE id = $6`
-        _, err = this.db.Exec(request,
-                                store.Type,
-                                store.Scheme,
-                                store.Hostname,
-                                store.Port,
-                                store.Username,
-                                store.Id)
-    }
-    if err != nil {
-        log.Println(err)
-        return err
     }
     return nil
 }

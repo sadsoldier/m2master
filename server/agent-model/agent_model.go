@@ -6,15 +6,11 @@
 package agentModel
 
 import (
-    //"math/rand"
     "log"
-    //"strings"
     "errors"
     "fmt"
 
     "github.com/jmoiron/sqlx"
-    //_ "github.com/jackc/pgx/v4/stdlib"
-
 )
 
 const scheme = `
@@ -25,7 +21,9 @@ const scheme = `
         hostname    VARCHAR(255) NOT NULL UNIQUE,
         port        INTEGER NOT NULL,
         username    VARCHAR(255) NOT NULL,
-        password    VARCHAR(255) NOT NULL
+        password    VARCHAR(255) NOT NULL,
+        uri         VARCHAR(255) NOT NULL,
+        safe_uri    VARCHAR(255) NOT NULL
     );`
 
 type Model struct {
@@ -41,6 +39,9 @@ type Agent struct {
 
     Username    string  `db:"username" json:"username"`
     Password    string  `db:"password" json:"password"`
+
+    URI         string  `db:"uri"      json:"uri"`
+    SafeURI     string  `db:"safe_uri" json:"safeURI"`
 }
 
 type Page struct {
@@ -75,7 +76,7 @@ func (this *Model) List(page *Page) error {
     page.Total = total
 
     var agents []Agent
-    request = `SELECT id, scheme, hostname, port, username, '' as password
+    request = `SELECT id, scheme, hostname, port, username, '' as password, uri, safe_uri
                 FROM agents
                 WHERE hostname LIKE $1
                 ORDER BY hostname
@@ -97,7 +98,7 @@ func (this *Model) GetById(id int) (Agent, error) {
     var agents []Agent
     var agent Agent
 
-    request = `SELECT id, scheme, hostname, port, username, password
+    request = `SELECT id, scheme, hostname, port, username, password, uri, safe_uri
                 FROM agents
                 WHERE id = $1 LIMIT 1`
 
@@ -116,9 +117,69 @@ func (this *Model) GetById(id int) (Agent, error) {
 }
 
 func (this *Model) Create(agent Agent) error {
-    request := `INSERT INTO agents(scheme, hostname, port, username, password)
-                VALUES ($1, $2, $3, $4, $5)`
-    _, err := this.db.Exec(request, agent.Scheme, agent.Hostname, agent.Port, agent.Username, agent.Password)
+    request := `INSERT INTO agents(scheme, hostname, port, username, password, uri, safe_uri)
+                VALUES ($1, $2, $3, $4, $5, $6, $7)`
+    uri := fmt.Sprintf("%s://%s:%s@%s:%d",
+                        agent.Scheme,
+                        agent.Username,
+                        agent.Password,
+                        agent.Hostname,
+                        agent.Port)
+    safeURI := fmt.Sprintf("%s://%s:%d",
+                        agent.Scheme,
+                        agent.Hostname,
+                        agent.Port)
+
+    _, err := this.db.Exec(request,
+                        agent.Scheme,
+                        agent.Hostname,
+                        agent.Port,
+                        agent.Username,
+                        agent.Password,
+                        uri,
+                        safeURI)
+    if err != nil {
+        log.Println(err)
+        return err
+    }
+    return nil
+}
+
+func (this *Model) Update(agent Agent) error {
+    var err error
+
+    oldAgent, err := this.GetById(agent.Id)
+    if err != nil {
+        log.Println(err)
+        return err
+    }
+
+    if len(agent.Password) == 0 {
+        agent.Password = oldAgent.Password
+    }
+
+    uri := fmt.Sprintf("%s://%s:%s@%s:%d",
+                    agent.Scheme,
+                    agent.Username,
+                    agent.Password,
+                    agent.Hostname,
+                    agent.Port)
+    safeURI := fmt.Sprintf("%s://%s:%d",
+                        agent.Scheme,
+                        agent.Hostname,
+                        agent.Port)
+    request := `UPDATE agents
+                SET scheme = $1, hostname = $2, port = $3, username = $4, password = $5, uri = $6, safe_uri = $7
+                WHERE id = $8`
+    _, err = this.db.Exec(request,
+                    agent.Scheme,
+                    agent.Hostname,
+                    agent.Port,
+                    agent.Username,
+                    agent.Password,
+                    uri,
+                    safeURI,
+                    agent.Id)
     if err != nil {
         log.Println(err)
         return err
@@ -136,29 +197,6 @@ func (this *Model) Delete(agent Agent) error {
     }
     return nil
 }
-
-func (this *Model) Update(agent Agent) error {
-    var err error
-    if len(agent.Password) > 0 {
-        request := `UPDATE agents
-                    SET scheme = $1, hostname = $2, port = $3, username = $4, password = $5
-                    WHERE id = $6`
-        _, err = this.db.Exec(request, agent.Scheme,agent.Hostname,
-                                        agent.Port, agent.Username, agent.Password, agent.Id)
-    } else {
-        request := `UPDATE agents
-                    SET scheme = $1, hostname = $2, port = $3, username = $4
-                    WHERE id = $5`
-        _, err = this.db.Exec(request, agent.Scheme,agent.Hostname,
-                                        agent.Port, agent.Username, agent.Id)
-    }
-    if err != nil {
-        log.Println(err)
-        return err
-    }
-    return nil
-}
-
 
 func New(db *sqlx.DB) *Model {
     model := Model{

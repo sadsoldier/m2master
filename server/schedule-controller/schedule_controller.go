@@ -73,8 +73,19 @@ func sendResult(context *gin.Context, result interface{}) {
 
 func (this *ScheduleController) List(context *gin.Context) {
     var page scheduleModel.Page
-    _ = context.Bind(&page)
-    this.schedule.List(&page)
+    var err error
+
+    err = context.Bind(&page)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+
+    err = this.schedule.List(&page)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
     sendResult(context, &page)
 }
 
