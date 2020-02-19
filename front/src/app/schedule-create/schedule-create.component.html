@@ -18,6 +18,25 @@
 
                     <div class="modal-body">
 
+                        <div class="form-group">
+                            <label for="{{ formId('agentId') }}">Agent:</label>
+                            <select class="form-control" formControlName="agentId" id="{{ formId('agentId') }}">
+                                <option *ngFor="let agent of agents" [value]="agent.id">
+                                    {{agent.safeURI}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ formId('storeId') }}">Store:</label>
+                            <select class="form-control" formControlName="storeId" id="{{ formId('storeId') }}">
+                                <option *ngFor="let store of stores" [value]="store.id">
+                                    {{store.safeURI}}
+                                </option>
+                            </select>
+                        </div>
+
+
                     </div>
 
                     <div *ngIf="this.alertMessage" class="alert alert-warning border mx-4" role="alert">

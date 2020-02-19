@@ -6,7 +6,7 @@ declare var $: any
 import { ScheduleService, Schedule, SchedulePage, ScheduleResponse } from '../schedule.service'
 
 import { AgentService, Agent, AgentAllResponse } from '../agent.service'
-import { StoreService, Store, StoreResponse } from '../store.service'
+import { StoreService, Store, StoreAllResponse } from '../store.service'
 
 
 @Component({
@@ -65,6 +65,31 @@ export class ScheduleCreateComponent implements OnInit {
         )
     }
 
+    getStores() {
+        this.storeService.listAll("").subscribe(
+            (response: StoreAllResponse) => {
+                if (response.error == false) {
+                    this.stores = response.result
+                    if (this.stores == null) {
+                        this.stores = []
+                    }
+                } else {
+                    if (response.message != null) {
+                        this.alertMessage = "Backend error: " + response.message
+                    } else {
+                        this.alertMessage = "Backend error."
+                    }
+                }
+            },
+            (error) => {
+                if (error.message != null) {
+                    this.alertMessage = "Communication error: " + error.message
+                } else {
+                    this.alertMessage = "Communication error."
+                }
+            }
+        )
+    }
 
 
     createSchedule(event) {
@@ -112,6 +137,8 @@ export class ScheduleCreateComponent implements OnInit {
     showForm() {
         this.alertMessage = ""
         this.form.reset()
+        this.getAgents()
+        this.getStores()
         const id = this.modalId()
         $('#' + id).modal('show')
     }

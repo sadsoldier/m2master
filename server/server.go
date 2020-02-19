@@ -57,6 +57,12 @@ type Server struct {
     files       map[string]*assets.File // Embedded copy of file assests
 }
 
+type Result struct {
+    Error       bool        `json:"error"`
+    Message     string      `json:"message"`
+    Result      interface{} `json:"result,omitempty"`
+}
+
 
 func New() *Server {
     return &Server{}
@@ -325,12 +331,14 @@ func (this *Server) Run() error {
 
     agentController := agentController.New(this.Config, this.db)
     botGroup.POST("/agent/list", agentController.List)
+    botGroup.POST("/agent/listall", agentController.ListAll)
     botGroup.POST("/agent/create", agentController.Create)
     botGroup.POST("/agent/update", agentController.Update)
     botGroup.POST("/agent/delete", agentController.Delete)
 
     storeController := storeController.New(this.Config, this.db)
     botGroup.POST("/store/list", storeController.List)
+    botGroup.POST("/store/listall", storeController.ListAll)
     botGroup.POST("/store/create", storeController.Create)
     botGroup.POST("/store/update", storeController.Update)
     botGroup.POST("/store/delete", storeController.Delete)
@@ -355,20 +363,44 @@ func (this *Server) NoRoute(context *gin.Context) {
 
     requestPath := context.Request.URL.Path
 
+    contentType := strings.ToLower(context.Request.Header.Get("Content-Type"))
+    log.Println("content type", contentType)
+
+
     if this.Config.Devel {
+
         /* Filesystem assets */
         publicDir := filepath.Join(this.Config.LibDir, "public")
         filePath := filepath.Clean(filepath.Join(publicDir, requestPath))
+
         if !strings.HasPrefix(filePath, publicDir) {
-            err := errors.New(fmt.Sprintf("wrong file patch %s\n", filePath))
-            log.Println(err)
+
+            if contentType == "application/json" {
+                result := Result{
+                    Error: true,
+                    Message: "wrong uri",
+                }
+                context.JSON(http.StatusOK, result)
+                return
+            }
             context.HTML(http.StatusOK, "index.html", nil)
             return
         }
         /* for frontend handle: If file not found send index.html */
+
         if !tools.FileExists(filePath) {
-            err := errors.New(fmt.Sprintf("file path not found %s\n", filePath))
+            err := errors.New(fmt.Sprintf("path %s not found\n", requestPath))
             log.Println(err)
+
+            if contentType == "application/json" {
+                result := Result{
+                    Error: true,
+                    Message: "wrong uri",
+                }
+                context.JSON(http.StatusOK, result)
+                return
+            }
+
             context.HTML(http.StatusOK, "index.html", nil)
             return
         }
@@ -379,6 +411,17 @@ func (this *Server) NoRoute(context *gin.Context) {
         if file == nil {
             err := errors.New(fmt.Sprintf("file path not found %s, send index", requestPath))
             log.Println(err)
+
+            if contentType == "application/json" {
+                result := Result{
+                    Error: true,
+                    Message: "wrong uri",
+                }
+                context.JSON(http.StatusOK, result)
+                context.Abort()
+                return
+            }
+
             context.HTML(http.StatusOK, "index.html", nil)
             return
         }
@@ -420,12 +463,6 @@ func (this *Server) sessionAuthMiddleware(context *gin.Context) {
     context.Next()
 }
 
-
-type Result struct {
-    Error       bool        `json:"error"`
-    Message     string      `json:"message"`
-    Result      interface{} `json:"result,omitempty"`
-}
 
 func (this *Server) basicAuthMiddleware(context *gin.Context) {
     authHeader := context.Request.Header.Get("Authorization")
