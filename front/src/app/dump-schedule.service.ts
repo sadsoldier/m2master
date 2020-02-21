@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface Schedule {
+export interface DumpSchedule {
     id?: number
     agentId?:     number
     agentURI?:    string
@@ -9,7 +9,6 @@ export interface Schedule {
     storeId?:     number
     storeURI?:    string
 
-    actionType?:  string
     storePath?:   string
     resourse?:    string
     mins?:        string
@@ -19,41 +18,40 @@ export interface Schedule {
     depth?:       number
 }
 
-export interface SchedulePage {
-    total?: number
-    offset: number
-    limit: number
-    hostnamePattern: string
-    schedules: Schedule[]
+export interface DumpSchedulePage {
+    total?:             number
+    offset:             number
+    limit:              number
+    hostnamePattern:    string
+    dumpSchedules:      DumpSchedule[]
 }
 
-export interface ScheduleResponse {
+export interface DumpScheduleResponse {
     error: boolean
     message: string
-    result: SchedulePage
+    result: DumpSchedulePage
 }
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class ScheduleService {
+export class DumpScheduleService {
 
     constructor(private httpClient: HttpClient) { }
 
-    list(page: SchedulePage) {
-        return this.httpClient.post<ScheduleResponse>(`/api/v1/schedule/list`, {
+    list(page: DumpSchedulePage) {
+        return this.httpClient.post<DumpScheduleResponse>(`/api/v1/dump-schedule/list`, {
             "limit": page.limit,
             "offset": page.offset,
             "hostnamePattern": page.hostnamePattern
         })
     }
 
-    create(schedule: Schedule) {
-        return this.httpClient.post<ScheduleResponse>(`/api/v1/schedule/create`, {
+    create(schedule: DumpSchedule) {
+        return this.httpClient.post<DumpScheduleResponse>(`/api/v1/dump-schedule/create`, {
             "agentId": schedule.agentId,
             "storeId": schedule.storeId,
-            "actionType": schedule.actionType,
             "storePath": schedule.storePath,
             "resourse": schedule.resourse,
             "mins": schedule.mins,
@@ -64,12 +62,11 @@ export class ScheduleService {
         })
     }
 
-    update(schedule: Schedule) {
-        return this.httpClient.post<ScheduleResponse>(`/api/v1/schedule/update`, {
+    update(schedule: DumpSchedule) {
+        return this.httpClient.post<DumpScheduleResponse>(`/api/v1/dump-schedule/update`, {
             "id": schedule.id,
             "agentId": schedule.agentId,
             "storeId": schedule.storeId,
-            "actionType": schedule.actionType,
             "storePath": schedule.storePath,
             "resourse": schedule.resourse,
             "mins": schedule.mins,
@@ -80,9 +77,8 @@ export class ScheduleService {
         })
     }
 
-
-    deletex(schedule: Schedule) {
-        return this.httpClient.post<ScheduleResponse>(`/api/v1/schedule/delete`, {
+    deletex(schedule: DumpSchedule) {
+        return this.httpClient.post<DumpScheduleResponse>(`/api/v1/dump-schedule/delete`, {
             "id": schedule.id
         })
     }

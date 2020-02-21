@@ -3,20 +3,20 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators, ValidationE
 
 declare var $: any
 
-import { ScheduleService, Schedule, SchedulePage, ScheduleResponse } from '../schedule.service'
+import { DumpScheduleService, DumpSchedule, DumpSchedulePage, DumpScheduleResponse } from '../dump-schedule.service'
 
 import { AgentService, Agent, AgentAllResponse } from '../agent.service'
 import { StoreService, Store, StoreAllResponse } from '../store.service'
 
 
 @Component({
-  selector: 'schedule-create',
-  templateUrl: './schedule-create.component.html',
-  styleUrls: ['./schedule-create.component.scss']
+  selector: 'dump-schedule-create',
+  templateUrl: './dump-schedule-create.component.html',
+  styleUrls: ['./dump-schedule-create.component.scss']
 })
-export class ScheduleCreateComponent implements OnInit {
+export class DumpScheduleCreateComponent implements OnInit {
 
-    @Input() schedule: Schedule
+    @Input() dumpSchedule: DumpSchedule
     @Output() update : EventEmitter<any> = new EventEmitter()
 
     agents: Agent[]
@@ -30,7 +30,7 @@ export class ScheduleCreateComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private scheduleService: ScheduleService,
+        private dumpScheduleService: DumpScheduleService,
         private agentService: AgentService,
         private storeService: StoreService
     ) { }
@@ -92,13 +92,12 @@ export class ScheduleCreateComponent implements OnInit {
     }
 
 
-    createSchedule(event) {
-        var scheduleType = event.value.scheduleType
+    createDumpSchedule(event) {
+        var dumpScheduleType = event.value.dumpScheduleType
 
-        var payload: Schedule = {
+        var payload: DumpSchedule = {
             agentId:    event.value.agentId,
             storeId:    event.value.storeId,
-            actionType: event.value.actionType,
             storePath:  event.value.storePath,
             resourse:   event.value.resourse,
             mins:   event.value.mins,
@@ -107,8 +106,8 @@ export class ScheduleCreateComponent implements OnInit {
             wdays:  event.value.wdays,
             depth:  event.value.depth
         }
-        this.scheduleService.create(payload).subscribe(
-            (response: ScheduleResponse) => {
+        this.dumpScheduleService.create(payload).subscribe(
+            (response: DumpScheduleResponse) => {
                 if (response.error == false) {
                     this.dismissForm()
                     this.onCreateSchedule()
@@ -127,11 +126,11 @@ export class ScheduleCreateComponent implements OnInit {
     }
 
     modalId(): string {
-        return "schedule-create-modal"
+        return "dumpschedule-create-modal"
     }
 
     formId(base: string): string {
-        return "schedule-create-form-" + base
+        return "dump-schedule-create-form-" + base
     }
 
     showForm() {
@@ -169,7 +168,6 @@ export class ScheduleCreateComponent implements OnInit {
         this.form = this.formBuilder.group({
             agentId:    [ 0, [ Validators.required ] ],
             storeId:    [ 0, [ Validators.required ] ],
-            actionType: [ "", [ Validators.required ] ],
             storePath:  [ "", [ Validators.required, Validators.minLength(this.minLength) ] ],
             resourse:   [ "", [ Validators.required ] ],
             mins:       [ "", [ Validators.required, Validators.minLength(this.minLength) ] ],

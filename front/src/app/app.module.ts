@@ -35,11 +35,12 @@ import { StoreOptionComponent } from './store-option/store-option.component';
 import { StoreCreateComponent } from './store-create/store-create.component';
 import { StoreUpdateComponent } from './store-update/store-update.component';
 import { StoreDeleteComponent } from './store-delete/store-delete.component';
-import { SchedulesComponent } from './schedules/schedules.component';
-import { ScheduleCreateComponent } from './schedule-create/schedule-create.component';
-import { ScheduleUpdateComponent } from './schedule-update/schedule-update.component';
-import { ScheduleOptionComponent } from './schedule-option/schedule-option.component';
-import { ScheduleDeleteComponent } from './schedule-delete/schedule-delete.component'
+
+import { DumpSchedulesComponent } from './dump-schedules/dump-schedules.component';
+import { DumpScheduleCreateComponent } from './dump-schedule-create/dump-schedule-create.component';
+import { DumpScheduleUpdateComponent } from './dump-schedule-update/dump-schedule-update.component';
+import { DumpScheduleOptionComponent } from './dump-schedule-option/dump-schedule-option.component';
+import { DumpScheduleDeleteComponent } from './dump-schedule-delete/dump-schedule-delete.component'
 
 @NgModule({
     declarations: [
@@ -49,27 +50,32 @@ import { ScheduleDeleteComponent } from './schedule-delete/schedule-delete.compo
         NotFoundComponent,
         LoginComponent,
         HomeComponent,
+
         UsersComponent,
         UserCreateComponent,
         UserUpdateComponent,
         UserDeleteComponent,
         UserOptionComponent,
+
         PagerComponent,
+
         AgentsComponent,
         AgentOptionComponent,
         AgentCreateComponent,
         AgentUpdateComponent,
         AgentDeleteComponent,
+
         StoresComponent,
         StoreOptionComponent,
         StoreCreateComponent,
         StoreUpdateComponent,
         StoreDeleteComponent,
-        SchedulesComponent,
-        ScheduleCreateComponent,
-        ScheduleUpdateComponent,
-        ScheduleOptionComponent,
-        ScheduleDeleteComponent
+
+        DumpSchedulesComponent,
+        DumpScheduleCreateComponent,
+        DumpScheduleUpdateComponent,
+        DumpScheduleOptionComponent,
+        DumpScheduleDeleteComponent
     ],
     imports: [
         BrowserModule,

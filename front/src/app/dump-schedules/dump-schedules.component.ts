@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 
-import { ScheduleService, Schedule, ScheduleResponse, SchedulePage } from '../schedule.service'
+import { DumpScheduleService, DumpSchedule, DumpScheduleResponse, DumpSchedulePage } from '../dump-schedule.service'
 
 declare var $: any;
 
@@ -14,28 +14,28 @@ interface PaginatorItem {
 }
 
 @Component({
-    selector: 'schedules',
-    templateUrl: './schedules.component.html',
-    styleUrls: ['./schedules.component.scss']
+    selector: 'dump-schedules',
+    templateUrl: './dump-schedules.component.html',
+    styleUrls: ['./dump-schedules.component.scss']
 })
-export class SchedulesComponent implements OnInit {
+export class DumpSchedulesComponent implements OnInit {
 
     searchForm: FormGroup
 
     noticeMessage: string = null
     alertMessage: string = null
 
-    page: SchedulePage = {
+    page: DumpSchedulePage = {
         total: 0,
         limit: 5,
         offset: 0,
         hostnamePattern: "",
-        schedules: []
+        dumpSchedules: []
     }
 
     constructor(
         private formBuilder: FormBuilder,
-        private scheduleService: ScheduleService
+        private dumpScheduleService: DumpScheduleService
     ) { }
 
     setNewOffset(newOffset: any) {
@@ -44,12 +44,12 @@ export class SchedulesComponent implements OnInit {
     }
 
     list() {
-        this.scheduleService.list(this.page).subscribe(
-            (response: ScheduleResponse) => {
+        this.dumpScheduleService.list(this.page).subscribe(
+            (response: DumpScheduleResponse) => {
                 if (response.error == false) {
                     this.page = response.result
-                    if (this.page.schedules == null) {
-                        this.page.schedules = []
+                    if (this.page.dumpSchedules == null) {
+                        this.page.dumpSchedules = []
                     }
                 } else {
                     if (response.message != null) {

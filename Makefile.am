@@ -30,8 +30,8 @@ EXTRA_m2srv_SOURCES = \
 	server/agent-controller/agent_controller.go \
 	server/agent-model/agent_model.go \
 	server/runner-model/runner_model.go \
-	server/schedule-controller/schedule_controller.go \
-	server/schedule-model/schedule_model.go \
+	server/dump-schedule-controller/dump_schedule_controller.go \
+	server/dump-schedule-model/dump_schedule_model.go \
 	server/store-controller/store_controller.go \
 	server/store-model/store_model.go \
 	server/user-controller/user_controller.go \

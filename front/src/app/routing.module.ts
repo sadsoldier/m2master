@@ -8,7 +8,7 @@ import { UsersComponent } from './users/users.component'
 
 import { AgentsComponent } from './agents/agents.component'
 import { StoresComponent } from './stores/stores.component'
-import { SchedulesComponent } from './schedules/schedules.component'
+import { DumpSchedulesComponent } from './dump-schedules/dump-schedules.component'
 
 import { NotFoundComponent } from './not-found/not-found.component'
 
@@ -19,7 +19,7 @@ export const routes: Routes = [
     { path: "users", component: UsersComponent, canActivate: [PageGuard], data: { name: "Users" } },
     { path: "agents", component: AgentsComponent, canActivate: [PageGuard], data: { name: "Agents" } },
     { path: "stores", component: StoresComponent, canActivate: [PageGuard], data: { name: "Stores" } },
-    { path: "schedules", component: SchedulesComponent, canActivate: [PageGuard], data: { name: "Schedules" } },
+    { path: "schedules", component: DumpSchedulesComponent, canActivate: [PageGuard], data: { name: "DumpSchedules" } },
 
     { path: "", component: HomeComponent, canActivate: [PageGuard],  data: { name: "Home" } },
     { path: "notfound", component: NotFoundComponent, canActivate: [PageGuard] },
