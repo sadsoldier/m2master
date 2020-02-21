@@ -42,8 +42,8 @@ import (
     "master/server/store-model"
     "master/server/store-controller"
 
-    "master/server/schedule-controller"
-    "master/server/schedule-model"
+    "master/server/dump-schedule-controller"
+    "master/server/dump-schedule-model"
 
     "master/daemon"
     "master/config"
@@ -94,7 +94,7 @@ func (this *Server) Migrate() {
     store := storeModel.New(db)
     store.Migrate()
 
-    schedule := scheduleModel.New(db)
+    schedule := dumpScheduleModel.New(db)
     schedule.Migrate()
 
     os.Exit(0)
@@ -343,12 +343,12 @@ func (this *Server) Run() error {
     botGroup.POST("/store/update", storeController.Update)
     botGroup.POST("/store/delete", storeController.Delete)
 
-    scheduleController := scheduleController.New(this.Config, this.db)
-    botGroup.POST("/schedule/list", scheduleController.List)
-    botGroup.POST("/schedule/listall", scheduleController.ListAll)
-    botGroup.POST("/schedule/create", scheduleController.Create)
-    botGroup.POST("/schedule/update", scheduleController.Update)
-    botGroup.POST("/schedule/delete", scheduleController.Delete)
+    dumpScheduleController := dumpScheduleController.New(this.Config, this.db)
+    botGroup.POST("/dump-schedule/list", dumpScheduleController.List)
+    botGroup.POST("/dump-schedule/listall", dumpScheduleController.ListAll)
+    botGroup.POST("/dump-schedule/create", dumpScheduleController.Create)
+    botGroup.POST("/dump-schedule/update", dumpScheduleController.Update)
+    botGroup.POST("/dump-schedule/delete", dumpScheduleController.Delete)
 
     router.NoRoute(this.NoRoute)
 

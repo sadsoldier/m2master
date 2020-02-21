@@ -2,8 +2,7 @@
  * Copyright 2019 Oleg Borodin  <borodin@unix7.org>
  */
 
-
-package scheduleModel
+package dumpScheduleModel
 
 import (
     "log"
@@ -12,12 +11,11 @@ import (
 )
 
 const scheme = `
-    DROP TABLE IF EXISTS schedules;
-    CREATE TABLE IF NOT EXISTS schedules (
+    DROP TABLE IF EXISTS dump_schedules;
+    CREATE TABLE IF NOT EXISTS dump_schedules (
         id          INTEGER PRIMARY KEY,
         agent_id    INTEGER NOT NULL,
         store_id    INTEGER NOT NULL,
-        action_type VARCHAR(255) NOT NULL,
         store_path  VARCHAR(255) NOT NULL,
         resourse    VARCHAR(255) NOT NULL,
         mins        VARCHAR(255) NOT NULL,
@@ -31,12 +29,11 @@ type Model struct {
     db *sqlx.DB
 }
 
-type Schedule struct {
+type DumpSchedule struct {
     Id          int     `db:"id"            json:"id"`
     AgentId     int     `db:"agent_id"      json:"agentId"`
     StoreId     int     `db:"store_id"      json:"storeId"`
 
-    ActionType  string  `db:"action_type"   json:"actionType"`        // dump, restore, ?copy
     StorePath   string  `db:"store_path"    json:"storePath"`
     Resourse    string  `db:"resourse"      json:"resourse"`
 
@@ -48,13 +45,12 @@ type Schedule struct {
 }
 
 type Page struct {
-    Total           int         `json:"total"`
-    Offset          int         `json:"offset"`
-    Limit           int         `json:"limit"`
-    ResoursePattern string      `json:"resoursePattern"`
-    Schedules       *[]Schedule `json:"schedules"`
+    Total           int                 `json:"total"`
+    Offset          int                 `json:"offset"`
+    Limit           int                 `json:"limit"`
+    ResoursePattern string              `json:"resoursePattern"`
+    DumpSchedules   *[]DumpSchedule     `json:"dumpSchedules"`
 }
-
 
 func (this *Model) Migrate() error {
     _, err := this.db.Exec(scheme)
@@ -65,14 +61,13 @@ func (this *Model) Migrate() error {
     return nil
 }
 
-
 func (this *Model) List(page *Page) (error) {
     var request string
     var err error
     var total int
 
     resoursePattern := "%" + page.ResoursePattern + "%"
-    request = `SELECT COUNT(id) as total FROM schedules WHERE resourse LIKE $1`
+    request = `SELECT COUNT(id) as total FROM dump_schedules WHERE resourse LIKE $1`
     err = this.db.QueryRow(request, resoursePattern).Scan(&total)
     if err != nil {
         log.Println(err)
@@ -80,12 +75,11 @@ func (this *Model) List(page *Page) (error) {
     }
     page.Total = total
 
-    var schedules []Schedule
+    var dumpSchedules []DumpSchedule
     request = `SELECT
                     id,
                     agent_id,
                     store_id,
-                    action_type,
                     store_path,
                     resourse,
                     mins,
@@ -93,24 +87,23 @@ func (this *Model) List(page *Page) (error) {
                     wdays,
                     mdays,
                     depth
-                FROM schedules
+                FROM dump_schedules
                 WHERE resourse LIKE $1
                 ORDER BY resourse
                 LIMIT $2 OFFSET $3`
-    err = this.db.Select(&schedules, request, resoursePattern, page.Limit, page.Offset)
+    err = this.db.Select(&dumpSchedules, request, resoursePattern, page.Limit, page.Offset)
     if err != nil {
         log.Println(err)
         return err
     }
-    page.Schedules = &schedules
+    page.DumpSchedules = &dumpSchedules
     return nil
 }
 
-func (this *Model) Create(schedule Schedule) error {
-    request := `INSERT INTO schedules(
+func (this *Model) Create(dumpSchedule DumpSchedule) error {
+    request := `INSERT INTO dump_schedules(
                     agent_id,
                     store_id,
-                    action_type,
                     store_path,
                     resourse,
                     mins,
@@ -118,18 +111,17 @@ func (this *Model) Create(schedule Schedule) error {
                     wdays,
                     mdays,
                     depth)
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`
     _, err := this.db.Exec(request,
-            schedule.AgentId,
-            schedule.StoreId,
-            schedule.ActionType,
-            schedule.StorePath,
-            schedule.Resourse,
-            schedule.Mins,
-            schedule.Hours,
-            schedule.Wdays,
-            schedule.Mdays,
-            schedule.Depth)
+            dumpSchedule.AgentId,
+            dumpSchedule.StoreId,
+            dumpSchedule.StorePath,
+            dumpSchedule.Resourse,
+            dumpSchedule.Mins,
+            dumpSchedule.Hours,
+            dumpSchedule.Wdays,
+            dumpSchedule.Mdays,
+            dumpSchedule.Depth)
     if err != nil {
         log.Println(err)
         return err
@@ -137,16 +129,15 @@ func (this *Model) Create(schedule Schedule) error {
     return nil
 }
 
-func (this *Model) ListAll(resoursePattern string) (*[]Schedule, error) {
+func (this *Model) ListAll(resoursePattern string) (*[]DumpSchedule, error) {
     var request string
     var err error
     resoursePattern = "%" + resoursePattern + "%"
-    var schedules []Schedule
+    var dumpSchedules []DumpSchedule
     request = `SELECT
                     s.id,
                     s.agent_id,
                     s.store_id,
-                    s.action_type,
                     s.store_path,
                     s.resourse,
                     s.mins,
@@ -154,27 +145,26 @@ func (this *Model) ListAll(resoursePattern string) (*[]Schedule, error) {
                     s.wdays,
                     s.mdays,
                     s.depth
-                FROM schedules as s
+                FROM dump_schedules as s
                 WHERE resourse LIKE $1
                 ORDER BY resourse`
-    err = this.db.Select(&schedules, request, resoursePattern)
+    err = this.db.Select(&dumpSchedules, request, resoursePattern)
     if err != nil {
         log.Println(err)
         return nil, err
     }
-    return &schedules, nil
+    return &dumpSchedules, nil
 }
 
-func (this *Model) GetById(id int) (Schedule, error) {
+func (this *Model) GetById(id int) (DumpSchedule, error) {
     var request string
     var err error
-    var schedules []Schedule
-    var schedule Schedule
+    var dumpSchedules []DumpSchedule
+    var dumpSchedule DumpSchedule
     request = `SELECT
                     id,
                     agent_id,
                     store_id,
-                    action_type,
                     store_path,
                     resourse,
                     mins,
@@ -182,51 +172,49 @@ func (this *Model) GetById(id int) (Schedule, error) {
                     wdays,
                     mdays,
                     depth
-                FROM schedules
+                FROM dump_schedules
                 WHERE id = $1`
-    err = this.db.Select(&schedules, request, id)
+    err = this.db.Select(&dumpSchedules, request, id)
     if err != nil {
         log.Println(err)
-        return schedule, err
+        return dumpSchedule, err
     }
 
-    if len(schedules) == 0 {
-        err := errors.New("schedule not found")
+    if len(dumpSchedules) == 0 {
+        err := errors.New("dump schedule not found")
         log.Println(err)
-        return schedule, err
+        return dumpSchedule, err
     }
-    schedule = schedules[0]
-    return schedule, nil
+    dumpSchedule = dumpSchedules[0]
+    return dumpSchedule, nil
 }
 
 
-func (this *Model) Update(schedule Schedule) error {
+func (this *Model) Update(dumpSchedule DumpSchedule) error {
     var err error
-    request := `UPDATE schedules
+    request := `UPDATE dump_schedules
                 SET agent_id = $1,
                     store_id = $2,
-                    type = $3,
-                    store_path = $4,
-                    resourse = $5,
-                    mins = $6,
-                    hours = $7,
-                    wdays = $8,
-                    mdays = $9,
-                    depth = $10
-                WHERE id = $11`
+                    store_path = $3,
+                    resourse = $4,
+                    mins = $5,
+                    hours = $6,
+                    wdays = $7,
+                    mdays = $8,
+                    depth = $9
+                WHERE id = $10`
 
     _, err = this.db.Exec(request,
-                    schedule.AgentId,
-                    schedule.StoreId,
-                    schedule.ActionType,
-                    schedule.StorePath,
-                    schedule.Resourse,
-                    schedule.Mins,
-                    schedule.Hours,
-                    schedule.Wdays,
-                    schedule.Mdays,
-                    schedule.Depth,
-                    schedule.Id)
+                    dumpSchedule.AgentId,
+                    dumpSchedule.StoreId,
+                    dumpSchedule.StorePath,
+                    dumpSchedule.Resourse,
+                    dumpSchedule.Mins,
+                    dumpSchedule.Hours,
+                    dumpSchedule.Wdays,
+                    dumpSchedule.Mdays,
+                    dumpSchedule.Depth,
+                    dumpSchedule.Id)
     if err != nil {
         log.Println(err)
         return err
@@ -234,9 +222,9 @@ func (this *Model) Update(schedule Schedule) error {
     return nil
 }
 
-func (this *Model) Delete(agent Schedule) error {
-    request := `DELETE FROM schedules WHERE id = $1`
-    _, err := this.db.Exec(request, agent.Id)
+func (this *Model) Delete(dumpSchedule DumpSchedule) error {
+    request := `DELETE FROM dump_schedules WHERE id = $1`
+    _, err := this.db.Exec(request, dumpSchedule.Id)
     if err != nil {
         log.Println(err)
         return err

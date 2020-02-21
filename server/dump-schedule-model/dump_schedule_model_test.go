@@ -2,7 +2,7 @@
  * Copyright 2020 Oleg Borodin  <borodin@unix7.org>
  */
 
-package scheduleModel
+package dumpScheduleModel
 
 import (
     "testing"
@@ -36,10 +36,9 @@ func TestCreate(t *testing.T) {
     }
 
     model := New(dbx)
-    schedule := Schedule{
+    dumpSchedule := DumpSchedule{
             AgentId:    1,
             StoreId:    1,
-            ActionType: "dump",
             StorePath:  "/" ,
             Resourse:   "qwerty",
             Mins:       "5",
@@ -54,21 +53,21 @@ func TestCreate(t *testing.T) {
         t.Error(err)
     }
 
-    err = model.Create(schedule)
+    err = model.Create(dumpSchedule)
     if err != nil {
         t.Error(err)
     }
 
-    var schedules []Schedule
+    var dumpSchedules []DumpSchedule
     page := Page{
         Limit: 500,
-        Schedules: &schedules,
+        DumpSchedules: &dumpSchedules,
     }
     err = model.List(&page)
     if err != nil {
         t.Error(err)
     }
-    fmt.Println(*page.Schedules)
+    fmt.Println(*page.DumpSchedules)
 
 }
 
@@ -80,11 +79,10 @@ func TestUpdate(t *testing.T) {
     }
 
     model := New(dbx)
-    schedule := Schedule{
+    dumpSchedule := DumpSchedule{
             Id:         1,
             AgentId:    2,
             StoreId:    2,
-            ActionType: "restore",
             StorePath:  "/" ,
             Resourse:   "qwerty",
             Mins:       "5",
@@ -99,21 +97,21 @@ func TestUpdate(t *testing.T) {
         t.Error(err)
     }
 
-    err = model.Create(schedule)
+    err = model.Create(dumpSchedule)
     if err != nil {
         t.Error(err)
     }
 
-    var schedules []Schedule
+    var dumpSchedules []DumpSchedule
     page := Page{
         Limit: 500,
-        Schedules: &schedules,
+        DumpSchedules: &dumpSchedules,
     }
     err = model.List(&page)
     if err != nil {
         t.Error(err)
     }
-    fmt.Println(*page.Schedules)
+    fmt.Println(*page.DumpSchedules)
 }
 
 
@@ -125,11 +123,11 @@ func TestDelete(t *testing.T) {
     }
 
     model := New(dbx)
-    schedule := Schedule{
+    dumpSchedule := DumpSchedule{
         Id: 1,
     }
 
-    err = model.Delete(schedule)
+    err = model.Delete(dumpSchedule)
     if err != nil {
         t.Error(err)
     }

@@ -2,7 +2,7 @@
  * Copyright 2020 Oleg Borodin  <borodin@unix7.org>
  */
 
-package scheduleController
+package dumpScheduleController
 
 import (
     "net/http"
@@ -19,7 +19,7 @@ import (
 
     "github.com/stretchr/testify/assert"
 
-    "master/server/schedule-model"
+    "master/server/dump-schedule-model"
     "master/config"
 )
 
@@ -53,10 +53,9 @@ func TestCreate(t *testing.T) {
     router := gin.Default()
     router.POST("/create", controller.Create)
 
-    schedule := scheduleModel.Schedule{
+    dumpSchedule := dumpScheduleModel.DumpSchedule{
             AgentId: 1,
             StoreId: 1,
-            Type: "dump",
             StorePath: "/" ,
             Resourse: "qwerty",
             Mins: "5",
@@ -66,7 +65,7 @@ func TestCreate(t *testing.T) {
             Depth: 10,
     }
 
-    data, err := json.Marshal(schedule)
+    data, err := json.Marshal(dumpSchedule)
     if err != nil {
         t.Error(err)
     }
@@ -101,11 +100,10 @@ func TestUpdate(t *testing.T) {
     router := gin.Default()
     router.POST("/update", controller.Update)
 
-    schedule := scheduleModel.Schedule{
+    dumpSchedule := dumpScheduleModel.DumpSchedule{
             Id: 1,
             AgentId: 2,
             StoreId: 2,
-            Type: "restore",
             StorePath: "/" ,
             Resourse: "qwerty",
             Mins: "5",
@@ -115,7 +113,7 @@ func TestUpdate(t *testing.T) {
             Depth: 10,
     }
 
-    data, err := json.Marshal(schedule)
+    data, err := json.Marshal(dumpSchedule)
     if err != nil {
         t.Error(err)
     }
@@ -151,7 +149,7 @@ func TestList(t *testing.T) {
     router := gin.Default()
     router.POST("/list", controller.List)
 
-    page := scheduleModel.Page{
+    page := dumpScheduleModel.Page{
         Offset: 0,
         Limit: 7,
         ResoursePattern: "q",
@@ -193,11 +191,11 @@ func TestDelete(t *testing.T) {
     router := gin.Default()
     router.POST("/delete", controller.Delete)
 
-    schedule := scheduleModel.Schedule{
+    dumpSchedule := dumpScheduleModel.DumpSchedule{
         Id: 1,
     }
 
-    data, err := json.Marshal(schedule)
+    data, err := json.Marshal(dumpSchedule)
     if err != nil {
         t.Error(err)
     }

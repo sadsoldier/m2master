@@ -3,7 +3,7 @@
  */
 
 
-package scheduleController
+package dumpScheduleController
 
 import (
     "net/http"
@@ -15,13 +15,13 @@ import (
     "github.com/jmoiron/sqlx"
 
     "master/config"
-    "master/server/schedule-model"
+    "master/server/dump-schedule-model"
 )
 
-type ScheduleController struct {
+type Controller struct {
     config *config.Config
     db *sqlx.DB
-    schedule *scheduleModel.Model
+    schedule *dumpScheduleModel.Model
 }
 
 type Response struct {
@@ -71,8 +71,8 @@ func sendResult(context *gin.Context, result interface{}) {
     context.JSON(http.StatusOK, &response)
 }
 
-func (this *ScheduleController) List(context *gin.Context) {
-    var page scheduleModel.Page
+func (this *Controller) List(context *gin.Context) {
+    var page dumpScheduleModel.Page
     var err error
 
     err = context.Bind(&page)
@@ -94,7 +94,7 @@ type ListAllReq struct {
 }
 
 
-func (this *ScheduleController) ListAll(context *gin.Context) {
+func (this *Controller) ListAll(context *gin.Context) {
     var err error
     var req ListAllReq
     err = context.Bind(&req)
@@ -112,8 +112,8 @@ func (this *ScheduleController) ListAll(context *gin.Context) {
 }
 
 
-func (this *ScheduleController) Create(context *gin.Context) {
-    var schedule scheduleModel.Schedule
+func (this *Controller) Create(context *gin.Context) {
+    var schedule dumpScheduleModel.DumpSchedule
     var err error
     err = context.Bind(&schedule)
     if err != nil {
@@ -129,8 +129,8 @@ func (this *ScheduleController) Create(context *gin.Context) {
     sendOk(context)
 }
 
-func (this *ScheduleController) Update(context *gin.Context) {
-    var schedule scheduleModel.Schedule
+func (this *Controller) Update(context *gin.Context) {
+    var schedule dumpScheduleModel.DumpSchedule
     var err error
     err = context.Bind(&schedule)
     if err != nil {
@@ -146,8 +146,8 @@ func (this *ScheduleController) Update(context *gin.Context) {
     sendOk(context)
 }
 
-func (this *ScheduleController) Delete(context *gin.Context) {
-    var schedule scheduleModel.Schedule
+func (this *Controller) Delete(context *gin.Context) {
+    var schedule dumpScheduleModel.DumpSchedule
     var err error
     err = context.Bind(&schedule)
     if err != nil {
@@ -163,10 +163,10 @@ func (this *ScheduleController) Delete(context *gin.Context) {
     sendOk(context)
 }
 
-func New(config *config.Config, db *sqlx.DB) *ScheduleController {
-    return &ScheduleController{
+func New(config *config.Config, db *sqlx.DB) *Controller {
+    return &Controller{
         config: config,
         db: db,
-        schedule: scheduleModel.New(db),
+        schedule: dumpScheduleModel.New(db),
     }
 }
