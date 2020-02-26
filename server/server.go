@@ -45,10 +45,15 @@ import (
     "master/server/dump-schedule-controller"
     "master/server/dump-schedule-model"
 
+    "master/server/db-controller"
+    "master/server/dbuser-controller"
+
     "master/daemon"
     "master/config"
     "master/bundle"
     "master/tools"
+
+
 )
 
 type Server struct {
@@ -99,8 +104,6 @@ func (this *Server) Migrate() {
 
     os.Exit(0)
 }
-
-
 
 func (this *Server) Start() {
     var err error
@@ -349,6 +352,12 @@ func (this *Server) Run() error {
     botGroup.POST("/dump-schedule/create", dumpScheduleController.Create)
     botGroup.POST("/dump-schedule/update", dumpScheduleController.Update)
     botGroup.POST("/dump-schedule/delete", dumpScheduleController.Delete)
+
+    dbController := dbController.New(this.Config, this.db)
+    botGroup.POST("/db/listall", dbController.ListAll)
+
+    dbUserController := dbUserController.New(this.Config, this.db)
+    botGroup.POST("/dbuser/listall", dbUserController.ListAll)
 
     router.NoRoute(this.NoRoute)
 

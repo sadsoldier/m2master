@@ -107,7 +107,6 @@ func (this *Model) ListAll(hostnamePattern string) (*[]Agent, error) {
     return &agents, nil
 }
 
-
 func (this *Model) GetById(id int) (Agent, error) {
     var request string
     var err error

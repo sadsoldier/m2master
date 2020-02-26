@@ -3,7 +3,7 @@
  */
 
 
-package agentController
+package dbUserController
 
 import (
     "net/http"
@@ -15,13 +15,13 @@ import (
     "github.com/jmoiron/sqlx"
 
     "master/config"
+    "master/server/agent-client"
     "master/server/agent-model"
 )
 
 type Controller struct {
     config *config.Config
-    db *sqlx.DB
-    agent *agentModel.Model
+    dbx *sqlx.DB
 }
 
 type Response struct {
@@ -71,101 +71,41 @@ func sendResult(context *gin.Context, result interface{}) {
     context.JSON(http.StatusOK, &response)
 }
 
-func (this *Controller) List(context *gin.Context) {
-    var err error
-    var page agentModel.Page
-    err = context.Bind(&page)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-
-    err = this.agent.List(&page)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-    sendResult(context, &page)
-}
-
-type ListAllReq struct {
-    HostnamePattern string      `json:"hostnamePattern"`
+type ListAllRequest struct {
+    AgentId     int     `json:"agentId"`
+    Pattern     string  `json:"pattern"`
 }
 
 func (this *Controller) ListAll(context *gin.Context) {
+
+    var request ListAllRequest
     var err error
-    var req ListAllReq
-    err = context.Bind(&req)
+
+    err = context.Bind(&request)
     if err != nil {
         sendError(context, err)
         return
     }
 
-    agents, err := this.agent.ListAll(req.HostnamePattern)
+    agent := agentModel.New(this.dbx)
+
+    agentProfile, err := agent.GetById(request.AgentId)
     if err != nil {
         sendError(context, err)
         return
     }
-    sendResult(context, *agents)
+
+    dbUsers, err := agentClient.ListAllDbUsers(agentProfile.URI, request.Pattern)
+    if err != nil {
+        sendError(context, err)
+        return
+    }
+    sendResult(context, &dbUsers)
 }
 
-
-
-func (this *Controller) Create(context *gin.Context) {
-    var agent agentModel.Agent
-    var err error
-    err = context.Bind(&agent)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-
-    err = this.agent.Create(agent)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-    sendOk(context)
-}
-
-func (this *Controller) Update(context *gin.Context) {
-    var agent agentModel.Agent
-    var err error
-    err = context.Bind(&agent)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-
-    err = this.agent.Update(agent)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-    sendOk(context)
-}
-
-func (this *Controller) Delete(context *gin.Context) {
-    var agent agentModel.Agent
-    var err error
-    err = context.Bind(&agent)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-
-    err = this.agent.Delete(agent)
-    if err != nil {
-        sendError(context, err)
-        return
-    }
-    sendOk(context)
-}
-
-func New(config *config.Config, db *sqlx.DB) *Controller {
+func New(config *config.Config, dbx *sqlx.DB) *Controller {
     return &Controller{
         config: config,
-        db: db,
-        agent: agentModel.New(db),
+        dbx: dbx,
     }
 }
