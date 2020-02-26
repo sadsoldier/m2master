@@ -18,6 +18,7 @@
 
                     <div class="modal-body">
 
+                        <!-- agentId -->
                         <div class="form-group">
                             <label for="{{ formId('agentId') }}">Agent:</label>
                             <select class="form-control" formControlName="agentId" id="{{ formId('agentId') }}">
@@ -27,6 +28,19 @@
                             </select>
                         </div>
 
+                        <!-- resourse -->
+                        <div class="form-group">
+                            <label for="{{ formId('resourse') }}">Database name:</label>
+                            <input type="text" class="form-control" id="{{ formId('resourse') }}" formControlName="resourse">
+
+                            <small *ngIf="formResourse.invalid && (formResourse.dirty || formResourse.touched)" class="form-text text-muted">
+                                <span *ngIf="formResourse.errors.required">Value is required</span>
+                                <span *ngIf="formResourse.errors.minlength">Value is too short</span>
+                            </small>
+                        </div>
+
+
+                        <!-- storeId -->
                         <div class="form-group">
                             <label for="{{ formId('storeId') }}">Store:</label>
                             <select class="form-control" formControlName="storeId" id="{{ formId('storeId') }}">
@@ -36,7 +50,49 @@
                             </select>
                         </div>
 
+                        <!-- mdays -->
+                        <div class="form-group">
+                            <label for="{{ formId('mdays') }}">Days of month:</label>
+                            <input type="text" class="form-control" id="{{ formId('mdays') }}" formControlName="mdays">
 
+                            <small *ngIf="formMdays.invalid && (formMdays.dirty || formMdays.touched)" class="form-text text-muted">
+                                <span *ngIf="formMdays.errors.required">Value is required</span>
+                                <span *ngIf="formMdays.errors.minlength">Value is too short</span>
+                            </small>
+                        </div>
+
+                        <!-- wdays -->
+                        <div class="form-group">
+                            <label for="{{ formId('wdays') }}">Days of week:</label>
+                            <input type="text" class="form-control" id="{{ formId('wdays') }}" formControlName="wdays">
+
+                            <small *ngIf="formWdays.invalid && (formWdays.dirty || formWdays.touched)" class="form-text text-muted">
+                                <span *ngIf="formWdays.errors.required">Value is required</span>
+                                <span *ngIf="formWdays.errors.minlength">Value is too short</span>
+                            </small>
+                        </div>
+
+                        <!-- hours -->
+                        <div class="form-group">
+                            <label for="{{ formId('hours') }}">Hours:</label>
+                            <input type="text" class="form-control" id="{{ formId('hours') }}" formControlName="hours">
+
+                            <small *ngIf="formHours.invalid && (formHours.dirty || formHours.touched)" class="form-text text-muted">
+                                <span *ngIf="formHours.errors.required">Value is required</span>
+                                <span *ngIf="formHours.errors.minlength">Value is too short</span>
+                            </small>
+                        </div>
+
+                        <!-- mins -->
+                        <div class="form-group">
+                            <label for="{{ formId('mins') }}">Mins:</label>
+                            <input type="text" class="form-control" id="{{ formId('mins') }}" formControlName="mins">
+
+                            <small *ngIf="formMins.invalid && (formMins.dirty || formMins.touched)" class="form-text text-muted">
+                                <span *ngIf="formMins.errors.required">Value is required</span>
+                                <span *ngIf="formMins.errors.minlength">Value is too short</span>
+                            </small>
+                        </div>
                     </div>
 
                     <div *ngIf="this.alertMessage" class="alert alert-warning border mx-4" role="alert">

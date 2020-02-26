@@ -135,7 +135,7 @@ export class DumpScheduleCreateComponent implements OnInit {
 
     showForm() {
         this.alertMessage = ""
-        this.form.reset()
+        //this.form.reset()
         this.getAgents()
         this.getStores()
         const id = this.modalId()
@@ -156,6 +156,25 @@ export class DumpScheduleCreateComponent implements OnInit {
        return this.form.get('storeId')
     }
 
+    get formStorePath(){
+       return this.form.get('storePath')
+    }
+    get formResourse(){
+       return this.form.get('resourse')
+    }
+    get formWdays(){
+       return this.form.get('wdays')
+    }
+    get formMdays(){
+       return this.form.get('mdays')
+    }
+    get formHours(){
+       return this.form.get('hours')
+    }
+    get formMins(){
+       return this.form.get('mins')
+    }
+
     showAlert(message: string) {
         this.alertMessage = message
     }
@@ -168,13 +187,13 @@ export class DumpScheduleCreateComponent implements OnInit {
         this.form = this.formBuilder.group({
             agentId:    [ 0, [ Validators.required ] ],
             storeId:    [ 0, [ Validators.required ] ],
-            storePath:  [ "", [ Validators.required, Validators.minLength(this.minLength) ] ],
-            resourse:   [ "", [ Validators.required ] ],
-            mins:       [ "", [ Validators.required, Validators.minLength(this.minLength) ] ],
-            hours:      [ "", [ Validators.required, Validators.minLength(this.minLength) ] ],
-            mdays:      [ "", [ Validators.required, Validators.minLength(this.minLength) ] ],
-            wdays:      [ "", [ Validators.required, Validators.minLength(this.minLength) ] ],
-            depth:      [  0, [ Validators.required ] ]
+            storePath:  [ "/", [ Validators.required, Validators.minLength(this.minLength) ] ],
+            resourse:   [ "postgres", [ Validators.required ] ],
+            mins:       [ "10", [ Validators.required, Validators.minLength(this.minLength) ] ],
+            hours:      [ "23", [ Validators.required, Validators.minLength(this.minLength) ] ],
+            mdays:      [ "1-31", [ Validators.required, Validators.minLength(this.minLength) ] ],
+            wdays:      [ "1-7", [ Validators.required, Validators.minLength(this.minLength) ] ],
+            depth:      [  3, [ Validators.required ] ]
         })
     }
 }
