@@ -32,10 +32,13 @@ type Model struct {
 type DumpSchedule struct {
     Id          int     `db:"id"            json:"id"`
     AgentId     int     `db:"agent_id"      json:"agentId"`
-    StoreId     int     `db:"store_id"      json:"storeId"`
-
-    StorePath   string  `db:"store_path"    json:"storePath"`
+    AgentURI    string  `db:"agent_uri"     json:"agentURI"`
     Resourse    string  `db:"resourse"      json:"resourse"`
+
+    StoreId     int     `db:"store_id"      json:"storeId"`
+    StoreType   string  `db:"store_type"    json:"storeType"`
+    StoreURI    string  `db:"store_uri"     json:"storeURI"`
+    StorePath   string  `db:"store_path"    json:"storePath"`
 
     Mins        string  `db:"mins"          json:"mins"`
     Hours       string  `db:"hours"         json:"hours"`
@@ -77,18 +80,25 @@ func (this *Model) List(page *Page) (error) {
 
     var dumpSchedules []DumpSchedule
     request = `SELECT
-                    id,
-                    agent_id,
-                    store_id,
-                    store_path,
-                    resourse,
-                    mins,
-                    hours,
-                    wdays,
-                    mdays,
-                    depth
-                FROM dump_schedules
+                    d.id as id,
+                    d.agent_id as agent_id,
+                    a.safe_uri as agent_uri,
+                    d.resourse as resourse,
+
+                    d.store_id as store_id,
+                    s.type as store_type,
+                    s.safe_uri as store_uri,
+                    d.store_path as store_path,
+
+                    d.mins as mins,
+                    d.hours as hours,
+                    d.wdays as wdays,
+                    d.mdays as mdays,
+                    d.depth as depth
+                FROM dump_schedules as d, agents as a, stores as s
                 WHERE resourse LIKE $1
+                    AND d.agent_id == a.id
+                    AND d.store_id == s.id
                 ORDER BY resourse
                 LIMIT $2 OFFSET $3`
     err = this.db.Select(&dumpSchedules, request, resoursePattern, page.Limit, page.Offset)
@@ -98,6 +108,81 @@ func (this *Model) List(page *Page) (error) {
     }
     page.DumpSchedules = &dumpSchedules
     return nil
+}
+
+func (this *Model) ListAll(resoursePattern string) (*[]DumpSchedule, error) {
+    var request string
+    var err error
+    resoursePattern = "%" + resoursePattern + "%"
+    var dumpSchedules []DumpSchedule
+    request = `SELECT
+                    d.id as id,
+                    d.agent_id as agent_id,
+                    a.safe_uri as agent_uri,
+                    d.resourse as resourse,
+
+                    d.store_id as store_id,
+                    s.type as store_type,
+                    s.safe_uri as store_uri,
+                    d.store_path as store_path,
+
+                    d.mins as mins,
+                    d.hours as hours,
+                    d.wdays as wdays,
+                    d.mdays as mdays,
+                    d.depth as depth
+                FROM dump_schedules as d, agents as a, stores as s
+                WHERE resourse LIKE $1
+                    AND d.agent_id == a.id
+                    AND d.store_id == s.id
+                ORDER BY resourse`
+    err = this.db.Select(&dumpSchedules, request, resoursePattern)
+    if err != nil {
+        log.Println(err)
+        return nil, err
+    }
+    return &dumpSchedules, nil
+}
+
+func (this *Model) GetById(id int) (DumpSchedule, error) {
+    var request string
+    var err error
+    var dumpSchedules []DumpSchedule
+    var dumpSchedule DumpSchedule
+    request = `SELECT
+                    d.id as id,
+                    d.agent_id as agent_id,
+                    a.safe_uri as agent_uri,
+                    d.resourse as resourse,
+
+                    d.store_id as store_id,
+                    s.type as store_type,
+                    s.safe_uri as store_uri,
+                    d.store_path as store_path,
+
+                    d.mins as mins,
+                    d.hours as hours,
+                    d.wdays as wdays,
+                    d.mdays as mdays,
+                    d.depth as depth
+                FROM dump_schedules as d, agents as a, stores as s
+                WHERE id = $1
+                    AND d.agent_id == a.id
+                    AND d.store_id == s.id
+                LIMIT 1`
+    err = this.db.Select(&dumpSchedules, request, id)
+    if err != nil {
+        log.Println(err)
+        return dumpSchedule, err
+    }
+
+    if len(dumpSchedules) == 0 {
+        err := errors.New("dump schedule not found")
+        log.Println(err)
+        return dumpSchedule, err
+    }
+    dumpSchedule = dumpSchedules[0]
+    return dumpSchedule, nil
 }
 
 func (this *Model) Create(dumpSchedule DumpSchedule) error {
@@ -127,66 +212,6 @@ func (this *Model) Create(dumpSchedule DumpSchedule) error {
         return err
     }
     return nil
-}
-
-func (this *Model) ListAll(resoursePattern string) (*[]DumpSchedule, error) {
-    var request string
-    var err error
-    resoursePattern = "%" + resoursePattern + "%"
-    var dumpSchedules []DumpSchedule
-    request = `SELECT
-                    s.id,
-                    s.agent_id,
-                    s.store_id,
-                    s.store_path,
-                    s.resourse,
-                    s.mins,
-                    s.hours,
-                    s.wdays,
-                    s.mdays,
-                    s.depth
-                FROM dump_schedules as s
-                WHERE resourse LIKE $1
-                ORDER BY resourse`
-    err = this.db.Select(&dumpSchedules, request, resoursePattern)
-    if err != nil {
-        log.Println(err)
-        return nil, err
-    }
-    return &dumpSchedules, nil
-}
-
-func (this *Model) GetById(id int) (DumpSchedule, error) {
-    var request string
-    var err error
-    var dumpSchedules []DumpSchedule
-    var dumpSchedule DumpSchedule
-    request = `SELECT
-                    id,
-                    agent_id,
-                    store_id,
-                    store_path,
-                    resourse,
-                    mins,
-                    hours,
-                    wdays,
-                    mdays,
-                    depth
-                FROM dump_schedules
-                WHERE id = $1`
-    err = this.db.Select(&dumpSchedules, request, id)
-    if err != nil {
-        log.Println(err)
-        return dumpSchedule, err
-    }
-
-    if len(dumpSchedules) == 0 {
-        err := errors.New("dump schedule not found")
-        log.Println(err)
-        return dumpSchedule, err
-    }
-    dumpSchedule = dumpSchedules[0]
-    return dumpSchedule, nil
 }
 
 

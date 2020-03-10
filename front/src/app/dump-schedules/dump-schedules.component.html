@@ -67,7 +67,17 @@
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th>hostname</th>
+                    <th>agentURI</th>
+                    <th>resourse</th>
+
+                    <th>storeType</th>
+                    <th>storeURI</th>
+
+                    <th>wdays</th>
+                    <th>mdays</th>
+                    <th>mins</th>
+                    <th>hours</th>
+                    <th>depth</th>
                 </tr>
             </thead>
 
@@ -75,9 +85,19 @@
                 <ng-container *ngFor="let item of page.dumpSchedules; let i = index">
                     <tr>
                         <td>{{ i + 1 + page.offset }}</td>
-                        <td>
-                            {{ item.agentId }}
-                        </td>
+
+                        <td>{{ item.agentURI }}</td>
+                        <td>{{ item.resourse }}</td>
+
+                        <td>{{ item.storeType }}</td>
+                        <td>{{ item.storeURI + item.storePath }}</td>
+
+                        <td>{{ item.wdays }}</td>
+                        <td>{{ item.mdays }}</td>
+                        <td>{{ item.mins }}</td>
+                        <td>{{ item.hours }}</td>
+                        <td>{{ item.depth }}</td>
+
                     </tr>
                 </ng-container>
             </tbody>

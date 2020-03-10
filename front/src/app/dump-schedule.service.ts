@@ -3,18 +3,21 @@ import { HttpClient } from '@angular/common/http';
 
 export interface DumpSchedule {
     id?: number
+
     agentId?:     number
     agentURI?:    string
+    resourse?:    string
 
     storeId?:     number
     storeURI?:    string
-
+    storeType?:   string
     storePath?:   string
-    resourse?:    string
+
     mins?:        string
     hours?:       string
     mdays?:       string
     wdays?:       string
+
     depth?:       number
 }
 

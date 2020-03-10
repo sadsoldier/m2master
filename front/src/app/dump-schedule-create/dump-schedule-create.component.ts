@@ -8,6 +8,7 @@ import { DumpScheduleService, DumpSchedule, DumpSchedulePage, DumpScheduleRespon
 import { AgentService, Agent, AgentAllResponse } from '../agent.service'
 import { StoreService, Store, StoreAllResponse } from '../store.service'
 
+import { DbService, Db, DbListResponse } from '../db.service'
 
 @Component({
   selector: 'dump-schedule-create',
@@ -22,6 +23,9 @@ export class DumpScheduleCreateComponent implements OnInit {
     agents: Agent[]
     stores: Store[]
 
+    agentId: number = 0
+    dbs: Db[]
+
     form: FormGroup
 
     alertMessage: string = ""
@@ -32,7 +36,9 @@ export class DumpScheduleCreateComponent implements OnInit {
         private formBuilder: FormBuilder,
         private dumpScheduleService: DumpScheduleService,
         private agentService: AgentService,
-        private storeService: StoreService
+        private storeService: StoreService,
+        private dbService: DbService
+
     ) { }
 
     onCreateSchedule() {
@@ -91,13 +97,42 @@ export class DumpScheduleCreateComponent implements OnInit {
         )
     }
 
+    getDbs() {
+        if (this.agentId == null || this.agentId == 0) {
+            this.dbs = []
+            return
+        }
+        this.dbService.list(Number(this.agentId), "").subscribe(
+            (response: DbListResponse) => {
+                if (response.error == false) {
+                    this.dbs = response.result
+                    if (this.dbs == null) {
+                        this.dbs = []
+                    }
+                } else {
+                    if (response.message != null) {
+                        this.alertMessage = "Backend error: " + response.message
+                    } else {
+                        this.alertMessage = "Backend error."
+                    }
+                }
+            },
+            (error) => {
+                if (error.message != null) {
+                    this.alertMessage = "Communication error: " + error.message
+                } else {
+                    this.alertMessage = "Communication error."
+                }
+            }
+        )
+    }
 
     createDumpSchedule(event) {
         var dumpScheduleType = event.value.dumpScheduleType
 
         var payload: DumpSchedule = {
-            agentId:    event.value.agentId,
-            storeId:    event.value.storeId,
+            agentId:    Number(event.value.agentId),
+            storeId:    Number(event.value.storeId),
             storePath:  event.value.storePath,
             resourse:   event.value.resourse,
             mins:   event.value.mins,
@@ -183,17 +218,29 @@ export class DumpScheduleCreateComponent implements OnInit {
         this.alertMessage = ""
     }
 
+    onChangeAgentId(event) {
+        console.log(event.target.value)
+        this.agentId = event.target.value
+        this.getDbs()
+    }
+
+    //agentFakeValidator(): ValidatorFn {
+    //    return (control: FormControl): {[key: string]: any} | null => {
+    //        return null
+    //    }
+    //}
+
     ngOnInit() {
         this.form = this.formBuilder.group({
-            agentId:    [ 0, [ Validators.required ] ],
-            storeId:    [ 0, [ Validators.required ] ],
+            agentId:    [ 0, [ Validators.required, Validators.min(1) ] ],
+            storeId:    [ 0, [ Validators.required, Validators.min(1) ] ],
             storePath:  [ "/", [ Validators.required, Validators.minLength(this.minLength) ] ],
-            resourse:   [ "postgres", [ Validators.required ] ],
+            resourse:   [ "postgres", [ Validators.required, Validators.minLength(this.minLength) ] ],
             mins:       [ "10", [ Validators.required, Validators.minLength(this.minLength) ] ],
             hours:      [ "23", [ Validators.required, Validators.minLength(this.minLength) ] ],
             mdays:      [ "1-31", [ Validators.required, Validators.minLength(this.minLength) ] ],
             wdays:      [ "1-7", [ Validators.required, Validators.minLength(this.minLength) ] ],
-            depth:      [  3, [ Validators.required ] ]
+            depth:      [  3, [ Validators.required, Validators.min(1) ] ]
         })
     }
 }

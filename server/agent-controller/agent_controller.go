@@ -109,8 +109,6 @@ func (this *Controller) ListAll(context *gin.Context) {
     sendResult(context, *agents)
 }
 
-
-
 func (this *Controller) Create(context *gin.Context) {
     var agent agentModel.Agent
     var err error

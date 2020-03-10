@@ -21,17 +21,22 @@
                         <!-- agentId -->
                         <div class="form-group">
                             <label for="{{ formId('agentId') }}">Agent:</label>
-                            <select class="form-control" formControlName="agentId" id="{{ formId('agentId') }}">
+                            <select class="form-control" (change)="onChangeAgentId($event)" formControlName="agentId" id="{{ formId('agentId') }}">
                                 <option *ngFor="let agent of agents" [value]="agent.id">
                                     {{agent.safeURI}}
                                 </option>
                             </select>
                         </div>
 
+
                         <!-- resourse -->
                         <div class="form-group">
                             <label for="{{ formId('resourse') }}">Database name:</label>
-                            <input type="text" class="form-control" id="{{ formId('resourse') }}" formControlName="resourse">
+                            <select class="form-control" formControlName="resourse" id="{{ formId('resourse') }}">
+                                <option *ngFor="let db of dbs" [value]="db.dbname">
+                                    {{db.dbname}}
+                                </option>
+                            </select>
 
                             <small *ngIf="formResourse.invalid && (formResourse.dirty || formResourse.touched)" class="form-text text-muted">
                                 <span *ngIf="formResourse.errors.required">Value is required</span>
